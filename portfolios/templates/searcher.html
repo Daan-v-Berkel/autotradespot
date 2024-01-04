@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="flex items-center p-4 flex-col">
+    {% load static %}
+
+    <span class="htmx-indicator flex flex-row space-x-2 p-2">
+      <img src="{% static 'images/SVG-Loaders-master/spinning-circles.svg' %}"
+           width="16"
+           height="16" />
+      Searching...
+    </span>
+    <section>
+      <form id="filtersform"
+            class="flex space-x-2"
+            hx-post="{% url 'autotradespot:searchlistings' %}"
+            hx-target="#results"
+            hx-swap="innerHTML"
+            hx-indicator=".htmx-indicator"
+            _="on submit toggle @disabled until htmx:afterOnLoad">
+        <button type="submit" class="btn btn-primary">GAAA</button>
+      </section>
+      <section id="filters" class="flex gap-4 flex-col items-center w-full">
+        <div id="activefilters" class="flex flex-col w-4/5 gap-2">
+          {{ formset.management_form }}
+          {{ formset.as_div }}
+          <!-- {% include 'filter.html' %}
+<button class="hover:decoration-icon-green py-2 px-4 flex flex-col items-center group" _="on click fetch {% url 'autotradespot:filters' %} with method:'GET' put the result before me"><span class="ti-plus no-underline text-xl group-hover:text-icon-green"></span><span class="underline underline-offset-2 group-hover:decoration-icon-green"> Add filter</span></button> -->
+        </div>
+        <div id="detailedfilters" class="border-t-2 pt-4 w-full flex gap-4">{{ cardetail_form }}</div>
+      </section>
+    </form>
+    <section id="results" class="flex my-6 flex-wrap justify-start gap-4 w-full">
+      {% include 'ad_section.html' %}
+    </section>
+  </div>
+{% endblock content %}

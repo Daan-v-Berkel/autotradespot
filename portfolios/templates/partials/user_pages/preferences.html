@@ -1,0 +1,32 @@
+<div id="preferences" hx-swap="innerHTML" hx-target="#preferences">
+  {% load i18n %}
+
+  <form class="flex flex-col gap-4 content-start">
+    {% for togglefield in preferences.visible_fields %}
+      <label for="{{ togglefield.id_for_label }}"
+             class="label cursor-pointer max-w-[12rem] flex flex-row justify-between">
+        <span class="label-text">{{ togglefield.label }}</span>
+        <input id="{{ togglefield.id_for_label }}"
+               type="checkbox"
+               name="{{ togglefield.name }}"
+               class="toggle toggle-primary"
+               {% if togglefield.value %}checked{% endif %} />
+      </label>
+    {% endfor %}
+    <span class="flex flex-row space-x-2">
+      <button type="submit" class="btn btn-primary" hx-post="{% url 'autotradespot:user_preferences' %}" _="on click put 'saving...' into my innerHTML then toggle .hidden on the next
+        <img/> ">{% translate "save changes" %}</button>
+      {% load static %}
+
+      <img id="loading"
+           class="hidden"
+           height="auto"
+           width="32"
+           src="{% static 'images/SVG-Loaders-master/three-dots.svg' %}"
+           _="on loadr toggle .hidden" />
+    </span>
+    {% if saved %}
+      <span class="rounded-sm text-icon-green" _="on load wait 3s then remove me">{{ saved }}</span>
+    {% endif %}
+  </form>
+</div>

@@ -1,0 +1,35 @@
+<div class="card card-compact w-96 bg-base-100 shadow-xl hover:scale-105 card-bordered transition-all ease-linear">
+  <a href="{% url 'autotradespot:advertisement' ad.pk %}">
+    <figure class="object-cover h-72 w-full">
+      {% if ad.imagemodel_set.first %}
+        <img src="{{ ad.imagemodel_set.first.image.url }}" alt="{{ ad.title }}" />
+      {% else %}
+        <svg id="eAz6ulWTmSF1"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 0 382 287"
+             shape-rendering="geometricPrecision"
+             text-rendering="geometricPrecision">
+          <path d="M116.502267,128.474561c0,0-7.750748-66.251643,13.111309-82.70839s103.027164-17.405188,122.772848,0s13.108001,82.70839,13.108001,82.70839h-148.992158Z" transform="translate(.139023 5.564024)" fill="none" stroke="#3f5787" stroke-width="3" />
+          <path d="M116.502267,128.474561c0,0-7.750748-66.251643,13.111309-82.70839s103.027164-17.405188,122.772848,0s13.108001,82.70839,13.108001,82.70839h-148.992158Z" transform="matrix(.903254 0 0 0.868574 18.617509 17.663912)" fill="none" stroke="#3f5787" stroke-width="3" />
+          <path d="M120.20628,218.57559c0-13.71593,3.96193-24.83489,8.84922-24.83489v-27.2407c0-12.70255,10.29745-23,23-23h77.889c12.70255,0,23,10.29745,23,23v27.2407c4.88729,0,8.84922,11.11896,8.84922,24.83489s-3.96193,24.83489-8.84922,24.83489c-4.31309,0-7.90549-8.65975-8.69008-20.12188-3.92752,3.12523-8.90065,4.99258-14.30992,4.99258h-77.889c-5.40927,0-10.3824-1.86735-14.30992-4.99258-.78459,11.46213-4.37699,20.12188-8.69008,20.12188-4.88729,0-8.84922-11.11896-8.84922-24.83489Z" transform="matrix(1.576254 0 0 1.300778-110.064514-58.18708)" stroke-width="0" />
+        </svg>
+      {% endif %}
+    </figure>
+    <div class="card-body">
+      <span class="flex flex-row justify-between">
+        <h2 class="card-title">{{ ad.title }}</h2>
+        {% if page == 'profile' %}
+          <span>{% include 'partials/listings/listing_status_badge.html' %}</span>
+        {% endif %}
+      </span>
+      <p>
+        If a dog chews shoes whose shoes does he choose? jan en alleman zijn
+        helemaal gek geworden. lalal ik typ maar wat zodar=t er veel stat
+      </p>
+    </div>
+  </a>
+  <div class="card-actions justify-end">
+    <span class="absolute top-3 right-3">{% include 'widgets/favourite_but.html' %}</span>
+  </div>
+</div>

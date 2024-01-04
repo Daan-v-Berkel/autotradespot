@@ -1,0 +1,22 @@
+<span id="formthing">
+  {% if listing and listing.imagemodel_set.all.0 %}
+    <section id="previewuploaded" class="flex flex-row flex-wrap gap-4">
+      {% for i in listing.imagemodel_set.all %}
+        <span class="relative">
+          <img class="object-cover object-top aspect-square h-32 rounded-md small-image peer"
+               src="{{ i.image.url }}"
+               alt="i.name" />
+          <span id="overlay"
+                class="text-xl text-error absolute top-0 h-32 w-32 text-center place-content-center align-middle hover:cursor-pointer duration-200 hover:bg-error/30 rounded-md ti-trash"
+                _="on click fetch {% url 'autotradespot:uploadadimages' i.pk %} with method:'DELETE' put the result into #formthing"></span>
+        </span>
+      {% endfor %}
+    </section>
+  {% endif %}
+  <form class="flex flex-col space-y-2"
+        enctype="multipart/form-data"
+        hx-post="{% url 'autotradespot:uploadadimages' %}">
+    {% csrf_token %} {{ imageform.image.errors }} {{ imageform.image }}
+    <button class="btn btn-primary btn-wide" type="submit">submit</button>
+  </form>
+</span>

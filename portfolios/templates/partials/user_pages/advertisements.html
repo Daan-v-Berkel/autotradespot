@@ -1,0 +1,12 @@
+<div class="flex flex-row flex-wrap gap-4">
+  {% for ad in listings %}
+    {% include 'widgets/advertisement_card.html' %}
+  {% empty %}
+    <span class="flex flex-col gap-2">
+      <div>Looks like you have not created any listing yet</div>
+      <button class="btn btn-primary"
+              hx-get="{% url 'autotradespot:createadnew' %}"
+              hx-target="body">Create a listing</button>
+    </span>
+  {% endfor %}
+</div>

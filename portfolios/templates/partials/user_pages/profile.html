@@ -1,0 +1,23 @@
+<div>
+  {% load i18n %}
+
+  <form class="flex flex-col gap-2 content-start">
+    {% csrf_token %} {{ profile.as_div }}
+    <span class="flex flex-row space-x-2">
+      <button type="submit" class="btn btn-primary" hx-post="{% url 'autotradespot:user_profile' %}" _="on click put 'saving...' into my innerHTML then toggle .hidden on the next
+        <img/> ">{% translate "save changes" %}</button>
+      {% load static %}
+
+      <img id="loading"
+           class="hidden"
+           height="auto"
+           width="32"
+           src="{% static 'images/SVG-Loaders-master/three-dots.svg' %}"
+           _="on loadr toggle .hidden" />
+    </span>
+    {% if saved %}
+      <span class="rounded-sm text-icon-green"
+            _="on load wait 2s then transition opacity to 0 then remove me">{{ saved }}</span>
+    {% endif %}
+  </form>
+</div>

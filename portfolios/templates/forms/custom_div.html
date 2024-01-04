@@ -1,0 +1,38 @@
+{{ errors }}
+{% if errors and not fields %}
+  <div>
+    {% for field in hidden_fields %}{{ field }}{% endfor %}
+  </div>
+{% endif %}
+{% for field, errors in fields %}
+  <div {% with classes=field.css_classes %}
+       {% if classes %}class="{{ classes }}"{% endif %}
+       {% endwith %}>
+    <label class="form-control w-full max-w-xs">
+      {% if field.use_fieldset %}
+        <fieldset>
+          {% if field.label %}
+            <div class="label">
+              <span class="label-text text-base-content text-sm">{{ field.legend_tag }}</span>
+            </div>
+          {% endif %}
+        {% else %}
+          {% if field.label %}
+            <div class="label">
+              <span class="label-text text-base-content text-sm">{{ field.label_tag }}</span>
+            </div>
+          {% endif %}
+        {% endif %}
+        {% if field.help_text %}<div class="helptext">{{ field.help_text|safe }}</div>{% endif %}
+        {{ errors }}
+        {{ field }}
+      </label>
+      {% if field.use_fieldset %}</fieldset>{% endif %}
+    {% if forloop.last %}
+      {% for field in hidden_fields %}{{ field }}{% endfor %}
+    {% endif %}
+  </div>
+{% endfor %}
+{% if not fields and not errors %}
+  {% for field in hidden_fields %}{{ field }}{% endfor %}
+{% endif %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load i18n %}
+
+  <div class="grid grid-flow-row grid-cols-6 mt-4" role="tablist">
+    <ul class="flex flex-col text-sm font-medium text-center text-gray-500 z-10"
+        _="on htmx:beforeOnLoad take .bg-base-200 from .tablink for event.target then take .-mr-1 from .tablink for event.target then take .text-base-content from .tablink for event.target">
+      <li class="">
+        <button id="defaultOpen"
+                role="tab"
+                class="tablink inline-block p-4 w-full rounded-l-lg hover:text-base-content hover:bg-base-200 duration-300 shadow-sm"
+                aria-selected="false"
+                aria-controls="tabcontent"
+                hx-target="#tabcontent"
+                hx-get="{% url 'autotradespot:user_profile' %}"
+                hx-swap="innerHTML"
+                hx-trigger="load, click">{% translate "Profile" %}</button>
+      </li>
+      <li class="">
+        <button role="tab"
+                class="tablink inline-block p-4 w-full rounded-l-lg hover:text-base-content hover:bg-base-200 duration-300 shadow-sm"
+                aria-selected="false"
+                aria-controls="tabcontent"
+                hx-target="#tabcontent"
+                hx-get="{% url 'autotradespot:user_preferences' %}"
+                hx-swap="innerHTML">{% translate "Preferences" %}</button>
+      </li>
+      <li class="">
+        <button role="tab"
+                class="tablink inline-block p-4 w-full rounded-l-lg hover:text-base-content hover:bg-base-200 duration-300 shadow-sm"
+                aria-selected="false"
+                aria-controls="tabcontent"
+                hx-target="#tabcontent"
+                hx-get="{% url 'autotradespot:user_listings' %}"
+                hx-swap="innerHTML">{% translate "Listings" %}</button>
+      </li>
+      <li class="">
+        <button role="tab"
+                class="tablink inline-block p-4 w-full rounded-l-lg hover:text-base-content hover:bg-base-200 duration-300 shadow-sm mr"
+                aria-selected="false"
+                aria-controls="tabcontent"
+                hx-target="#tabcontent"
+                hx-get="{% url 'autotradespot:user_favourites' %}"
+                hx-swap="innerHTML">{% translate "Favourites" %}</button>
+      </li>
+    </ul>
+    <div class="start-1 col-span-5 bg-base-200 p-4 rounded-r-lg border-r border-t border-b border-l border-accent"
+         hx-target="#tabcontent"
+         hx-get="{% url 'autotradespot:user_profile' %}"
+         hx-swap-oob="innerHTML"
+         hx-trigger="load">
+      <div id="tabcontent"></div>
+    </div>
+  </div>
+  {% comment %} <script>
+   function openTab(evt) {
+     var tablinks = document.getElementsByClassName("tablink");
+     for (var i = 0; i < tablinks.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(
+         " text-base-content bg-base-200 mr-[-2px]",
+         ""
+       );
+     }
+     evt.currentTarget.className += " text-base-content bg-base-200 mr-[-2px]";
+   }
+   document.getElementById("defaultOpen").click();
+ </script> {% endcomment %}
+{% endblock content %}

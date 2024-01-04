@@ -1,0 +1,77 @@
+{% load i18n %}
+
+<div class="navbar bg-base-200 fixed top-0 z-20">
+  <!-- <div class="flex justify-between items-center top-0 py-2 px-4"> -->
+  <div class="navbar-start">
+    <a href="{% url 'autotradespot:home' %}" class="max-w-[200px]">
+      {% load static %}
+
+      <img width="200"
+           height="auto"
+           src="{% static 'images/svgexport-45.svg' %}"
+           alt="logo" />
+    </a>
+  </div>
+  <div class="navbar-center">
+    <a class="btn btn-ghost text-xl"
+       href="{% url 'autotradespot:createadnew' %}">{% trans "create listing" %}</a>
+    <a class="btn btn-ghost text-xl"
+       href="{% url 'autotradespot:searchlistings' %}">{% trans "find your car" %}</a>
+  </div>
+  <div class="navbar-end space-x-1">
+    <div class="dropdown">
+      <div tabindex="0"
+           role="button"
+           class="btn btn-outline btn-primary m-1 text-primary-content">
+        Theme
+        <svg width="12px"
+             height="12px"
+             class="h-2 w-2 fill-current opacity-60 inline-block"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 2048 2048">
+          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+        </svg>
+      </div>
+      <ul tabindex="0"
+          class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
+        <li>
+          <input type="radio"
+                 name="theme-dropdown"
+                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                 aria-label="Light"
+                 value="light" />
+        </li>
+        <li>
+          <input type="radio"
+                 name="theme-dropdown"
+                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                 aria-label="Dark"
+                 value="dark" />
+        </li>
+        <li>
+          <input type="radio"
+                 name="theme-dropdown"
+                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                 aria-label="Cupcake"
+                 value="cupcake" />
+        </li>
+      </ul>
+    </div>
+    <a class="btn btn-primary duration-200 text-accent-content"
+       href="{% if request.user.is_authenticated %}{% url 'autotradespot:profile-page' %}{% else %}{% url 'account_login' %}{% endif %}">
+      {% if request.user.is_authenticated %}
+        my profile
+      {% else %}
+        login
+      {% endif %}
+    </a>
+    <a class="btn btn-secondary duration-200 text-secondary-content"
+       href="{% if request.user.is_authenticated %}{% url 'account_logout' %}{% else %}{% url 'account_signup' %}{% endif %}">
+      {% if request.user.is_authenticated %}
+        logout
+      {% else %}
+        register
+      {% endif %}
+    </a>
+  </div>
+</div>

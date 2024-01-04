@@ -1,0 +1,21 @@
+<span id="formthing">
+  <form class="flex flex-col space-y-2" action="">
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text text-base-content">Licenceplate number</span>
+      </div>
+      <input type="text"
+             name="licenceplate"
+             placeholder="AA-00-BB"
+             value="{{ licence }}"
+             class="input input-bordered input-sm w-full max-w-xs" />
+    </label>
+    <button class="btn btn-primary btn-wide"
+            type="submit"
+            hx-post="{% url 'autotradespot:createadlicenceplate' %}"
+            hx-trigger="click"
+            hx-target="#formthing"
+            hx-swap="outerHTML"
+            _="on click add .step-primary to #lp_tab">continue</button>
+  </form>
+</span>

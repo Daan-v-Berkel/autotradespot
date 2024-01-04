@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load i18n %}
+
+  <div class="join flex flex-row my-4 mx-auto w-full max-w-4xl"
+       role="tablist">
+    <ul class="join-item steps steps-vertical overflow-x-hidden bg-base-200 max-h-fit border-2 border-base-300 mb-auto md:w-full max-w-fit px-2 md:pr-8"
+        _="on htmx:beforeOnLoad take .step-success from .step for event.target">
+      <li id="lp_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:createadlicenceplate' %}"
+          hx-swap="innerHTML"
+          hx-trigger="load, click">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Licenceplate" %}</span>
+      </li>
+      <li id="title_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:createadtype' %}"
+          hx-swap="innerHTML">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Type" %}</span>
+      </li>
+      <li id="make_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:createadmake' %}"
+          hx-swap="innerHTML">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Make/Model" %}</span>
+      </li>
+      <li id="detail_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:createaddetails' %}"
+          hx-swap="innerHTML">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Details" %}</span>
+      </li>
+      <li id="image_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:uploadadimages' %}"
+          hx-swap="innerHTML">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Images" %}</span>
+      </li>
+      <li id="preview_tab"
+          role="tab"
+          class="step cursor-pointer"
+          hx-target="#tabcontent"
+          hx-get="{% url 'autotradespot:advertisementpreview' %}"
+          hx-swap="innerHTML">
+        <span class="hidden md:block text-sm text-base-content">{% translate "Preview" %}</span>
+      </li>
+    </ul>
+    <div class="join-item flex flex-col justify-between w-full max-w-3xl bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300"
+         hx-target="#tabcontent"
+         hx-get="{% if 'LP_data' in request.session or 'ad_in_progress' in request.session %}{% url 'autotradespot:createadtype' %} {% else %} {% url 'autotradespot:createadlicenceplate' %} {% endif %}"
+         hx-swap-oob="innerHTML"
+         hx-trigger="load">
+      <div id="tabcontent"></div>
+      <div id="adform_actions" class="flex flex-row space-x-4 mt-4">
+        <button class="btn btn-secondary"
+                hx-delete="{% url 'autotradespot:createadnew' %}"
+                hx-swap="none">
+          <span class="ti-eraser"></span> {% translate 'clear' %}
+        </button>
+        <button class="btn btn-outline btn-secondary" hx-put="{% url 'autotradespot:createadnew' 'draft' %}" hx-target="
+          <body/> ">{% translate 'continue later' %}</button>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

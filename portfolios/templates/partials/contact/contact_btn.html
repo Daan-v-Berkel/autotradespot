@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<button id="contact_btn"
+        class="btn btn-primary btn-block"
+        hx-get="{% url 'autotradespot:contactform' %}"
+        hx-swap="innerHTML"
+        hx-target="#contact">{% translate 'Contact provider' %}</button>

@@ -1,0 +1,10 @@
+<span id="formthing">
+  <form class="flex flex-col space-y-2"
+        hx-post="{% url 'autotradespot:createadtype' %}"
+        hx-target="#formthing"
+        hx-swap="outerHTML">
+    {{ form1.as_div }}
+    <span id="priceform"></span>
+    <button class="btn btn-primary btn-wide" type="submit">continue</button>
+  </form>
+</span>
