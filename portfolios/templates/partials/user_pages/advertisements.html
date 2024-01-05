@@ -4,9 +4,7 @@
   {% empty %}
     <span class="flex flex-col gap-2">
       <div>Looks like you have not created any listing yet</div>
-      <button class="btn btn-primary"
-              hx-get="{% url 'autotradespot:createadnew' %}"
-              hx-target="body">Create a listing</button>
+      <a class="btn btn-primary" href="{% url 'listings:createadnew' %}">Create a listing</a>
     </span>
   {% endfor %}
 </div>

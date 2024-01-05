@@ -1,10 +1,13 @@
 <span id="formthing">
   <form id="details"
         class="flex flex-col space-y-2"
-        hx-post="{% url 'autotradespot:createaddetails' %}"
+        hx-post="{% url 'listings:createaddetails' %}"
         hx-target="#formthing"
         hx-swap="outerHTML">
     {% csrf_token %} {{ form4.as_div }}
-    <button class="btn btn-primary btn-wide" form="details" type="submit">continue</button>
+    <button class="btn btn-primary btn-wide"
+            form="details"
+            type="submit"
+            _="on click add .step-success to #detail_tab">continue</button>
   </form>
 </span>

@@ -14,8 +14,10 @@ urlpatterns = [
     # User management
     path("users/", include("portfolios.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
+    # Base app
     path("", include("portfolios.lease_finder_app.urls", namespace="autotradespot")),
+    # Listings
+    path("listings/", include("portfolios.listings.urls", namespace="listings")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development

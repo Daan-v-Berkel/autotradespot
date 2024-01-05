@@ -5,7 +5,7 @@
     {% load static %}
 
     <span class="htmx-indicator flex flex-row space-x-2 p-2">
-      <img src="{% static 'images/SVG-Loaders-master/spinning-circles.svg' %}"
+      <img src="{% static 'images/spinning-circles.svg' %}"
            width="16"
            height="16" />
       Searching...
@@ -13,7 +13,7 @@
     <section>
       <form id="filtersform"
             class="flex space-x-2"
-            hx-post="{% url 'autotradespot:searchlistings' %}"
+            hx-post="{% url 'listings:searchlistings' %}"
             hx-target="#results"
             hx-swap="innerHTML"
             hx-indicator=".htmx-indicator"
@@ -25,7 +25,7 @@
           {{ formset.management_form }}
           {{ formset.as_div }}
           <!-- {% include 'filter.html' %}
-<button class="hover:decoration-icon-green py-2 px-4 flex flex-col items-center group" _="on click fetch {% url 'autotradespot:filters' %} with method:'GET' put the result before me"><span class="ti-plus no-underline text-xl group-hover:text-icon-green"></span><span class="underline underline-offset-2 group-hover:decoration-icon-green"> Add filter</span></button> -->
+<button class="hover:decoration-icon-green py-2 px-4 flex flex-col items-center group" _="on click fetch {% url 'listings:filters' %} with method:'GET' put the result before me"><span class="ti-plus no-underline text-xl group-hover:text-icon-green"></span><span class="underline underline-offset-2 group-hover:decoration-icon-green"> Add filter</span></button> -->
         </div>
         <div id="detailedfilters" class="border-t-2 pt-4 w-full flex gap-4">{{ cardetail_form }}</div>
       </section>

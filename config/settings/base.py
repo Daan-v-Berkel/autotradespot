@@ -83,6 +83,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "portfolios.users",
     "portfolios.lease_finder_app.apps.LeaseFinderAppConfig",
+    "portfolios.listings.apps.ListingsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

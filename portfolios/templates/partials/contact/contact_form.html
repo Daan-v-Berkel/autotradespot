@@ -1,7 +1,7 @@
 <span id="contact_form" class="flex flex-col space-y-2">
   <form id="contactform"
         class="flex flex-col space-y-2"
-        hx-post="{% url 'autotradespot:contactform' %}"
+        hx-post="{% url 'listings:contactform' %}"
         hx-target="#contact_form"
         hx-swap="innerHTML">
     {{ form.non_field_errors }}
@@ -30,7 +30,7 @@
   <span class="flex flex-row space-x-2">
     <button form="contactform" class="btn btn-primary btn-wide" type="submit">Send</button>
     <button class="btn btn-secondary"
-            hx-get="{% url 'autotradespot:contactformcancel' %}"
+            hx-get="{% url 'listings:contactformcancel' %}"
             hx-target="#contact"
             hx-swap="innerHTML">Cancel</button>
   </span>

@@ -8,15 +8,17 @@
                alt="i.name" />
           <span id="overlay"
                 class="text-xl text-error absolute top-0 h-32 w-32 text-center place-content-center align-middle hover:cursor-pointer duration-200 hover:bg-error/30 rounded-md ti-trash"
-                _="on click fetch {% url 'autotradespot:uploadadimages' i.pk %} with method:'DELETE' put the result into #formthing"></span>
+                _="on click fetch {% url 'listings:uploadadimages' i.pk %} with method:'DELETE' put the result into #formthing"></span>
         </span>
       {% endfor %}
     </section>
   {% endif %}
   <form class="flex flex-col space-y-2"
         enctype="multipart/form-data"
-        hx-post="{% url 'autotradespot:uploadadimages' %}">
+        hx-post="{% url 'listings:uploadadimages' %}">
     {% csrf_token %} {{ imageform.image.errors }} {{ imageform.image }}
-    <button class="btn btn-primary btn-wide" type="submit">submit</button>
+    <button class="btn btn-primary btn-wide"
+            type="submit"
+            _="on click add .step-success to #image_tab">submit</button>
   </form>
 </span>

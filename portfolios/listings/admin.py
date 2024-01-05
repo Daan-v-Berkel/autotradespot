@@ -3,4 +3,4 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import *
 
-admin.site.register(UserCustomisation)
+admin.site.register(Listing)

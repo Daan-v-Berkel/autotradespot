@@ -1,9 +1,11 @@
 <span id="formthing">
   <form class="flex flex-col space-y-2"
-        hx-post="{% url 'autotradespot:createadmake' %}"
+        hx-post="{% url 'listings:createadmake' %}"
         hx-target="#formthing"
         hx-swap="outerHTML">
     {% csrf_token %} {{ make_form.as_div }} {{ model_form.as_div }}
-    <button class="btn btn-primary btn-wide" type="submit">continue</button>
+    <button class="btn btn-primary btn-wide"
+            type="submit"
+            _="on click add .step-success to #make_tab">continue</button>
   </form>
 </span>

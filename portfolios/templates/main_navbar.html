@@ -13,10 +13,9 @@
     </a>
   </div>
   <div class="navbar-center">
+    <a class="btn btn-ghost text-xl" href="{% url 'listings:createadnew' %}">{% trans "create listing" %}</a>
     <a class="btn btn-ghost text-xl"
-       href="{% url 'autotradespot:createadnew' %}">{% trans "create listing" %}</a>
-    <a class="btn btn-ghost text-xl"
-       href="{% url 'autotradespot:searchlistings' %}">{% trans "find your car" %}</a>
+       href="{% url 'listings:searchlistings' %}">{% trans "find your car" %}</a>
   </div>
   <div class="navbar-end space-x-1">
     <div class="dropdown">

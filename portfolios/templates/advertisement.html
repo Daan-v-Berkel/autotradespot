@@ -100,7 +100,7 @@
                 <form method="dialog">
                   <button class="btn btn-primary">Cancel</button>
                   <button class="btn btn-error"
-                          hx-delete="{% url 'autotradespot:modify-listing' advertisement.pk %}"
+                          hx-delete="{% url 'listings:modify-listing' advertisement.pk %}"
                           hx-target="body">Delete listing</button>
                 </form>
               </div>
@@ -110,7 +110,7 @@
           <section class="flex flex-row justify-around">
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                    hx-put="{% url 'autotradespot:modify-listing' advertisement.pk 'modify' %}">
+                    hx-put="{% url 'listings:modify-listing' advertisement.pk 'modify' %}">
               <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
             </button>
             <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
@@ -126,7 +126,7 @@
                        class="toggle toggle-accent peer/activate"
                        {% if not advertisement.complete_for_posting %}disabled{% endif %}
                        {% if advertisement.status == advertisement.Status.ACTIVE %}checked{% endif %}
-                       hx-put="{% url 'autotradespot:modify-listing' advertisement.pk 'activate' %}"
+                       hx-put="{% url 'listings:modify-listing' advertisement.pk 'activate' %}"
                        hx-swap="none" />
                 <span class="label-text">
                   {% if advertisement.status == advertisement.Status.ACTIVE %}

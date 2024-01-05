@@ -1,5 +1,4 @@
 import '../sass/project.scss';
-//import "../sass/*.scss";
 import { themeChange } from 'theme-change';
 themeChange();
 
