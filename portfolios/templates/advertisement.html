@@ -8,7 +8,7 @@
       {% with images=advertisement.imagemodel_set.all %}
         <section class="w-full space-y-1">
           <span class="flex justify-between">
-            <p class="text-xl text-base-content">{{ advertisement.title }}</p>
+            <p class="text-3xl text-base-content">{{ advertisement.title }}</p>
             {% with ad=advertisement %}
               {% include 'widgets/favourite_but.html' %}
             {% endwith %}
@@ -22,7 +22,7 @@
         <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
           <section class="space-y-4 flex flex-col">
             <div id="mycarousel"
-                 class="carousel carousel-center rounded-box max-w-2xl w-full p-4 space-x-4 bg-neutral">
+                 class="carousel carousel-center rounded-box max-w-2xl w-full p-4 space-x-4 bg-base-100">
               {% for image in images %}
                 <div class="carousel-item w-[95%] relative">
                   <button _="on click set foo to the previous
@@ -41,129 +41,130 @@
                   </button>
                 </div>
               {% empty %}
-                <div class="carousel-item min-w-[95%] relative">
-                  <span class="rounded-box aspect-[14/9] object-cover object-center">
-                    <svg id="eAz6ulWTmSF1"
-                         xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         viewBox="0 0 382 287"
-                         shape-rendering="geometricPrecision"
-                         text-rendering="geometricPrecision">
-                      <path d="M116.502267,128.474561c0,0-7.750748-66.251643,13.111309-82.70839s103.027164-17.405188,122.772848,0s13.108001,82.70839,13.108001,82.70839h-148.992158Z" transform="translate(.139023 5.564024)" fill="none" stroke="#3f5787" stroke-width="3" />
-                      <path d="M116.502267,128.474561c0,0-7.750748-66.251643,13.111309-82.70839s103.027164-17.405188,122.772848,0s13.108001,82.70839,13.108001,82.70839h-148.992158Z" transform="matrix(.903254 0 0 0.868574 18.617509 17.663912)" fill="none" stroke="#3f5787" stroke-width="3" />
-                      <path d="M120.20628,218.57559c0-13.71593,3.96193-24.83489,8.84922-24.83489v-27.2407c0-12.70255,10.29745-23,23-23h77.889c12.70255,0,23,10.29745,23,23v27.2407c4.88729,0,8.84922,11.11896,8.84922,24.83489s-3.96193,24.83489-8.84922,24.83489c-4.31309,0-7.90549-8.65975-8.69008-20.12188-3.92752,3.12523-8.90065,4.99258-14.30992,4.99258h-77.889c-5.40927,0-10.3824-1.86735-14.30992-4.99258-.78459,11.46213-4.37699,20.12188-8.69008,20.12188-4.88729,0-8.84922-11.11896-8.84922-24.83489Z" transform="matrix(1.576254 0 0 1.300778-110.064514-58.18708)" stroke-width="0" />
-                    </svg>
-                  </span>
-                </div>
-              {% endfor %}
-            </div>
-            <section class="hidden md:block">
-              <div class="flex flex-row gap-2 overflow-x-auto">
-                {% for image in images %}
-                  <img class="object-cover object-top aspect-square h-32 rounded-md hover:cursor-pointer duration-200 small-image"
-                       src="{{ image.image.url }}"
-                       alt="{{ image.name }}"
-                       _="on click js() document.getElementById('{{ image.name }}').scrollIntoView(false) end" />
-                {% endfor %}
-              </div>
-            </section>
-          </section>
-          <section class="w-full md:w-2/5 text-base-content">
-            {% with owner=advertisement.owner %}
-              {% if owner.give_email %}<p>{{ owner.give_email }}</p>{% endif %}
-              {% if owner.full_adress %}<p>{{ owner.full_adress }}</p>{% endif %}
-              {% if owner.give_phone %}<p>{{ owner.give_phone }}</p>{% endif %}
-              {% if owner.full_name %}<p>{{ owner.full_name }}</p>{% endif %}
-            {% endwith %}
-            {% with details=advertisement.cardetails %}
-              <p>Make: {{ details.make }}</p>
-              <p>Model: {{ details.model }}</p>
-              <p>Fueltype: {{ details.get_fuel_type_display }}</p>
-              <p>Transmisson: {{ details.get_transmission_display }}</p>
-            {% endwith %}
-            this advert is {{ advertisement.status_name }} and
-            complete?: {{ advertisement.complete_for_posting.0 }}
-            <section id="contact" class="w-full">
-              {% include 'partials/contact/contact_btn.html' %}
-            </section>
-          </section>
-        </div>
-        {% if request.user == advertisement.owner %}
-          <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
-            <div class="modal-box">
-              <h3 class="font-bold text-lg">Are you sure?</h3>
-              <p class="py-4">
-                You are about to delete this listing, are you sure you wish to
-                proceed?
-              </p>
-              <div class="modal-action">
-                <form method="dialog">
-                  <button class="btn btn-primary">Cancel</button>
-                  <button class="btn btn-error"
-                          hx-delete="{% url 'listings:modify-listing' advertisement.pk %}"
-                          hx-target="body">Delete listing</button>
-                </form>
-              </div>
-            </div>
-          </dialog>
-          <div class="divider divider-base-content">Provider actions</div>
-          <section class="flex flex-row justify-around">
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                    hx-put="{% url 'listings:modify-listing' advertisement.pk 'modify' %}">
-              <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
-            </button>
-            <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
-              <span class="ti-share no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Share</span>
-            </button>
-            <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                    onclick="del_listing_model.showModal()">
-              <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
-            </button>
-            <div class="form-control">
-              <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
-                <input type="checkbox"
-                       class="toggle toggle-accent peer/activate"
-                       {% if not advertisement.complete_for_posting %}disabled{% endif %}
-                       {% if advertisement.status == advertisement.Status.ACTIVE %}checked{% endif %}
-                       hx-put="{% url 'listings:modify-listing' advertisement.pk 'activate' %}"
-                       hx-swap="none" />
-                <span class="label-text">
-                  {% if advertisement.status == advertisement.Status.ACTIVE %}
-                    Deactivate
-                  {% else %}
-                    Activate
+                <span class="rounded-box">
+                  <figure class="object-cover h-84 w-90">
+                    {% include 'svg/fallback.html' %}
+                  </figure>
+                  <span class="relative bottom-1 left-1 text-base-content">
+                    {% trans "This listing does not seem to have any images." %}
+                    {% if request.user == advertisement.owner %}
+                    </br />
+                    {% blocktranslate %}
+											You can add images by modifying this listing.</br />
+											Something wrong? please <a href="mailto:info@autotradespot.com" class="link link-hover link-info">Contact us</a>
+											{% endblocktranslate %}
                   {% endif %}
                 </span>
-              </label>
+              </span>
+            {% endfor %}
+          </div>
+          <section class="hidden md:block">
+            <div class="flex flex-row gap-2 overflow-x-auto">
+              {% for image in images %}
+                <img class="object-cover object-top aspect-square h-32 rounded-md hover:cursor-pointer duration-200 small-image"
+                     src="{{ image.image.url }}"
+                     alt="{{ image.name }}"
+                     _="on click js() document.getElementById('{{ image.name }}').scrollIntoView(false) end" />
+              {% endfor %}
             </div>
           </section>
-        {% endif %}
-      {% endwith %}
-      <div class="divider divider-base-content">Listing details</div>
-      <div class="w-full justify-around join join-vertical rounded-box">
-        <div class="collapse collapse-arrow bg-base-200 join-item">
-          <input type="checkbox" name="my-accordion-1" checked="checked" />
-          <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
-          <div class="collapse-content">
-            <p class="text-base-content">hello</p>
+        </section>
+        <section class="w-full md:w-2/5 text-base-content">
+          {% with owner=advertisement.owner %}
+            {% if owner.give_email %}<p>{{ owner.give_email }}</p>{% endif %}
+            {% if owner.full_adress %}<p>{{ owner.full_adress }}</p>{% endif %}
+            {% if owner.give_phone %}<p>{{ owner.give_phone }}</p>{% endif %}
+            {% if owner.full_name %}<p>{{ owner.full_name }}</p>{% endif %}
+          {% endwith %}
+          {% with details=advertisement.cardetails %}
+            <p>Make: {{ details.make }}</p>
+            <p>Model: {{ details.model }}</p>
+            <p>Fueltype: {{ details.get_fuel_type_display }}</p>
+            <p>Transmisson: {{ details.get_transmission_display }}</p>
+          {% endwith %}
+          this advert is {{ advertisement.status_name }} and
+          complete?: {{ advertisement.complete_for_posting.0 }}
+          <section id="contact" class="w-full">
+            {% include 'partials/contact/contact_btn.html' %}
+          </section>
+        </section>
+      </div>
+      {% if request.user == advertisement.owner %}
+        <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <h3 class="font-bold text-lg">Are you sure?</h3>
+            <p class="py-4">
+              You are about to delete this listing, are you sure you wish to
+              proceed?
+            </p>
+            <div class="modal-action">
+              <form method="dialog">
+                <button class="btn btn-primary">Cancel</button>
+                <button class="btn btn-error"
+                        hx-delete="{% url 'listings:modify-listing' advertisement.pk %}"
+                        hx-target="body">Delete listing</button>
+              </form>
+            </div>
           </div>
+        </dialog>
+        <div class="divider divider-base-content">Provider actions</div>
+        <section class="flex flex-row justify-around">
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
+                  hx-put="{% url 'listings:modify-listing' advertisement.pk 'modify' %}">
+            <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
+          </button>
+          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
+            <span class="ti-share no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Share</span>
+          </button>
+          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
+                  onclick="del_listing_model.showModal()">
+            <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
+          </button>
+          <div class="form-control">
+            <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
+              <input type="checkbox"
+                     class="toggle toggle-accent peer/activate"
+                     {% if not advertisement.complete_for_posting %}disabled{% endif %}
+                     {% if advertisement.status == advertisement.Status.ACTIVE %}checked{% endif %}
+                     hx-put="{% url 'listings:modify-listing' advertisement.pk 'activate' %}"
+                     hx-swap="none" />
+              <span class="label-text">
+                {% if advertisement.status == advertisement.Status.ACTIVE %}
+                  Deactivate
+                {% else %}
+                  Activate
+                {% endif %}
+              </span>
+            </label>
+          </div>
+        </section>
+      {% endif %}
+    {% endwith %}
+    <div class="divider divider-base-content">Listing details</div>
+    <div class="w-full justify-around join join-vertical rounded-box">
+      <div class="collapse collapse-arrow bg-base-200 join-item">
+        <input type="checkbox" name="my-accordion-1" checked="checked" />
+        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
+        <div class="collapse-content">
+          <p class="text-base-content">hello</p>
         </div>
-        <div class="collapse collapse-arrow bg-base-200 join-item">
-          <input type="checkbox" name="my-accordion-1" />
-          <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
-          <div class="collapse-content">
-            <p class="text-base-content">hello</p>
-          </div>
+      </div>
+      <div class="collapse collapse-arrow bg-base-200 join-item">
+        <input type="checkbox" name="my-accordion-1" />
+        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
+        <div class="collapse-content">
+          <p class="text-base-content">hello</p>
         </div>
-        <div class="collapse collapse-arrow bg-base-200 join-item">
-          <input type="checkbox" name="my-accordion-1" />
-          <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
-          <div class="collapse-content">
-            <p class="text-base-content">hello</p>
-          </div>
+      </div>
+      <div class="collapse collapse-arrow bg-base-200 join-item">
+        <input type="checkbox" name="my-accordion-1" />
+        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
+        <div class="collapse-content">
+          <p class="text-base-content">hello</p>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 {% endblock content %}

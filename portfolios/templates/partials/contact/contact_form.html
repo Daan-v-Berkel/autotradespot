@@ -1,7 +1,7 @@
 <span id="contact_form" class="flex flex-col space-y-2">
   <form id="contactform"
         class="flex flex-col space-y-2"
-        hx-post="{% url 'listings:contactform' %}"
+        hx-post="{% url 'listings:contactform' listing_pk %}"
         hx-target="#contact_form"
         hx-swap="innerHTML">
     {{ form.non_field_errors }}

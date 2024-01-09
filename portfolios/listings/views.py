@@ -9,7 +9,7 @@ from django.core.exceptions import *
 # from django.core.mail import BlistingHelistingerError, send_mail
 from django.forms import modelformset_factory
 from django.http import BadHeaderError, HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
@@ -77,7 +77,7 @@ def searchListing(request):
         # model = request.POST.get('model', 0)
         detailsform = forms.ListingFilter(request.POST)
         if detailsform.is_valid():
-            listings = models.Advertisement.objects.search(**detailsform.cleaned_data)
+            listings = models.Listing.objects.search(**detailsform.cleaned_data)
             time.sleep(1)
             print(f"after post: {detailsform.cleaned_data}")
             return render(request, "ad_section.html", context={"advertisements": listings})
@@ -86,7 +86,7 @@ def searchListing(request):
         request,
         "searcher.html",
         context={
-            "advertisements": models.Advertisement.objects.all(),
+            "advertisements": models.Listing.objects.all(),
             "make_form": make_form,
             "model_form": model_form,
             "cardetail_form": cardetail_form,
@@ -282,26 +282,27 @@ def ModifyListing(request, pk, action="modify"):
             return HTTPResponseHXRedirect(reverse_lazy("listings:createadnew"))
 
 
-def contactView(request):
+def contactView(request, pk=None):
+    listing = get_object_or_404(models.Listing, pk=pk)
     if request.method == "GET":
         umail = request.user.email if request.user.is_authenticated else ""
         subject = _("Interest in your listing")
         message = _(
-            f"Hi there,\n\nI am interested in your listing on Auto Tradespot!\nPlease contact me by replying to this email.\n\nWith regards, {request.user.username}"
+            f"Hi there,\n\nI am interested in your listing on Auto Tradespot!\nPlease contact me by replying to this email.\n\nWith regards, {request.user.name}"
         )
         form = forms.ContactForm(initial={"from_email": umail, "subject": subject, "message": message})
     else:
         form = forms.ContactForm(request.POST)
         if form.is_valid():
             try:
-                form.send_email()
+                form.send_email(recipient=listing.owner.email)
                 # html_message = render_to_string('emails/welcome.html')
                 # plain_message = strip_tags(html_message)
                 # send_mail(subject, plain_message, from_email, ["admin@example.com"])#, html_message=html_message)
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
             return HttpResponse(_("Thank you for your interest, the provider of this listing will contact you soon!"))
-    return render(request, "partials/contact/contact_form.html", {"form": form})
+    return render(request, "partials/contact/contact_form.html", {"form": form, "listing_pk": listing.pk})
 
 
 def contactCancelView(request):

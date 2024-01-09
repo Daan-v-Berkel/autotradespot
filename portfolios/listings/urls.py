@@ -20,7 +20,8 @@ urlpatterns = [
     path("create/type/getselect", views.GetSelect, name="getselect"),
     path("modify/<int:pk>", views.ModifyListing, name="modify-listing"),
     path("modify/<int:pk>/<str:action>", views.ModifyListing, name="modify-listing"),
-    path("contact", views.contactView, name="contactform"),
+    path("contact/", views.contactView, name="contactform"),
+    path("contact/<int:pk>", views.contactView, name="contactform"),
     path("contact/cancel", views.contactCancelView, name="contactformcancel"),
     path("models", views.getModels, name="getmodels"),
 ]

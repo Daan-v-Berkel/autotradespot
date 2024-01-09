@@ -1,7 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./portfolios/templates/**/*.{html,js}'],
-  safelist: ['alert-success', 'alert-info', 'alert-warning', 'alert-error'],
+  safelist: [
+    'alert-success',
+    'alert-info',
+    'alert-warning',
+    'alert-error',
+    'textarea',
+    'textarea-bordered',
+    'select',
+    'select-vordered',
+    'select-sm',
+  ],
   theme: {
     extend: {
       boxShadow: {

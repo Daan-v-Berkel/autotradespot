@@ -39,6 +39,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
+                safelist: [/data-theme$/],
                 plugins: [
                   'postcss-preset-env',
                   'autoprefixer',

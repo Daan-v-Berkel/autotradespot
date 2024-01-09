@@ -15,7 +15,9 @@ class StyledModelForm(ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             if isinstance(field, (forms.TypedChoiceField, forms.ModelChoiceField)):
-                field.widget.attrs.update({"class": "input input-bordered input-sm w-full max-w-xs"})
+                field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
+            elif isinstance(field.widget, (forms.Textarea)):
+                field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})
             else:
                 field.widget.attrs.update({"class": "input input-bordered input-sm w-full max-w-xs", "size": 40})
 
@@ -27,7 +29,9 @@ class StyledForm(forms.Form):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             if isinstance(field, (forms.TypedChoiceField, forms.ChoiceField)):
-                field.widget.attrs.update({"class": "input input-bordered input-sm w-full max-w-xs"})
+                field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
+            elif isinstance(field.widget, (forms.Textarea)):
+                field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})
             else:
                 field.widget.attrs.update({"class": "input input-bordered input-sm w-full max-w-xs", "size": 40})
 

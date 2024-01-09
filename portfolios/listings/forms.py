@@ -1,9 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
-from django.forms import ModelForm
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from lease_finder_app.forms import MultipleFileField, StyledForm, StyledModelForm
+
+from portfolios.lease_finder_app.forms import MultipleFileField, StyledForm, StyledModelForm
 
 from . import cardata
 from .models import *
@@ -164,13 +163,11 @@ class CarDetailFilter(StyledModelForm):
 class ContactForm(StyledForm):
     from_email = forms.EmailField(required=True)
     subject = forms.CharField(required=True)
-    message = forms.CharField(widget=forms.Textarea, required=True)
+    message = forms.CharField(required=True, widget=forms.Textarea(attrs={"rows": 8, "cols": 40}))
 
-    def send_email(self):
+    def send_email(self, recipient="admin@autotradespot.nl"):
         send_contact_email_task.delay(
-            self.cleaned_data["subject"],
-            self.cleaned_data["message"],
-            self.cleaned_data["from_email"],
+            self.cleaned_data["subject"], self.cleaned_data["message"], self.cleaned_data["from_email"], [recipient]
         )
 
 
