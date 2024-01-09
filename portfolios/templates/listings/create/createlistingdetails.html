@@ -1,7 +1,7 @@
 <span id="formthing">
   <form id="details"
         class="flex flex-col space-y-2"
-        hx-post="{% url 'listings:createaddetails' %}"
+        hx-post="{% url 'listings:createlistingdetails' %}"
         hx-target="#formthing"
         hx-swap="outerHTML">
     {% csrf_token %} {{ form4.as_div }}

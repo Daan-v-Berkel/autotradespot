@@ -1,6 +1,6 @@
 <div class="flex flex-row flex-wrap gap-4">
-  {% for ad in listings %}
-    {% include 'widgets/advertisement_card.html' %}
+  {% for listing in listings %}
+    {% include 'widgets/listing_card.html' %}
   {% empty %}
     <span class="flex flex-col gap-2">
       <div>Looks like you have no favourites yet</div>

@@ -89,8 +89,8 @@ def LogoutPage(request):
 
 def Home(request):
     listings = ListingModels.Listing.objects.filter(status__exact=1)[:6].prefetch_related("imagemodel_set")
-    context = {"advertisements": listings}
-    return render(request, "index.html", context)
+    context = {"listings": listings}
+    return render(request, "base/index.html", context)
 
 
 @login_required(login_url="account_login")
@@ -133,7 +133,7 @@ def UserFavourites(request):
 def UserListings(request):
     listings = ListingModels.Listing.objects.filter(owner=request.user).order_by("status")
     return render(
-        request, "partials/user_pages/advertisements.html", context={"listings": listings, "page": "profile"}
+        request, "partials/user_pages/listings.html", context={"listings": listings, "page": "profile"}
     )
 
 

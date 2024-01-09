@@ -1,9 +1,9 @@
-{% with status=ad.status_name %}
-  {% if ad.status == ad.Status.ACTIVE %}
+{% with status=listing.status_name %}
+  {% if listing.status == listing.Status.ACTIVE %}
     <div class="badge badge-primary badge-outline">{{ status }}</div>
-  {% elif ad.status == ad.Status.REMOVED %}
+  {% elif listing.status == listing.Status.REMOVED %}
     <div class="badge badge-error badge-outline">{{ status }}</div>
-  {% elif ad.status == ad.Status.REPORTED %}
+  {% elif listing.status == listing.Status.REPORTED %}
     <div class="badge badge-warning badge-outline">{{ status }}</div>
   {% else %}
     <div class="badge badge-secondary badge-outline">{{ status }}</div>

@@ -41,7 +41,7 @@ class ListingImageForm(StyledModelForm):
 class CardetailForm(StyledModelForm):
     class Meta:
         model = CarDetails
-        exclude = ("owning_advert", "make", "model")
+        exclude = ("owning_listing", "make", "model")
 
 
 class PricingLeaseForm(StyledModelForm):

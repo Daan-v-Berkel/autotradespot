@@ -32,7 +32,7 @@ def viewListing(request, pk):
     if request.user != listing.owner and not request.session.get(f"listing_viewed_{listing.pk}", False):
         request.session[f"listing_viewed_{listing.pk}"] = "true"
         listing.increment_views()
-    return render(request, "advertisement.html", context={"advertisement": listing})
+    return render(request, "listings/base/listing.html", context={"listing": listing})
 
 
 @login_required(login_url="account_login")
@@ -46,7 +46,7 @@ def ListingCreateNew(request, save_method=None):
             del request.session["LP_data"]
         except:
             pass
-        page = render(request, "createad.html")
+        page = render(request, "listings/create/createlisting.html")
         page.headers["HX-Refresh"] = "true"
         return page
 
@@ -63,7 +63,7 @@ def ListingCreateNew(request, save_method=None):
                 return HTTPResponseHXRedirect(redirect_to=reverse_lazy("listings:viewlisting", args=(listing_pk,)))
     elif request.method == "PUT" and not listing_pk:
         return HttpResponse("error saving, minimum requirements not met to save the listing")
-    return render(request, "createad.html")
+    return render(request, "listings/create/createlisting.html")
 
 
 def searchListing(request):
@@ -80,13 +80,13 @@ def searchListing(request):
             listings = models.Listing.objects.search(**detailsform.cleaned_data)
             time.sleep(1)
             print(f"after post: {detailsform.cleaned_data}")
-            return render(request, "ad_section.html", context={"advertisements": listings})
+            return render(request, "base/listing_section.html", context={"listings": listings})
 
     return render(
         request,
-        "searcher.html",
+        "listings/search/searcher.html",
         context={
-            "advertisements": models.Listing.objects.all(),
+            "listings": models.Listing.objects.all(),
             "make_form": make_form,
             "model_form": model_form,
             "cardetail_form": cardetail_form,
@@ -115,10 +115,10 @@ def ListingLicenceplate(request):
             relevant_data[name] = data_combined.get(api_name)
 
         request.session["LP_data"] = relevant_data
-        return redirect("listings:createadtype")
+        return redirect("listings:createlistingtype")
     else:
         context = {"licence": request.session.get("LP_data", {"licence": ""})["licence"]}
-        return render(request, "createadLP.html", context)
+        return render(request, "listings/create/createlistingLP.html", context)
 
 
 def ListingType(request):
@@ -130,21 +130,21 @@ def ListingType(request):
         elif type == "L":
             priceform = forms.PricingLeaseForm(request.POST)
         if form.is_valid() and priceform.is_valid():
-            ad, created = models.Listing.objects.update_or_create(
+            listing, created = models.Listing.objects.update_or_create(
                 pk=request.session.get("listing_in_progress"), defaults=form.cleaned_data | {"owner": request.user}
             )
             if type == "S":
                 p, c = models.PricingModelBuy.objects.update_or_create(
-                    listing=ad, defaults=priceform.cleaned_data | {"listing": ad}
+                    listing=listing, defaults=priceform.cleaned_data | {"listing": listing}
                 )
             elif type == "L":
                 p, c = models.PricingModelLease.objects.update_or_create(
-                    listing=ad, defaults=priceform.cleaned_data | {"listing": ad}
+                    listing=listing, defaults=priceform.cleaned_data | {"listing": listing}
                 )
-            request.session["listing_in_progress"] = ad.pk
-            return redirect("listings:createadmake")
+            request.session["listing_in_progress"] = listing.pk
+            return redirect("listings:createlistingmake")
         else:
-            return render(request, "createadtype.html", context={"form1": form, "priceform": priceform})
+            return render(request, "listings/create/createlistingtype.html", context={"form1": form, "priceform": priceform})
 
     if "listing_in_progress" in request.session:
         current_listing = models.Listing.objects.get(pk=request.session.get("listing_in_progress"))
@@ -155,28 +155,27 @@ def ListingType(request):
     else:
         form = forms.ListingForm()
     priceform = forms.PricingLeaseForm
-    return render(request, "createadtype.html", context={"form1": form, "priceform": priceform})
+    return render(request, "listings/create/createlistingtype.html", context={"form1": form, "priceform": priceform})
 
 
 def ListingMake(request):
-    if request.method == "POST":
-        make_form = forms.CarMakeForm(request.POST)
-        model_form = forms.CarModelForm(
-            request.POST, nqs=models.CarModel.objects.filter(make=request.POST.get("make", 0))
-        )
-        if make_form.is_valid() and model_form.is_valid():
-            d = request.session.get("LP_data", {})
-            d["makeId"] = request.POST.get("make", 0)
-            d["modelId"] = request.POST.get("model", 0)
-            request.session["LP_data"] = d
-            return redirect("listings:createaddetails")
-        return render(request, "createadmake.html", context={"make_form": make_form, "model_form": model_form})
-
-    make = request.GET.get("make", 0)
-    nqs = models.CarModel.objects.filter(make=make)
-    make_form = forms.CarMakeForm()
-    model_form = forms.CarModelForm(nqs=nqs, disabled=True)
-    return render(request, "createadmake.html", context={"make_form": make_form, "model_form": model_form})
+		if request.method == "POST":
+				make_form = forms.CarMakeForm(request.POST)
+				model_form = forms.CarModelForm(
+						request.POST, nqs=models.CarModel.objects.filter(make=request.POST.get("make", 0))
+				)
+				if make_form.is_valid() and model_form.is_valid():
+						d = request.session.get("LP_data", {})
+						d["makeId"] = request.POST.get("make", 0)
+						d["modelId"] = request.POST.get("model", 0)
+						request.session["LP_data"] = d
+						return redirect("listings:createlistingdetails")
+		else:
+				make = request.GET.get("make", 0)
+				nqs = models.CarModel.objects.filter(make=make)
+				make_form = forms.CarMakeForm()
+				model_form = forms.CarModelForm(nqs=nqs, disabled=True)
+		return render(request, "listings/create/createlistingmake.html", context={"make_form": make_form, "model_form": model_form})
 
 
 def ListingDetails(request):
@@ -187,12 +186,12 @@ def ListingDetails(request):
             make = models.CarMake.objects.get(pk=request.session["LP_data"]["makeId"])
             model = models.CarModel.objects.get(pk=request.session["LP_data"]["modelId"])
             details, created = models.CarDetails.objects.update_or_create(
-                owning_advert=current_listing,
-                defaults=details_form.cleaned_data | {"owning_advert": current_listing, "make": make, "model": model},
+                owning_listing=current_listing,
+                defaults=details_form.cleaned_data | {"owning_listing": current_listing, "make": make, "model": model},
             )
-            return redirect("listings:uploadadimages")
+            return redirect("listings:uploadlistingimages")
         else:
-            return render(request, "createaddetails.html", context={"form4": details_form})
+            return render(request, "listings/create/createlistingdetails.html", context={"form4": details_form})
 
     print(f'lp_data in cardetails: {request.session.get("LP_data")}')
     form4 = forms.CardetailForm(initial=request.session.get("LP_data") or {})
@@ -203,7 +202,7 @@ def ListingDetails(request):
             form4 = forms.CardetailForm(instance=car_details)
         except:
             pass
-    return render(request, "createaddetails.html", context={"form4": form4})
+    return render(request, "listings/create/createlistingdetails.html", context={"form4": form4})
 
 
 def ListingImages(request, image_pk=None):
@@ -216,13 +215,13 @@ def ListingImages(request, image_pk=None):
             images = request.FILES.getlist("image")
             for i in images:
                 models.ImageModel.objects.create(listing=listing, image=i)
-            return redirect("listings:advertisementpreview", ad_pk=listing.pk)
+            return redirect("listings:listingpreview", ad_pk=listing.pk)
 
     elif request.method == "DELETE":
         print(f"trying to delete an image: {models.ImageModel.objects.get(pk=image_pk)}")
         models.ImageModel.objects.get(pk=image_pk).delete()
 
-    return render(request, "uploadadimages.html", context={"imageform": imageform, "listing": listing})
+    return render(request, "listings/create/uploadlistingimages.html", context={"imageform": imageform, "listing": listing})
 
 
 def PreviewListing(request, listing_pk=-1):
@@ -233,7 +232,7 @@ def PreviewListing(request, listing_pk=-1):
         listing = None
     else:
         listing = models.Listing.objects.get(pk=listing_pk)
-    return render(request, "adpreview.html", context={"advertisement": listing})
+    return render(request, "listings/create/listingpreview.html", context={"listing": listing})
 
 
 def GetSelect(request):
@@ -245,7 +244,7 @@ def GetSelect(request):
         form1 = forms.PricingLeaseForm()
     else:
         return HttpResponse()
-    return render(request, "pricingform.html", context={"form1": form1})
+    return render(request, "listings/partials/pricingform.html", context={"form1": form1})
 
 
 def ModifyListing(request, pk, action="modify"):
@@ -271,15 +270,15 @@ def ModifyListing(request, pk, action="modify"):
                 )
             page = render(
                 request,
-                "advertisement.html",
-                context={"advertisement": listing, "favourites_cnt": len(listing.favourites_list.all())},
+                "listings/base/listing.html",
+                context={"listing": listing, "favourites_cnt": len(listing.favourites_list.all())},
             )
             page.headers["HX-Refresh"] = "true"
             return page
 
         elif action == "modify":
             request.session["listing_in_progress"] = listing.pk
-            return HTTPResponseHXRedirect(reverse_lazy("listings:createadnew"))
+            return HTTPResponseHXRedirect(reverse_lazy("listings:createlistingnew"))
 
 
 def contactView(request, pk=None):
@@ -302,11 +301,11 @@ def contactView(request, pk=None):
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
             return HttpResponse(_("Thank you for your interest, the provider of this listing will contact you soon!"))
-    return render(request, "partials/contact/contact_form.html", {"form": form, "listing_pk": listing.pk})
+    return render(request, "listings/contact/contact_form.html", {"form": form, "listing_pk": listing.pk})
 
 
 def contactCancelView(request):
-    return render(request, "partials/contact/contact_btn.html")
+    return render(request, "listings/contact/contact_btn.html")
 
 
 def searchfilters(request):

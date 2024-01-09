@@ -5,18 +5,18 @@
 
   <main class="">
     <div class="w-fit min-w-[80%] max-w-[95%] mx-auto my-4 rounded-lg shadow-lg p-4 bg-base-300">
-      {% with images=advertisement.imagemodel_set.all %}
+      {% with images=listing.imagemodel_set.all %}
         <section class="w-full space-y-1">
           <span class="flex justify-between">
-            <p class="text-3xl text-base-content">{{ advertisement.title }}</p>
-            {% with ad=advertisement %}
+            <p class="text-3xl text-base-content">{{ listing.title }}</p>
+            {% with listing=listing %}
               {% include 'widgets/favourite_but.html' %}
             {% endwith %}
           </span>
           <div class="flex space-x-4">
-            <span class="text-sm text-base-content">{{ advertisement.viewcount }}x {% translate 'viewed' %}</span>
-            <span class="text-sm text-base-content">{{ advertisement.favourites_list.count|default:0 }}x {% translate 'saved' %}</span>
-            <span class="text-sm text-base-content">{{ advertisement.created|date }}</span>
+            <span class="text-sm text-base-content">{{ listing.viewcount }}x {% translate 'viewed' %}</span>
+            <span class="text-sm text-base-content">{{ listing.favourites_list.count|default:0 }}x {% translate 'saved' %}</span>
+            <span class="text-sm text-base-content">{{ listing.created|date }}</span>
           </div>
         </section>
         <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
@@ -47,7 +47,7 @@
                   </figure>
                   <span class="relative bottom-1 left-1 text-base-content">
                     {% trans "This listing does not seem to have any images." %}
-                    {% if request.user == advertisement.owner %}
+                    {% if request.user == listing.owner %}
                     </br />
                     {% blocktranslate %}
 											You can add images by modifying this listing.</br />
@@ -70,26 +70,26 @@
           </section>
         </section>
         <section class="w-full md:w-2/5 text-base-content">
-          {% with owner=advertisement.owner %}
+          {% with owner=listing.owner %}
             {% if owner.give_email %}<p>{{ owner.give_email }}</p>{% endif %}
             {% if owner.full_adress %}<p>{{ owner.full_adress }}</p>{% endif %}
             {% if owner.give_phone %}<p>{{ owner.give_phone }}</p>{% endif %}
             {% if owner.full_name %}<p>{{ owner.full_name }}</p>{% endif %}
           {% endwith %}
-          {% with details=advertisement.cardetails %}
+          {% with details=listing.cardetails %}
             <p>Make: {{ details.make }}</p>
             <p>Model: {{ details.model }}</p>
             <p>Fueltype: {{ details.get_fuel_type_display }}</p>
             <p>Transmisson: {{ details.get_transmission_display }}</p>
           {% endwith %}
-          this advert is {{ advertisement.status_name }} and
-          complete?: {{ advertisement.complete_for_posting.0 }}
+          this listing is {{ listing.status_name }} and
+          complete?: {{ listing.complete_for_posting.0 }}
           <section id="contact" class="w-full">
-            {% include 'partials/contact/contact_btn.html' %}
+            {% include 'listings/contact/contact_btn.html' %}
           </section>
         </section>
       </div>
-      {% if request.user == advertisement.owner %}
+      {% if request.user == listing.owner %}
         <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <h3 class="font-bold text-lg">Are you sure?</h3>
@@ -101,7 +101,7 @@
               <form method="dialog">
                 <button class="btn btn-primary">Cancel</button>
                 <button class="btn btn-error"
-                        hx-delete="{% url 'listings:modify-listing' advertisement.pk %}"
+                        hx-delete="{% url 'listings:modify-listing' listing.pk %}"
                         hx-target="body">Delete listing</button>
               </form>
             </div>
@@ -111,7 +111,7 @@
         <section class="flex flex-row justify-around">
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                  hx-put="{% url 'listings:modify-listing' advertisement.pk 'modify' %}">
+                  hx-put="{% url 'listings:modify-listing' listing.pk 'modify' %}">
             <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
           </button>
           <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
@@ -125,12 +125,12 @@
             <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
               <input type="checkbox"
                      class="toggle toggle-accent peer/activate"
-                     {% if not advertisement.complete_for_posting %}disabled{% endif %}
-                     {% if advertisement.status == advertisement.Status.ACTIVE %}checked{% endif %}
-                     hx-put="{% url 'listings:modify-listing' advertisement.pk 'activate' %}"
+                     {% if not listing.complete_for_posting %}disabled{% endif %}
+                     {% if listing.status == listing.Status.ACTIVE %}checked{% endif %}
+                     hx-put="{% url 'listings:modify-listing' listing.pk 'activate' %}"
                      hx-swap="none" />
               <span class="label-text">
-                {% if advertisement.status == advertisement.Status.ACTIVE %}
+                {% if listing.status == listing.Status.ACTIVE %}
                   Deactivate
                 {% else %}
                   Activate

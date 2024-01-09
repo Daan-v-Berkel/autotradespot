@@ -2,6 +2,6 @@
 
 <button id="contact_btn"
         class="btn btn-primary btn-block"
-        hx-get="{% url 'listings:contactform' advertisement.pk %}"
+        hx-get="{% url 'listings:contactform' listing.pk %}"
         hx-swap="innerHTML"
         hx-target="#contact">{% translate 'Contact provider' %}</button>

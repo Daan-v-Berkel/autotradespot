@@ -11,7 +11,7 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:createadlicenceplate' %}"
+          hx-get="{% url 'listings:createlistinglicenceplate' %}"
           hx-swap="innerHTML">
         {% comment %} hx-trigger="load, click"> {% endcomment %}
         <span class="hidden md:block text-sm text-base-content">{% translate "Licenceplate" %}</span>
@@ -20,7 +20,7 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:createadtype' %}"
+          hx-get="{% url 'listings:createlistingtype' %}"
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Type" %}</span>
       </li>
@@ -28,7 +28,7 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:createadmake' %}"
+          hx-get="{% url 'listings:createlistingmake' %}"
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Make/Model" %}</span>
       </li>
@@ -36,7 +36,7 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:createaddetails' %}"
+          hx-get="{% url 'listings:createlistingdetails' %}"
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Details" %}</span>
       </li>
@@ -44,7 +44,7 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:uploadadimages' %}"
+          hx-get="{% url 'listings:uploadlistingimages' %}"
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Images" %}</span>
       </li>
@@ -52,24 +52,24 @@
           role="tab"
           class="step cursor-pointer"
           hx-target="#tabcontent"
-          hx-get="{% url 'listings:advertisementpreview' %}"
+          hx-get="{% url 'listings:listingpreview' %}"
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Preview" %}</span>
       </li>
     </ul>
     <div class="join-item flex flex-col justify-between w-full max-w-3xl bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300"
          hx-target="#tabcontent"
-         hx-get="{% if 'LP_data' in request.session or 'ad_in_progress' in request.session %}{% url 'listings:createadtype' %} {% else %} {% url 'listings:createadlicenceplate' %} {% endif %}"
+         hx-get="{% if 'LP_data' in request.session or 'ad_in_progress' in request.session %}{% url 'listings:createlistingtype' %} {% else %} {% url 'listings:createlistinglicenceplate' %} {% endif %}"
          hx-swap-oob="innerHTML"
          hx-trigger="load">
       <div id="tabcontent"></div>
       <div id="adform_actions" class="flex flex-row space-x-4 mt-4">
         <button class="btn btn-secondary"
-                hx-delete="{% url 'listings:createadnew' %}"
+                hx-delete="{% url 'listings:createlistingnew' %}"
                 hx-swap="none">
           <span class="ti-eraser"></span> {% translate 'clear' %}
         </button>
-        <button class="btn btn-outline btn-secondary" hx-put="{% url 'listings:createadnew' 'draft' %}" hx-target="
+        <button class="btn btn-outline btn-secondary" hx-put="{% url 'listings:createlistingnew' 'draft' %}" hx-target="
           <body/> ">{% translate 'continue later' %}</button>
       </div>
     </div>

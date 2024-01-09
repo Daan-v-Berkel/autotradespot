@@ -1,17 +1,17 @@
 <div class="card card-compact w-96 bg-base-100 shadow-xl hover:scale-105 card-bordered transition-all ease-linear">
-  <a href="{% url 'listings:viewlisting' ad.pk %}">
+  <a href="{% url 'listings:viewlisting' listing.pk %}">
     <figure class="object-cover h-72 w-full">
-      {% if ad.imagemodel_set.first %}
-        <img src="{{ ad.imagemodel_set.first.image.url }}" alt="{{ ad.title }}" />
+      {% if listing.imagemodel_set.first %}
+        <img src="{{ listing.imagemodel_set.first.image.url }}" alt="{{ listing.title }}" />
       {% else %}
         {% include 'svg/fallback.html' %}
       {% endif %}
     </figure>
     <div class="card-body">
       <span class="flex flex-row justify-between">
-        <h2 class="card-title">{{ ad.title }}</h2>
+        <h2 class="card-title">{{ listing.title }}</h2>
         {% if page == 'profile' %}
-          <span>{% include 'partials/listings/listing_status_badge.html' %}</span>
+          <span>{% include 'listings/partials/listing_status_badge.html' %}</span>
         {% endif %}
       </span>
       <p>
