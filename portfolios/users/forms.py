@@ -53,6 +53,7 @@ class UserChangeForm(StyledModelForm):
         fields = (
             "email",
             "name",
+            "username",
         )
         field_classes = {"email": EmailField}
         error_messages = {

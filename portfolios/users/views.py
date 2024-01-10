@@ -1,25 +1,37 @@
+from typing import Any
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+from portfolios.lease_finder_app import forms, models
+from portfolios.listings import models as ListingModels
+from portfolios.users import forms as user_forms
 
 User = get_user_model()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
-    slug_field = "id"
-    slug_url_kwarg = "id"
+		model = User 
+		template_name = 'users/profile/user_profile.html'
 
+		def get_object(self):
+			return self.request.user
 
 user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
-    fields = "__all__"
+    fields = ("name",
+              "email",
+							"username",)
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
@@ -37,7 +49,62 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:detail", kwargs={"pk": self.request.user.pk})
+        return reverse("users:detail", kwargs={"user": self.request.user})
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+@login_required(login_url="account_login")
+def ProfilePage(request):
+    return render(request, "users/profile/user_profile.html")
+
+
+@login_required(login_url="account_login")
+def UserPreferences(request):
+    saved = None
+    preferences = models.UserCustomisation.objects.get(user=request.user)
+    form = forms.UserPreferenceForm(instance=preferences)
+    if request.method == "POST":
+        form = forms.UserPreferenceForm(request.POST, instance=preferences)
+        if form.is_valid():
+            form.save(commit=True)
+            saved = _("Your preferences have been saved succesfully!")
+    return render(request, "users/user_pages/preferences.html", context={"preferences": form, "saved": saved})
+
+
+@login_required(login_url="account_login")
+def UserProfile(request):
+    saved = None
+    form = user_forms.UserChangeForm(instance=request.user)
+    if request.method == "POST":
+        form = user_forms.UserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save(commit=True)
+            saved = _("Your profile has been saved succesfully!")
+    return render(request, "users/user_pages/profile.html", context={"profile": form, "saved": saved})
+
+
+@login_required(login_url="account_login")
+def UserFavourites(request):
+    listings = request.user.favourites_list.all()
+    return render(request, "users/user_pages/favorites.html", context={"listings": listings})
+
+
+@login_required(login_url="account_login")
+def UserListings(request):
+    listings = ListingModels.Listing.objects.filter(owner=request.user).order_by("status")
+    return render(
+        request, "users/user_pages/listings.html", context={"listings": listings, "page": "profile"}
+    )
+
+
+@login_required(login_url="account_login")
+def AddToFavorites(request, pk):
+    listing = ListingModels.Listing.objects.get(pk=pk)
+    if request.method == "POST":
+        if listing.favourites_list.contains(request.user):
+            listing.favourites_list.remove(request.user)
+        else:
+            listing.favourites_list.add(request.user)
+        return render(request, "widgets/favourite_but.html", context={"listing": listing})

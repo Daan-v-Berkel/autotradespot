@@ -5,7 +5,7 @@
   <form class="flex flex-col gap-2 content-start">
     {% csrf_token %} {{ profile.as_div }}
     <span class="flex flex-row space-x-2">
-      <button type="submit" class="btn btn-primary" hx-post="{% url 'autotradespot:user_profile' %}" _="on click put 'saving...' into my innerHTML then toggle .hidden on the next
+      <button type="submit" class="btn btn-primary" hx-post="{% url 'users:user_profile' %}" _="on click put 'saving...' into my innerHTML then toggle .hidden on the next
         <img/> ">{% translate "save changes" %}</button>
       <img id="loading"
            class="hidden"

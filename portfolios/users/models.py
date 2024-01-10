@@ -14,11 +14,11 @@ class User(AbstractUser):
     """
 
     # First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
+    name = CharField(_("name"), blank=True, max_length=255)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
     email = EmailField(_("email address"), unique=True)
-    username = None  # type: ignore
+    username = CharField(_("username, (displayed to other users)"), blank=True, max_length=60)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -32,4 +32,4 @@ class User(AbstractUser):
             str: URL for user detail.
 
         """
-        return reverse("autotradespot:profile-page")
+        return reverse("users:detail")

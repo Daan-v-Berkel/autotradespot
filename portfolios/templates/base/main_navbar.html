@@ -57,7 +57,7 @@
       </ul>
     </div>
     <a class="btn btn-primary duration-200 text-accent-content"
-       href="{% if request.user.is_authenticated %}{% url 'autotradespot:profile-page' %}{% else %}{% url 'account_login' %}{% endif %}">
+       href="{% if request.user.is_authenticated %}{% url 'users:detail' %}{% else %}{% url 'account_login' %}{% endif %}">
       {% if request.user.is_authenticated %}
         my profile
       {% else %}

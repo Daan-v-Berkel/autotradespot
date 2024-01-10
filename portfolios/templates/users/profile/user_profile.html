@@ -13,7 +13,7 @@
                 aria-selected="false"
                 aria-controls="tabcontent"
                 hx-target="#tabcontent"
-                hx-get="{% url 'autotradespot:user_profile' %}"
+                hx-get="{% url 'users:user_profile' %}"
                 hx-swap="innerHTML"
                 hx-trigger="load, click">{% translate "Profile" %}</button>
       </li>
@@ -23,7 +23,7 @@
                 aria-selected="false"
                 aria-controls="tabcontent"
                 hx-target="#tabcontent"
-                hx-get="{% url 'autotradespot:user_preferences' %}"
+                hx-get="{% url 'users:user_preferences' %}"
                 hx-swap="innerHTML">{% translate "Preferences" %}</button>
       </li>
       <li class="">
@@ -32,7 +32,7 @@
                 aria-selected="false"
                 aria-controls="tabcontent"
                 hx-target="#tabcontent"
-                hx-get="{% url 'autotradespot:user_listings' %}"
+                hx-get="{% url 'users:user_listings' %}"
                 hx-swap="innerHTML">{% translate "Listings" %}</button>
       </li>
       <li class="">
@@ -41,13 +41,13 @@
                 aria-selected="false"
                 aria-controls="tabcontent"
                 hx-target="#tabcontent"
-                hx-get="{% url 'autotradespot:user_favourites' %}"
+                hx-get="{% url 'users:user_favourites' %}"
                 hx-swap="innerHTML">{% translate "Favourites" %}</button>
       </li>
     </ul>
     <div class="start-1 col-span-5 bg-base-200 p-4 rounded-r-lg border-r border-t border-b border-l border-accent"
          hx-target="#tabcontent"
-         hx-get="{% url 'autotradespot:user_profile' %}"
+         hx-get="{% url 'users:user_profile' %}"
          hx-swap-oob="innerHTML"
          hx-trigger="load">
       <div id="tabcontent"></div>

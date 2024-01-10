@@ -12,6 +12,7 @@ from django.http import BadHeaderError, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from allauth.account.decorators import verified_email_required
 
 from config.settings import base as settings
 from portfolios.listings import forms, models
@@ -36,6 +37,7 @@ def viewListing(request, pk):
 
 
 @login_required(login_url="account_login")
+@verified_email_required
 def ListingCreateNew(request, save_method=None):
     if request.method == "DELETE":
         try:
@@ -252,7 +254,7 @@ def ModifyListing(request, pk, action="modify"):
 
     if request.method == "DELETE":
         # listing.delete()
-        return redirect("autotradespot:profile-page")
+        return redirect("users:detail")
 
     elif request.method == "PUT":
         if action == "activate":
