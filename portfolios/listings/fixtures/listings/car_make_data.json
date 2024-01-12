@@ -1,0 +1,253 @@
+[
+  { "model": "listings.CarMake", "fields": { "name": "Other", "makeId": 0 } },
+  { "model": "listings.CarMake", "fields": { "name": "Abarth", "makeId": 1 } },
+  { "model": "listings.CarMake", "fields": { "name": "Aiways", "makeId": 2 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Alfa Romeo", "makeId": 3 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Alpine", "makeId": 4 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Aston Martin", "makeId": 5 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Audi", "makeId": 6 } },
+  { "model": "listings.CarMake", "fields": { "name": "Austin", "makeId": 7 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Auto Bianchi", "makeId": 8 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Auto Union", "makeId": 9 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "BMW", "makeId": 10 } },
+  { "model": "listings.CarMake", "fields": { "name": "BYD", "makeId": 11 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Bedford", "makeId": 12 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Bentley", "makeId": 13 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Buick", "makeId": 14 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Cadillac", "makeId": 15 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Caterham", "makeId": 16 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Chevrolet", "makeId": 17 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Chrysler", "makeId": 18 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Citro\u00ebn", "makeId": 19 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Cupra", "makeId": 20 } },
+  { "model": "listings.CarMake", "fields": { "name": "DAF", "makeId": 21 } },
+  { "model": "listings.CarMake", "fields": { "name": "DS", "makeId": 22 } },
+  { "model": "listings.CarMake", "fields": { "name": "Dacia", "makeId": 23 } },
+  { "model": "listings.CarMake", "fields": { "name": "Daewoo", "makeId": 24 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Daihatsu", "makeId": 25 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Daimler", "makeId": 26 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Datsun", "makeId": 27 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "De Tomaso", "makeId": 28 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "DeLorean", "makeId": 29 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Dodge", "makeId": 30 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Donkervoort", "makeId": 31 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "FSO", "makeId": 32 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Ferrari", "makeId": 33 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Fiat", "makeId": 34 } },
+  { "model": "listings.CarMake", "fields": { "name": "Fisker", "makeId": 35 } },
+  { "model": "listings.CarMake", "fields": { "name": "Ford", "makeId": 36 } },
+  { "model": "listings.CarMake", "fields": { "name": "GMC", "makeId": 37 } },
+  { "model": "listings.CarMake", "fields": { "name": "Honda", "makeId": 38 } },
+  { "model": "listings.CarMake", "fields": { "name": "Hongqi", "makeId": 39 } },
+  { "model": "listings.CarMake", "fields": { "name": "Hummer", "makeId": 40 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Hyundai", "makeId": 41 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Infiniti", "makeId": 42 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Isuzu", "makeId": 43 } },
+  { "model": "listings.CarMake", "fields": { "name": "JAC", "makeId": 44 } },
+  { "model": "listings.CarMake", "fields": { "name": "Jaguar", "makeId": 45 } },
+  { "model": "listings.CarMake", "fields": { "name": "Jeep", "makeId": 46 } },
+  { "model": "listings.CarMake", "fields": { "name": "Jensen", "makeId": 47 } },
+  { "model": "listings.CarMake", "fields": { "name": "Kia", "makeId": 48 } },
+  { "model": "listings.CarMake", "fields": { "name": "Lada", "makeId": 49 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Lamborghini", "makeId": 50 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Lancia", "makeId": 51 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Land Rover", "makeId": 52 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Landwind", "makeId": 53 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Lexus", "makeId": 54 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Lincoln", "makeId": 55 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Lotus", "makeId": 56 } },
+  { "model": "listings.CarMake", "fields": { "name": "Lucid", "makeId": 57 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Lynk and Co", "makeId": 58 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "MG", "makeId": 59 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Maserati", "makeId": 60 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Matra", "makeId": 61 } },
+  { "model": "listings.CarMake", "fields": { "name": "Max", "makeId": 62 } },
+  { "model": "listings.CarMake", "fields": { "name": "Maxus", "makeId": 63 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Maybach", "makeId": 64 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Mazda", "makeId": 65 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Mc Laren", "makeId": 66 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Mercedes-Benz", "makeId": 67 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Mercury", "makeId": 68 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Messerschmitt", "makeId": 69 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Mini", "makeId": 70 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Mitsubishi", "makeId": 71 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Morgan", "makeId": 72 } },
+  { "model": "listings.CarMake", "fields": { "name": "Morris", "makeId": 73 } },
+  { "model": "listings.CarMake", "fields": { "name": "Nio", "makeId": 74 } },
+  { "model": "listings.CarMake", "fields": { "name": "Nissan", "makeId": 75 } },
+  { "model": "listings.CarMake", "fields": { "name": "Opel", "makeId": 76 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Panhard", "makeId": 77 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Peugeot", "makeId": 78 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Plymouth", "makeId": 79 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Polestar", "makeId": 80 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Pontiac", "makeId": 81 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Porsche", "makeId": 82 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Range Rover", "makeId": 83 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Reliant", "makeId": 84 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Renault", "makeId": 85 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Rolls-Royce", "makeId": 86 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Rover", "makeId": 87 } },
+  { "model": "listings.CarMake", "fields": { "name": "Saab", "makeId": 88 } },
+  { "model": "listings.CarMake", "fields": { "name": "Seat", "makeId": 89 } },
+  { "model": "listings.CarMake", "fields": { "name": "Simca", "makeId": 90 } },
+  { "model": "listings.CarMake", "fields": { "name": "Skoda", "makeId": 91 } },
+  { "model": "listings.CarMake", "fields": { "name": "Smart", "makeId": 92 } },
+  { "model": "listings.CarMake", "fields": { "name": "Spyker", "makeId": 93 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Ssangyong", "makeId": 94 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Subaru", "makeId": 95 } },
+  { "model": "listings.CarMake", "fields": { "name": "Suzuki", "makeId": 96 } },
+  { "model": "listings.CarMake", "fields": { "name": "Talbot", "makeId": 97 } },
+  { "model": "listings.CarMake", "fields": { "name": "Tesla", "makeId": 98 } },
+  { "model": "listings.CarMake", "fields": { "name": "Toyota", "makeId": 99 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Triumph", "makeId": 100 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Tvr", "makeId": 101 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Vauxhall", "makeId": 102 }
+  },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Volkswagen", "makeId": 103 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Volvo", "makeId": 104 } },
+  { "model": "listings.CarMake", "fields": { "name": "XPENG", "makeId": 105 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Yue Loong", "makeId": 106 }
+  },
+  { "model": "listings.CarMake", "fields": { "name": "Yugo", "makeId": 107 } },
+  { "model": "listings.CarMake", "fields": { "name": "ZEEKR", "makeId": 108 } },
+  {
+    "model": "listings.CarMake",
+    "fields": { "name": "Zastava", "makeId": 109 }
+  }
+]

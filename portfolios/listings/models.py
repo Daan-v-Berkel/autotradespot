@@ -110,7 +110,7 @@ class Listing(models.Model):
 
 def upload_for_user(instance, filename):
     listing = instance.listing
-    return f"{listing.owner.email}/{listing.pk}/{filename}"
+    return f"{listing.owner.pk}/{listing.pk}/{filename}"
 
 
 class ImageModel(models.Model):

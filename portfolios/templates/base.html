@@ -56,10 +56,16 @@
           {% endfor %}
         {% endif %}
       </div>
+			{% if not request.session.cookies_accepted %}
+			{% include 'legal/cookie_banner.html' %}
+			{% endif %}
       {% block content %}
       {% endblock content %}
     </div>
-    <script>
+    {% block modal %}
+    {% endblock modal %}
+    {% block inline_javascript %}
+		    <script>
       document.body.addEventListener("htmx:configRequest", (event) => {
         event.detail.headers["X-CSRFToken"] = "{{ csrf_token }}";
       });
@@ -67,10 +73,6 @@
         event.detail.headers["X-CSRFToken"] = "{{ csrf_token }}";
       });
     </script>
-    <!-- /container -->
-    {% block modal %}
-    {% endblock modal %}
-    {% block inline_javascript %}
       {% comment %} Script tags with only code, no src (defer by default). To run
     with a "defer" so that you run inline code:
     <script>

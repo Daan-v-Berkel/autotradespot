@@ -31,7 +31,7 @@
                     ❮
                   </button>
                   <img id="{{ image.name }}"
-                       src="{{ image.image.url }}"
+                       src="{{ image.big_img.url }}"
                        alt="{{ image.name }}"
                        class="rounded-box aspect-[14/9] object-cover object-center" />
                   <button _="on click set bar to the next
@@ -62,7 +62,7 @@
             <div class="flex flex-row gap-2 overflow-x-auto">
               {% for image in images %}
                 <img class="object-cover object-top aspect-square h-32 rounded-md hover:cursor-pointer duration-200 small-image"
-                     src="{{ image.image.url }}"
+                     src="{{ image.thumbnail.url }}"
                      alt="{{ image.name }}"
                      _="on click js() document.getElementById('{{ image.name }}').scrollIntoView(false) end" />
               {% endfor %}

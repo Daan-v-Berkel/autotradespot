@@ -1,7 +1,7 @@
 <span id="formthing">
   {% load static %}
 
-  <form class="flex flex-col space-y-2" action="">
+  <form class="flex flex-col space-y-4">
     <label class="form-control w-full max-w-xs">
       <div class="label">
         <span class="label-text text-base-content">Licenceplate number</span>
@@ -10,8 +10,13 @@
              name="licenceplate"
              placeholder="AA-00-BB"
              value="{{ licence }}"
-             class="input input-bordered input-sm w-full max-w-xs" />
+             class="input input-bordered input-sm w-full max-w-xs {% if licence_error %} input-error{% endif %}" />
     </label>
+		{% if licence_error %}
+		<p class="text-error">
+			{{licence_error}}
+		</p>
+		{% endif %}
     <span class="flex flex-row space-x-2">
       <button class="btn btn-primary btn-wide"
               type="submit"

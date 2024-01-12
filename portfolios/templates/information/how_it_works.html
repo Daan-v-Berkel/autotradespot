@@ -1,10 +1,10 @@
-<div class="p-6 max-w-6xl mx-auto">
-  <h3 class="text-center text-2xl mb-4 text-accent">
-    Revamp Your Ride: Buy, Sell, Lease.
-    <br />
-    Your Car, Your Way!
-  </h3>
-  <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-200">
+{% extends 'base.html' %}
+
+{% block content %}
+<div role="tablist" class="tabs tabs-bordered tabs-lg">
+  <input type="radio" name="how_it_works_tab" role="tab" class="tab" aria-label="Find a car" checked />
+  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+		  <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-200"> 
     <div class="stat space-y-4">
       <h4 class="stat-title underline text-center">Create a Listing</h4>
       <span class="text-center text-sm align-text-top">Ready to sell your car? Placing an listing on Our Platform is a breeze!
@@ -31,4 +31,10 @@
 			</span>
     </div>
   </div>
+	</div>
+
+  <input type="radio" name="how_it_works_tab" role="tab" class="tab" aria-label="Buy a car" />
+  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">Tab content 2</div>
+
 </div>
+{% endblock content %}
