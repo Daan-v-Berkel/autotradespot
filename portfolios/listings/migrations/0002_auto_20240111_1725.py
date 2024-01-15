@@ -18,6 +18,14 @@ def load_inital_carmodels(apps, schema_editor):
 def unload_initial_carmodels(apps, schema_editor):
     Model = apps.get_model('listings', 'CarModel')
     Model.objects.all().delete()
+    
+def load_inital_caroptions(apps, schema_editor):
+    call_command('loaddata', 'listings/car_options_data.json', verbosity=2)
+
+
+def unload_initial_caroptions(apps, schema_editor):
+    Model = apps.get_model('listings', 'CarOption')
+    Model.objects.all().delete()
 
 
 class Migration(migrations.Migration):
@@ -27,5 +35,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(load_inital_carmakes, unload_initial_carmakes),
-        migrations.RunPython(load_inital_carmodels, unload_initial_carmodels)
+        migrations.RunPython(load_inital_carmodels, unload_initial_carmodels),
+        migrations.RunPython(load_inital_caroptions, unload_initial_caroptions)
     ]

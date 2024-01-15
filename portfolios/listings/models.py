@@ -8,6 +8,7 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
 from . import cardata
+from .img_compression import compress_img
 
 User = get_user_model()
 
@@ -51,7 +52,7 @@ class Listing(models.Model):
         REMOVED = 5, _("Removed")
         REPORTED = 6, _("Reported")
 
-    status = models.IntegerField(choices=Status.choices, default=Status.INACTIVE)
+    status = models.IntegerField(choices=Status.choices, default=Status.DRAFT)
 
     @property
     def status_name(self):
@@ -114,27 +115,27 @@ def upload_for_user(instance, filename):
 
 
 class ImageModel(models.Model):
-    listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=upload_for_user)
-    thumbnail = ImageSpecField(
-        source="image", processors=[ResizeToFill(128, 128)], format="JPEG", options={"quality": 60}
-    )
-    big_img = ImageSpecField(
-        source="image", processors=[ResizeToFill(600, 400)], format="JPEG", options={"quality": 90}
-    )
+		listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
+		image = models.ImageField(upload_to=upload_for_user)
+		thumbnail = ImageSpecField(
+				source="image", processors=[ResizeToFill(128, 128)], format="JPEG", options={"quality": 60}
+		)
+		big_img = ImageSpecField(
+				source="image", processors=[ResizeToFill(600, 400)], format="JPEG", options={"quality": 90}
+		)
 
-    def __str__(self):
-        return self.image.name
+		def __str__(self):
+				return self.image.name
 
-    @property
-    def name(self):
-        return Path(self.image.url).stem
+		@property
+		def name(self):
+				return Path(self.image.url).stem
 
 
 ## CAR MODELS
 class CarMake(models.Model):
     makeId = models.IntegerField(
-        blank=False, choices=cardata.CarMakes.choices, default=cardata.CarMakes.NODATA, primary_key=True
+        blank=False, primary_key=True
     )
     name = models.CharField(max_length=120, verbose_name="Manufacturer", unique=True, editable=True)
 
@@ -147,9 +148,7 @@ class CarMake(models.Model):
 
 
 class CarModel(models.Model):
-    modelId = models.IntegerField(
-        choices=cardata.CarModels.choices, default=cardata.CarModels.NODATA, primary_key=True
-    )
+    modelId = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=120, verbose_name="model", editable=True)
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE, related_name="models")
 
@@ -160,13 +159,14 @@ class CarModel(models.Model):
     def __str__(self) -> str:
         return self.name
 
+class CarOption(models.Model):
+     name = models.CharField(max_length=256)
 
 class CarDetails(models.Model):
     class Transmission(models.TextChoices):
         AUTOMATIC = "AUTO", _("Automatic")
         MANUAL = "MANUAL", _("Manual")
         SEMI = "SEMI", _("Half/Semi-automatic")
-        NODATA = "NODATA", _("Unknown")
 
     class FuelType(models.TextChoices):
         BENZINE = "B", _("Benzine")
@@ -185,28 +185,31 @@ class CarDetails(models.Model):
     )
     transmission = models.CharField(max_length=6, choices=Transmission.choices, default=Transmission.NODATA)
     fuel_type = models.CharField(max_length=1, choices=FuelType.choices, default=FuelType.OTHER)
-    vehicletype = models.CharField(max_length=64, blank=True)
     color = models.CharField(max_length=64, blank=True)
-    color_secondary = models.CharField(max_length=64, blank=True)
-    num_doors = models.IntegerField(blank=False)
-    num_seats = models.IntegerField(blank=False)
-    body = models.CharField(max_length=64, blank=True)
+    color_interior = models.CharField(max_length=64, blank=True)
+    num_doors = models.IntegerField(blank=True)
+    num_seats = models.IntegerField(blank=True)
     make = models.ForeignKey(CarMake, on_delete=models.SET_DEFAULT, default=0, null=False)
     model = models.ForeignKey(CarModel, on_delete=models.SET_DEFAULT, default=0, null=False)
+    variant = models.CharField(max_length=64, blank=True)
+    manufacture_date = models.DateField(blank=True)
+    mileage = models.IntegerField(blank=False)
+    options = models.ManyToManyField(CarOptions, related_name='options', blank=True)
 
     def __str__(self) -> str:
         return f"details for {self.owning_listing}"
 
-
 class PricingModelLease(models.Model):
     class PriceTypeLease(models.TextChoices):
-        PRIVATE = "P", _("Private Lease")
-        OPERATIONAL = "O", _("Operational Lease")
-        FINANCIAL = "F", _("Financial Lease")
+        PRIVATE = "P", _("Private")
+        OPERATIONAL = "O", _("Operational")
+        NETTOOPERATIONAL = "NO", _("Netto Operational")
+        FINANCIAL = "F", _("Financial")
+        SHORT = "S", _("Short")
 
     listing = models.OneToOneField(Listing, on_delete=models.CASCADE, related_name="price_model_L")
     pricetype = models.CharField(
-        max_length=1, choices=PriceTypeLease.choices, blank=False, default=PriceTypeLease.OPERATIONAL
+        max_length=2, choices=PriceTypeLease.choices, blank=False, default=PriceTypeLease.OPERATIONAL
     )
     price = models.DecimalField(max_digits=7, decimal_places=2, blank=False)
 
