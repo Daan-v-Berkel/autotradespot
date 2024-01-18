@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from portfolios.users.forms import UserAdminChangeForm
 from portfolios.users.models import User
 from portfolios.users.tests.factories import UserFactory
-from portfolios.users.views import UserRedirectView, UserUpdateView, user_detail_view
+from portfolios.users.views import UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 
@@ -35,7 +35,7 @@ class TestUserUpdateView:
         request.user = user
 
         view.request = request
-        assert view.get_success_url() == f"/users/{user.pk}/"
+        assert view.get_success_url() == "/users/my-profile/"
 
     def test_get_object(self, user: User, rf: RequestFactory):
         view = UserUpdateView()
@@ -65,16 +65,6 @@ class TestUserUpdateView:
 
         messages_sent = [m.message for m in messages.get_messages(request)]
         assert messages_sent == [_("Information successfully updated")]
-
-
-class TestUserRedirectView:
-    def test_get_redirect_url(self, user: User, rf: RequestFactory):
-        view = UserRedirectView()
-        request = rf.get("/fake-url")
-        request.user = user
-
-        view.request = request
-        assert view.get_redirect_url() == f"/users/{user.pk}/"
 
 
 class TestUserDetailView:

@@ -12,29 +12,31 @@ class TestUserManager:
         user = User.objects.create_user(
             email="john@example.com",
             password="something-r@nd0m!",
+            username="john",
         )
         assert user.email == "john@example.com"
         assert not user.is_staff
         assert not user.is_superuser
         assert user.check_password("something-r@nd0m!")
-        assert user.username is None
+        assert user.username == "john"
 
     def test_create_superuser(self):
         user = User.objects.create_superuser(
             email="admin@example.com",
             password="something-r@nd0m!",
+            username="admin",
         )
         assert user.email == "admin@example.com"
         assert user.is_staff
         assert user.is_superuser
-        assert user.username is None
+        assert user.username == "admin"
 
     def test_create_superuser_username_ignored(self):
         user = User.objects.create_superuser(
             email="test@example.com",
             password="something-r@nd0m!",
         )
-        assert user.username is None
+        assert user.username == ""
 
 
 @pytest.mark.django_db
