@@ -10,6 +10,7 @@ from django.core.exceptions import *
 from django.forms import modelformset_factory
 from django.http import BadHeaderError, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from allauth.account.decorators import verified_email_required
@@ -136,6 +137,7 @@ def ListingType(request):
 				elif type == "L":
 						priceform = forms.PricingLeaseForm(request.POST)
 				if form.is_valid() and priceform.is_valid():
+						print('forms are valid')
 						listing, created = models.Listing.objects.update_or_create(
 								pk=request.session.get("listing_in_progress"), defaults=form.cleaned_data | {"owner": request.user}
 						)
@@ -170,45 +172,67 @@ def ListingMake(request):
 				model_form = forms.CarModelForm(
 						request.POST, nqs=models.CarModel.objects.filter(make=request.POST.get("make", 0))
 				)
-				if make_form.is_valid() and model_form.is_valid():
+				variant_form = forms.VariantForm(request.POST)
+				if make_form.is_valid() and model_form.is_valid() and variant_form.is_valid():
 						d = request.session.get("LP_data", {})
 						d["makeId"] = request.POST.get("make", 0)
 						d["modelId"] = request.POST.get("model", 0)
+						d["variant"] = variant_form.cleaned_data['variant']
 						request.session["LP_data"] = d
 						return redirect("listings:createlistingdetails")
 		else:
 				make = request.GET.get("make", 0)
 				nqs = models.CarModel.objects.filter(make=make)
-				make_form = forms.CarMakeForm()
+				d = request.session.get("LP_data", {})
+				if d:
+					listing_make_qs = models.CarMake.objects.filter(name__iexact=d["make"])
+					listing_make = listing_make_qs[0] if listing_make_qs else ''
+					listing_model_qs = models.CarModel.objects.get(Q(name__iexact=d["model"]), Q(make=listing_make))
+					listing_model = listing_model_qs if listing_model_qs else ''
+					make_form = forms.CarMakeForm(initial={"make":listing_make})
+				else:
+					make_form = forms.CarMakeForm()
 				model_form = forms.CarModelForm(nqs=nqs, disabled=True)
-		return render(request, "listings/create/createlistingmake.html", context={"make_form": make_form, "model_form": model_form})
+				#model_form.data = {"model":listing_model}
+				variant_form = forms.VariantForm()
+		return render(request, "listings/create/createlistingmake.html", context={"make_form": make_form, "model_form": model_form, "variant_form": variant_form})
 
 
 def ListingDetails(request):
 		if request.method == "POST":
 				details_form = forms.CardetailForm(request.POST)
-				if details_form.is_valid():
+				caroptions_form = forms.CarOptionsForm(request.POST)
+				if details_form.is_valid() and caroptions_form.is_valid():
 						current_listing = models.Listing.objects.get(pk=request.session.get("listing_in_progress"))
 						make = models.CarMake.objects.get(pk=request.session["LP_data"]["makeId"])
 						model = models.CarModel.objects.get(pk=request.session["LP_data"]["modelId"])
+						variant = request.session["LP_data"]["variant"]
+						options = caroptions_form.cleaned_data
 						details, created = models.CarDetails.objects.update_or_create(
 								owning_listing=current_listing,
-								defaults=details_form.cleaned_data | {"owning_listing": current_listing, "make": make, "model": model},
+								defaults=details_form.cleaned_data | {"owning_listing": current_listing,
+																							"make": make, 
+																							"model": model, 
+																							"variant": variant,
+																							"options": options},
 						)
 						return redirect("listings:uploadlistingimages")
 				else:
-						return render(request, "listings/create/createlistingdetails.html", context={"form4": details_form})
+						return render(request, "listings/create/createlistingdetails.html", context={"form4": details_form, "caroptions_form": caroptions_form})
 
 		print(f'lp_data in cardetails: {request.session.get("LP_data")}')
 		form4 = forms.CardetailForm(initial=request.session.get("LP_data") or {})
+		caroptions_form = forms.CarOptionsForm()
 		if "listing_in_progress" in request.session:
 				current_listing = models.Listing.objects.get(pk=request.session.get("listing_in_progress"))
 				try:
 						car_details = current_listing.cardetails
+						car_options = car_details.options
 						form4 = forms.CardetailForm(instance=car_details)
+						caroptions_form = forms.CarOptionsForm(instance=car_options)
 				except:
 						pass
-		return render(request, "listings/create/createlistingdetails.html", context={"form4": form4})
+		return render(request, "listings/create/createlistingdetails.html", context={"form4": form4, "caroptions_form": caroptions_form})
 
 
 def ListingImages(request, image_pk=None):
@@ -244,6 +268,7 @@ def PreviewListing(request, listing_pk=-1):
 def GetSelect(request):
 		# TODO: rename
 		type = request.GET.get("type")
+		print(f'pricingtype: {type}')
 		if type == "S":
 				form1 = forms.PricingSaleForm()
 		elif type == "L":

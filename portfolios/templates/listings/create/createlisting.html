@@ -3,7 +3,7 @@
 {% block content %}
   {% load i18n %}
 
-  <div class="join flex flex-row my-4 mx-auto w-full max-w-4xl"
+  <div class="join flex flex-row my-4 mx-auto min-w-full"
        role="tablist">
     <ul class="join-item steps steps-vertical overflow-x-hidden bg-base-200 max-h-fit border-2 border-base-300 mb-auto md:w-full max-w-fit px-2 md:pr-8"
         _="on htmx:beforeOnLoad take .step-success from .step for event.target">
@@ -57,7 +57,7 @@
         <span class="hidden md:block text-sm text-base-content">{% translate "Preview" %}</span>
       </li>
     </ul>
-    <div class="join-item flex flex-col justify-between w-full max-w-3xl bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300"
+    <div class="join-item flex flex-col justify-between w-full bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300"
          hx-target="#tabcontent"
          hx-get="{% if 'LP_data' in request.session or 'ad_in_progress' in request.session %}{% url 'listings:createlistingtype' %} {% else %} {% url 'listings:createlistinglicenceplate' %} {% endif %}"
          hx-swap-oob="innerHTML"

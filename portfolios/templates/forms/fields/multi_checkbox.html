@@ -1,0 +1,19 @@
+{% with id=widget.attrs.id %}
+  <div {% if id %}id="{{ id }}"{% endif %}
+       {% if widget.attrs.class %}class="w-full flex flex-row justify-between flex-wrap"{% endif %}>
+    {% for group, options, index in widget.optgroups %}
+      {% if group %}
+        <div class="w-full max-w-full md:max-w-[50%]">
+          <label>{{ group }}</label>
+        {% endif %}
+        {% for option in options %}
+          {% if forloop.first %}{% endif %}
+          <label for="{{ option.attrs.id }}"
+                 class="w-full max-w-full md:max-w-[50%] py-2">
+            <div>{% include option.template_name with widget=option %}</div>
+          </label>
+        {% endfor %}
+        {% if group %}</div>{% endif %}
+    {% endfor %}
+  </div>
+{% endwith %}

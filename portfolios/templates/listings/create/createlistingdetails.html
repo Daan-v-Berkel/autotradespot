@@ -1,13 +1,28 @@
 <span id="formthing">
-  <form id="details"
-        class="flex flex-col space-y-2"
-        hx-post="{% url 'listings:createlistingdetails' %}"
-        hx-target="#formthing"
-        hx-swap="outerHTML">
+  <form
+    id="details"
+    class="flex flex-col space-y-2"
+    hx-post="{% url 'listings:createlistingdetails' %}"
+    hx-target="#formthing"
+    hx-swap="outerHTML"
+  >
     {% csrf_token %} {{ form4.as_div }}
-    <button class="btn btn-primary btn-wide"
-            form="details"
-            type="submit"
-            _="on click add .step-success to #detail_tab">continue</button>
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="checkbox" />
+      <div class="collapse-title text-xl font-medium flef flex-row content-between">
+        Options
+      </div>
+      <div class="collapse-content">
+				{{ caroptions_form.as_p }}
+      </div>
+    </div>
+    <button
+      class="btn btn-primary btn-wide"
+      form="details"
+      type="submit"
+      _="on click add .step-success to #detail_tab"
+    >
+      continue
+    </button>
   </form>
 </span>

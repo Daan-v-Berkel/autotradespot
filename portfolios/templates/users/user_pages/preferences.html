@@ -4,12 +4,12 @@
   <form class="flex flex-col gap-4 content-start">
     {% for togglefield in preferences.visible_fields %}
       <label for="{{ togglefield.id_for_label }}"
-             class="label cursor-pointer max-w-[12rem] flex flex-row justify-between">
-        <span class="label-text">{{ togglefield.label }}</span>
+             class="label cursor-pointer w-full max-w-md flex flex-row justify-between">
+        <span class="label-text w-fit">{{ togglefield.label }}</span>
         <input id="{{ togglefield.id_for_label }}"
                type="checkbox"
                name="{{ togglefield.name }}"
-               class="toggle toggle-primary"
+               class="toggle toggle-success"
                {% if togglefield.value %}checked{% endif %} />
       </label>
     {% endfor %}
@@ -26,7 +26,7 @@
            _="on loadr toggle .hidden" />
     </span>
     {% if saved %}
-      <span class="rounded-sm text-icon-green" _="on load wait 3s then remove me">{{ saved }}</span>
+      <span class="rounded-sm text-success" _="on load wait 3s then remove me">{{ saved }}</span>
     {% endif %}
   </form>
 </div>

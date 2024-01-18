@@ -1,135 +1,254 @@
-﻿[
-{ "model": "listings.CarOption", "fields": { "name": "items" } },
-{ "model": "listings.CarOption", "fields": { "name": "360° camera" } },
-{ "model": "listings.CarOption", "fields": { "name": "4x4" } },
-{ "model": "listings.CarOption", "fields": { "name": "Aangepast voor mindervaliden" } },
-{ "model": "listings.CarOption", "fields": { "name": "Aanraakscherm" } },
-{ "model": "listings.CarOption", "fields": { "name": "ABS" } },
-{ "model": "listings.CarOption", "fields": { "name": "Achter airbag" } },
-{ "model": "listings.CarOption", "fields": { "name": "Achterbank 1/3 - 2/3" } },
-{ "model": "listings.CarOption", "fields": { "name": "Adaptieve Cruise Control" } },
-{ "model": "listings.CarOption", "fields": { "name": "Airbag bestuurder" } },
-{ "model": "listings.CarOption", "fields": { "name": "Airbag passagier" } },
-{ "model": "listings.CarOption", "fields": { "name": "Airconditioning" } },
-{ "model": "listings.CarOption", "fields": { "name": "Alarm" } },
-{ "model": "listings.CarOption", "fields": { "name": "Android Auto" } },
-{ "model": "listings.CarOption", "fields": { "name": "Apple CarPlay" } },
-{ "model": "listings.CarOption", "fields": { "name": "Armsteun" } },
-{ "model": "listings.CarOption", "fields": { "name": "Automatische klimaatregeling" } },
-{ "model": "listings.CarOption", "fields": { "name": "Automatische klimaatregeling, 2 zones" } },
-{ "model": "listings.CarOption", "fields": { "name": "Automatische klimaatregeling, 3 zones" } },
-{ "model": "listings.CarOption", "fields": { "name": "Automatische klimaatregeling, 4 zones" } },
-{ "model": "listings.CarOption", "fields": { "name": "Bagageruimte-afscheiding" } },
-{ "model": "listings.CarOption", "fields": { "name": "Bandenspanningscontrole" } },
-{ "model": "listings.CarOption", "fields": { "name": "Bi-Xenon koplampen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Binnenspiegel automatisch dimmend" } },
-{ "model": "listings.CarOption", "fields": { "name": "Biodiesel conversie" } },
-{ "model": "listings.CarOption", "fields": { "name": "Bluetooth" } },
-{ "model": "listings.CarOption", "fields": { "name": "Bochtverlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "Boordcomputer" } },
-{ "model": "listings.CarOption", "fields": { "name": "Botswaarschuwing" } },
-{ "model": "listings.CarOption", "fields": { "name": "CD" } },
-{ "model": "listings.CarOption", "fields": { "name": "Centrale deurvergrendeling met afstandsbediening" } },
-{ "model": "listings.CarOption", "fields": { "name": "Centrale vergrendeling" } },
-{ "model": "listings.CarOption", "fields": { "name": "Cruise Control" } },
-{ "model": "listings.CarOption", "fields": { "name": "Dagrijverlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "Dakrails" } },
-{ "model": "listings.CarOption", "fields": { "name": "Digitale radio-ontvangst" } },
-{ "model": "listings.CarOption", "fields": { "name": "Dodehoekdetectie" } },
-{ "model": "listings.CarOption", "fields": { "name": "E10-geactiveerd" } },
-{ "model": "listings.CarOption", "fields": { "name": "Electronic Stability Program" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektrisch verstelbare buitenspiegels" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektrische achterbankverstelling" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektrische achterklep" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektrische ramen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektrische stoelverstelling" } },
-{ "model": "listings.CarOption", "fields": { "name": "Elektronische parkeerrem" } },
-{ "model": "listings.CarOption", "fields": { "name": "Emergency Brake Assist" } },
-{ "model": "listings.CarOption", "fields": { "name": "Geheel digitaal combi-instrument" } },
-{ "model": "listings.CarOption", "fields": { "name": "Getinte ramen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Grootlichtassistent" } },
-{ "model": "listings.CarOption", "fields": { "name": "Handsfree" } },
-{ "model": "listings.CarOption", "fields": { "name": "Head-up display" } },
-{ "model": "listings.CarOption", "fields": { "name": "Hill-Hold Control" } },
-{ "model": "listings.CarOption", "fields": { "name": "Hoofd airbag" } },
-{ "model": "listings.CarOption", "fields": { "name": "Inductieladen voor smartphones" } },
-{ "model": "listings.CarOption", "fields": { "name": "Isofix" } },
-{ "model": "listings.CarOption", "fields": { "name": "Katalysator" } },
-{ "model": "listings.CarOption", "fields": { "name": "Keyless Entry" } },
-{ "model": "listings.CarOption", "fields": { "name": "Koplamp volledig LED" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lane Departure Warning Systeem" } },
-{ "model": "listings.CarOption", "fields": { "name": "Laserlicht" } },
-{ "model": "listings.CarOption", "fields": { "name": "LED dagrijverlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "LED verlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lederen bekleding" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lederen stuurwiel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lendensteun" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lichtmetalen velgen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Lichtsensor" } },
-{ "model": "listings.CarOption", "fields": { "name": "Luchtvering" } },
-{ "model": "listings.CarOption", "fields": { "name": "Luifel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Massagestoelen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Mistlampen" } },
-{ "model": "listings.CarOption", "fields": { "name": "MP3" } },
-{ "model": "listings.CarOption", "fields": { "name": "Multifunctioneel stuurwiel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Muziekstreaming geïntegreerd" } },
-{ "model": "listings.CarOption", "fields": { "name": "Navigatiesysteem" } },
-{ "model": "listings.CarOption", "fields": { "name": "Neerklapbare passagiersstoel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Night view assist" } },
-{ "model": "listings.CarOption", "fields": { "name": "Noodoproepsysteem" } },
-{ "model": "listings.CarOption", "fields": { "name": "Noodwiel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Open dak" } },
-{ "model": "listings.CarOption", "fields": { "name": "Panorama dak" } },
-{ "model": "listings.CarOption", "fields": { "name": "Parkeerhulp" } },
-{ "model": "listings.CarOption", "fields": { "name": "Parkeerhulp achter" } },
-{ "model": "listings.CarOption", "fields": { "name": "Parkeerhulp automatisch" } },
-{ "model": "listings.CarOption", "fields": { "name": "Parkeerhulp met camera" } },
-{ "model": "listings.CarOption", "fields": { "name": "Parkeerhulp voor" } },
-{ "model": "listings.CarOption", "fields": { "name": "Pechset" } },
-{ "model": "listings.CarOption", "fields": { "name": "Radio" } },
-{ "model": "listings.CarOption", "fields": { "name": "Range extender" } },
-{ "model": "listings.CarOption", "fields": { "name": "Rechtsgestuurd" } },
-{ "model": "listings.CarOption", "fields": { "name": "Regensensor" } },
-{ "model": "listings.CarOption", "fields": { "name": "Reservewiel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Rokerspakket" } },
-{ "model": "listings.CarOption", "fields": { "name": "Schakelflippers" } },
-{ "model": "listings.CarOption", "fields": { "name": "Schuifdeur" } },
-{ "model": "listings.CarOption", "fields": { "name": "Schuifdeur links" } },
-{ "model": "listings.CarOption", "fields": { "name": "Schuifdeur rechts" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sfeerverlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "Skiluik" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sneeuwbanden" } },
-{ "model": "listings.CarOption", "fields": { "name": "Snelheidsbeperkingsinstallatie" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sound system" } },
-{ "model": "listings.CarOption", "fields": { "name": "Spoiler" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sportonderstel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sportpakket" } },
-{ "model": "listings.CarOption", "fields": { "name": "Sportstoelen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Spraakbediening" } },
-{ "model": "listings.CarOption", "fields": { "name": "Stalen velgen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Standkachel" } },
-{ "model": "listings.CarOption", "fields": { "name": "Start/Stop-systeem" } },
-{ "model": "listings.CarOption", "fields": { "name": "Startonderbreker" } },
-{ "model": "listings.CarOption", "fields": { "name": "Stoelventilatie" } },
-{ "model": "listings.CarOption", "fields": { "name": "Stoelverwarming" } },
-{ "model": "listings.CarOption", "fields": { "name": "Stuurbekrachtiging" } },
-{ "model": "listings.CarOption", "fields": { "name": "Stuurwielverwarming" } },
-{ "model": "listings.CarOption", "fields": { "name": "Taxi of huurauto" } },
-{ "model": "listings.CarOption", "fields": { "name": "Televisie" } },
-{ "model": "listings.CarOption", "fields": { "name": "Traction Control" } },
-{ "model": "listings.CarOption", "fields": { "name": "Trekhaak" } },
-{ "model": "listings.CarOption", "fields": { "name": "Tuning" } },
-{ "model": "listings.CarOption", "fields": { "name": "USB" } },
-{ "model": "listings.CarOption", "fields": { "name": "Verblindingsvrij grootlicht" } },
-{ "model": "listings.CarOption", "fields": { "name": "Verkeersbordherkenning" } },
-{ "model": "listings.CarOption", "fields": { "name": "Vermoeidheidsdetectie" } },
-{ "model": "listings.CarOption", "fields": { "name": "Vierseizoenenbanden" } },
-{ "model": "listings.CarOption", "fields": { "name": "Voorruitverwarming" } },
-{ "model": "listings.CarOption", "fields": { "name": "Wassysteem voor koplampen" } },
-{ "model": "listings.CarOption", "fields": { "name": "Wifi-hotspot" } },
-{ "model": "listings.CarOption", "fields": { "name": "Wind deflector" } },
-{ "model": "listings.CarOption", "fields": { "name": "Winterpakket" } },
-{ "model": "listings.CarOption", "fields": { "name": "Xenon verlichting" } },
-{ "model": "listings.CarOption", "fields": { "name": "Zij-airbags" } },
-{ "model": "listings.CarOption", "fields": { "name": "Zomerbanden" } }
+[
+  { "model": "listings.CarOption", "fields": { "name": "360° camera" } },
+  { "model": "listings.CarOption", "fields": { "name": "4x4" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Aangepast voor mindervaliden" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Aanraakscherm" } },
+  { "model": "listings.CarOption", "fields": { "name": "ABS" } },
+  { "model": "listings.CarOption", "fields": { "name": "Achter airbag" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Achterbank 1/3 - 2/3" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Adaptieve Cruise Control" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Airbag bestuurder" } },
+  { "model": "listings.CarOption", "fields": { "name": "Airbag passagier" } },
+  { "model": "listings.CarOption", "fields": { "name": "Airconditioning" } },
+  { "model": "listings.CarOption", "fields": { "name": "Alarm" } },
+  { "model": "listings.CarOption", "fields": { "name": "Android Auto" } },
+  { "model": "listings.CarOption", "fields": { "name": "Apple CarPlay" } },
+  { "model": "listings.CarOption", "fields": { "name": "Armsteun" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Automatische klimaatregeling" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Automatische klimaatregeling, 2 zones" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Automatische klimaatregeling, 3 zones" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Automatische klimaatregeling, 4 zones" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Bagageruimte-afscheiding" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Bandenspanningscontrole" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Bi-Xenon koplampen" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Binnenspiegel automatisch dimmend" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Biodiesel conversie" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Bluetooth" } },
+  { "model": "listings.CarOption", "fields": { "name": "Bochtverlichting" } },
+  { "model": "listings.CarOption", "fields": { "name": "Boordcomputer" } },
+  { "model": "listings.CarOption", "fields": { "name": "Botswaarschuwing" } },
+  { "model": "listings.CarOption", "fields": { "name": "CD" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Centrale deurvergrendeling met afstandsbediening" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Centrale vergrendeling" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Cruise Control" } },
+  { "model": "listings.CarOption", "fields": { "name": "Dagrijverlichting" } },
+  { "model": "listings.CarOption", "fields": { "name": "Dakrails" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Digitale radio-ontvangst" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Dodehoekdetectie" } },
+  { "model": "listings.CarOption", "fields": { "name": "E10-geactiveerd" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Electronic Stability Program" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Elektrisch verstelbare buitenspiegels" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Elektrische achterbankverstelling" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Elektrische achterklep" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Elektrische ramen" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Elektrische stoelverstelling" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Elektronische parkeerrem" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Emergency Brake Assist" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Geheel digitaal combi-instrument" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Getinte ramen" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Grootlichtassistent" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Handsfree" } },
+  { "model": "listings.CarOption", "fields": { "name": "Head-up display" } },
+  { "model": "listings.CarOption", "fields": { "name": "Hill-Hold Control" } },
+  { "model": "listings.CarOption", "fields": { "name": "Hoofd airbag" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Inductieladen voor smartphones" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Isofix" } },
+  { "model": "listings.CarOption", "fields": { "name": "Katalysator" } },
+  { "model": "listings.CarOption", "fields": { "name": "Keyless Entry" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Koplamp volledig LED" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Lane Departure Warning Systeem" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Laserlicht" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "LED dagrijverlichting" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "LED verlichting" } },
+  { "model": "listings.CarOption", "fields": { "name": "Lederen bekleding" } },
+  { "model": "listings.CarOption", "fields": { "name": "Lederen stuurwiel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Lendensteun" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Lichtmetalen velgen" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Lichtsensor" } },
+  { "model": "listings.CarOption", "fields": { "name": "Luchtvering" } },
+  { "model": "listings.CarOption", "fields": { "name": "Luifel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Massagestoelen" } },
+  { "model": "listings.CarOption", "fields": { "name": "Mistlampen" } },
+  { "model": "listings.CarOption", "fields": { "name": "MP3" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Multifunctioneel stuurwiel" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Muziekstreaming geïntegreerd" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Navigatiesysteem" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Neerklapbare passagiersstoel" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Night view assist" } },
+  { "model": "listings.CarOption", "fields": { "name": "Noodoproepsysteem" } },
+  { "model": "listings.CarOption", "fields": { "name": "Noodwiel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Open dak" } },
+  { "model": "listings.CarOption", "fields": { "name": "Panorama dak" } },
+  { "model": "listings.CarOption", "fields": { "name": "Parkeerhulp" } },
+  { "model": "listings.CarOption", "fields": { "name": "Parkeerhulp achter" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Parkeerhulp automatisch" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Parkeerhulp met camera" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Parkeerhulp voor" } },
+  { "model": "listings.CarOption", "fields": { "name": "Pechset" } },
+  { "model": "listings.CarOption", "fields": { "name": "Radio" } },
+  { "model": "listings.CarOption", "fields": { "name": "Range extender" } },
+  { "model": "listings.CarOption", "fields": { "name": "Rechtsgestuurd" } },
+  { "model": "listings.CarOption", "fields": { "name": "Regensensor" } },
+  { "model": "listings.CarOption", "fields": { "name": "Reservewiel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Rokerspakket" } },
+  { "model": "listings.CarOption", "fields": { "name": "Schakelflippers" } },
+  { "model": "listings.CarOption", "fields": { "name": "Schuifdeur" } },
+  { "model": "listings.CarOption", "fields": { "name": "Schuifdeur links" } },
+  { "model": "listings.CarOption", "fields": { "name": "Schuifdeur rechts" } },
+  { "model": "listings.CarOption", "fields": { "name": "Sfeerverlichting" } },
+  { "model": "listings.CarOption", "fields": { "name": "Skiluik" } },
+  { "model": "listings.CarOption", "fields": { "name": "Sneeuwbanden" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Snelheidsbeperkingsinstallatie" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Sound system" } },
+  { "model": "listings.CarOption", "fields": { "name": "Spoiler" } },
+  { "model": "listings.CarOption", "fields": { "name": "Sportonderstel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Sportpakket" } },
+  { "model": "listings.CarOption", "fields": { "name": "Sportstoelen" } },
+  { "model": "listings.CarOption", "fields": { "name": "Spraakbediening" } },
+  { "model": "listings.CarOption", "fields": { "name": "Stalen velgen" } },
+  { "model": "listings.CarOption", "fields": { "name": "Standkachel" } },
+  { "model": "listings.CarOption", "fields": { "name": "Start/Stop-systeem" } },
+  { "model": "listings.CarOption", "fields": { "name": "Startonderbreker" } },
+  { "model": "listings.CarOption", "fields": { "name": "Stoelventilatie" } },
+  { "model": "listings.CarOption", "fields": { "name": "Stoelverwarming" } },
+  { "model": "listings.CarOption", "fields": { "name": "Stuurbekrachtiging" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Stuurwielverwarming" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Taxi of huurauto" } },
+  { "model": "listings.CarOption", "fields": { "name": "Televisie" } },
+  { "model": "listings.CarOption", "fields": { "name": "Traction Control" } },
+  { "model": "listings.CarOption", "fields": { "name": "Trekhaak" } },
+  { "model": "listings.CarOption", "fields": { "name": "Tuning" } },
+  { "model": "listings.CarOption", "fields": { "name": "USB" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Verblindingsvrij grootlicht" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Verkeersbordherkenning" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Vermoeidheidsdetectie" }
+  },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Vierseizoenenbanden" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Voorruitverwarming" } },
+  {
+    "model": "listings.CarOption",
+    "fields": { "name": "Wassysteem voor koplampen" }
+  },
+  { "model": "listings.CarOption", "fields": { "name": "Wifi-hotspot" } },
+  { "model": "listings.CarOption", "fields": { "name": "Wind deflector" } },
+  { "model": "listings.CarOption", "fields": { "name": "Winterpakket" } },
+  { "model": "listings.CarOption", "fields": { "name": "Xenon verlichting" } },
+  { "model": "listings.CarOption", "fields": { "name": "Zij-airbags" } },
+  { "model": "listings.CarOption", "fields": { "name": "Zomerbanden" } }
 ]

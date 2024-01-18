@@ -2,7 +2,7 @@
 
 <div class="navbar bg-base-200 fixed top-0 z-20">
   <!-- <div class="flex justify-between items-center top-0 py-2 px-4"> -->
-  <div class="navbar-start">
+  <div class="navbar-start hidden md:flex">
     <a href="{% url 'autotradespot:home' %}" class="max-w-[200px]">
       {% load static %}
 
@@ -12,65 +12,50 @@
            alt="logo" />
     </a>
   </div>
-  <div class="navbar-center">
-    <a class="btn btn-ghost text-xl" href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
-    <a class="btn btn-ghost text-xl"
+
+	<div class="navbar-start flex md:hidden space-x-4">
+		    <a class="btn btn-outline text-xl" href="{% url 'listings:createlistingnew' %}">{% trans "create" %}</a>
+    <a class="btn btn-outline text-xl"
+       href="{% url 'listings:searchlistings' %}">{% trans "find" %}</a>
+	</div>
+
+  <div class="navbar-center hidden md:flex space-x-4">
+    <a class="btn btn-outline text-xl" href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
+    <a class="btn btn-outline text-xl"
        href="{% url 'listings:searchlistings' %}">{% trans "find your car" %}</a>
   </div>
-  <div class="navbar-end space-x-1">
-    <div class="dropdown">
-      <div tabindex="0"
-           role="button"
-           class="btn btn-outline btn-primary m-1 text-primary-content">
-        Theme
-        <svg width="12px"
-             height="12px"
-             class="h-2 w-2 fill-current opacity-60 inline-block"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 2048 2048">
-          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-        </svg>
-      </div>
-      <ul tabindex="0"
-          class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-        <li>
-          <input type="radio"
-                 name="theme-dropdown"
-                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                 aria-label="Light"
-                 value="light" />
-        </li>
-        <li>
-          <input type="radio"
-                 name="theme-dropdown"
-                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                 aria-label="Dark"
-                 value="dark" />
-        </li>
-        <li>
-          <input type="radio"
-                 name="theme-dropdown"
-                 class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                 aria-label="Cupcake"
-                 value="cupcake" />
-        </li>
-      </ul>
-    </div>
-    <a class="btn btn-primary duration-200 text-accent-content"
-       href="{% if request.user.is_authenticated %}{% url 'users:detail' %}{% else %}{% url 'account_login' %}{% endif %}">
-      {% if request.user.is_authenticated %}
-        my profile
-      {% else %}
-        login
-      {% endif %}
-    </a>
-    <a class="btn btn-secondary duration-200 text-secondary-content"
-       href="{% if request.user.is_authenticated %}{% url 'account_logout' %}{% else %}{% url 'account_signup' %}{% endif %}">
-      {% if request.user.is_authenticated %}
-        logout
-      {% else %}
-        register
-      {% endif %}
-    </a>
+
+	  <div class="navbar-center flex md:hidden spaxe-x-4">
+
   </div>
+
+  	<div class="navbar-end space-x-2">
+			<div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-outline btn-accent duration-200 text-accent-content">
+					{% trans 'my Tradespot' %}
+				</div>
+				<ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 gap-2">
+					<li><a href="{% url 'autotradespot:home' %}" >home</a></li> 
+					<li><a href="{% url 'users:detail' %}" class="border border-accent">profile</a></li>
+					<li>
+						<label class="swap swap-rotate place-content-start">
+							<input type="checkbox" class="theme-controller" value="coffee" />
+							<a class="swap-on">lightmode</a>
+							<a class="swap-off">darkmode</a>
+						</label>
+					</li>
+					<div class="divider my-0 h-2">{% trans "language" %}</div>
+					<li>
+						<a hx-post="{% url "set_language" %}" hx-vals='{"language":"en"}' hx-target="body">{% trans "english" %}</a></li> 
+					<li><a hx-post="{% url "set_language" %}" hx-vals='{"language":"nl-nl"}' hx-target="body" >{% trans "dutch" %}</a></li> 
+					<div class="divider my-0 h-2"></div>
+				{% if request.user.is_authenticated %}
+					<li><a href="{% url 'account_logout' %}" class="border border-error">logout</a></li>
+				{% else %}
+					<li><a href="{% url 'account_login' %}" class="border border-success">login</a></li>
+				{% endif %}
+				</ul>
+			</div>
+  	</div>
+	</div>
 </div>

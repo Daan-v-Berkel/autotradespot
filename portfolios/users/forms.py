@@ -2,10 +2,11 @@ from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
-from django.forms import EmailField, EmailInput
+from django.forms import *
 from django.utils.translation import gettext_lazy as _
 
 from portfolios.lease_finder_app.forms import StyledForm, StyledModelForm
+from .models import *
 
 User = get_user_model()
 
@@ -59,3 +60,21 @@ class UserChangeForm(StyledModelForm):
         error_messages = {
             "email": {"unique": _("This email has already been taken.")},
         }
+
+class UserPreferenceForm(StyledModelForm):
+		class Meta:
+				model = UserCustomisation
+				exclude = ("user",)
+				labels = {
+						"marketing_emails": _("recieve marketing emails"),
+						"listing_updates": _("recieve listing updates"),
+						"favorites_updates": _("recieve updates about favourites"),
+						"display_contact_info": _("display contact information publicly")
+				}
+				widgets = {
+						"marketing_emails": CheckboxInput(attrs={"class": "toggle toggle-success"}),
+						"listing_updates": CheckboxInput(attrs={"class": "toggle toggle-success"}),
+						"favorites_updates": CheckboxInput(attrs={"class": "toggle toggle-success"}),
+						"display_contact_info": CheckboxInput(attrs={"class": "toggle toggle-success"})
+				}
+

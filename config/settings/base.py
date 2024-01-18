@@ -77,6 +77,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "django_celery_beat",
     "webpack_loader",
+    "phonenumber_field",
 ]
 
 LOCAL_APPS = [

@@ -10,9 +10,8 @@ from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from portfolios.lease_finder_app import forms, models
 from portfolios.listings import models as ListingModels
-from portfolios.users import forms as user_forms
+from portfolios.users import forms, models
 
 User = get_user_model()
 
@@ -76,9 +75,9 @@ def UserPreferences(request):
 @login_required(login_url="account_login")
 def UserProfile(request):
     saved = None
-    form = user_forms.UserChangeForm(instance=request.user)
+    form = forms.UserChangeForm(instance=request.user)
     if request.method == "POST":
-        form = user_forms.UserChangeForm(request.POST, instance=request.user)
+        form = forms.UserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save(commit=True)
             saved = _("Your profile has been saved succesfully!")
