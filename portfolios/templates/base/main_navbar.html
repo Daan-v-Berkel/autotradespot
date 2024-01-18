@@ -12,50 +12,62 @@
            alt="logo" />
     </a>
   </div>
-
-	<div class="navbar-start flex md:hidden space-x-4">
-		    <a class="btn btn-outline text-xl" href="{% url 'listings:createlistingnew' %}">{% trans "create" %}</a>
+  <div class="navbar-start flex md:hidden space-x-4">
+    <a class="btn btn-outline text-xl"
+       href="{% url 'listings:createlistingnew' %}">{% trans "create" %}</a>
     <a class="btn btn-outline text-xl"
        href="{% url 'listings:searchlistings' %}">{% trans "find" %}</a>
-	</div>
-
+  </div>
   <div class="navbar-center hidden md:flex space-x-4">
-    <a class="btn btn-outline text-xl" href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
+    <a class="btn btn-outline text-xl"
+       href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
     <a class="btn btn-outline text-xl"
        href="{% url 'listings:searchlistings' %}">{% trans "find your car" %}</a>
   </div>
-
-	  <div class="navbar-center flex md:hidden spaxe-x-4">
-
+  <div class="navbar-center flex md:hidden spaxe-x-4"></div>
+  <div class="navbar-end space-x-2">
+    <div class="dropdown dropdown-end">
+      <div tabindex="0"
+           role="button"
+           class="btn btn-outline btn-accent duration-200 text-accent-content">{% trans 'my Tradespot' %}</div>
+      <ul tabindex="0"
+          class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 gap-2">
+        <li>
+          <a href="{% url 'autotradespot:home' %}">home</a>
+        </li>
+        <li>
+          <a href="{% url 'users:detail' %}" class="border border-accent">profile</a>
+        </li>
+        <li>
+          <label class="swap swap-rotate place-content-start">
+            <input type="checkbox" class="theme-controller" value="coffee" />
+            <a class="swap-on">lightmode</a>
+            <a class="swap-off">darkmode</a>
+          </label>
+        </li>
+        <div class="divider my-0 h-2">{% trans "language" %}</div>
+        <li>
+          <a hx-post="{% url "set_language" %}"
+             hx-vals='{"language":"en"}'
+             hx-target="body">{% trans "english" %}</a>
+        </li>
+        <li>
+          <a hx-post="{% url "set_language" %}"
+             hx-vals='{"language":"nl-nl"}'
+             hx-target="body">{% trans "dutch" %}</a>
+        </li>
+        <div class="divider my-0 h-2"></div>
+        {% if request.user.is_authenticated %}
+          <li>
+            <a href="{% url 'account_logout' %}" class="border border-error">logout</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'account_login' %}" class="border border-success">login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
-
-  	<div class="navbar-end space-x-2">
-			<div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-outline btn-accent duration-200 text-accent-content">
-					{% trans 'my Tradespot' %}
-				</div>
-				<ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 gap-2">
-					<li><a href="{% url 'autotradespot:home' %}" >home</a></li> 
-					<li><a href="{% url 'users:detail' %}" class="border border-accent">profile</a></li>
-					<li>
-						<label class="swap swap-rotate place-content-start">
-							<input type="checkbox" class="theme-controller" value="coffee" />
-							<a class="swap-on">lightmode</a>
-							<a class="swap-off">darkmode</a>
-						</label>
-					</li>
-					<div class="divider my-0 h-2">{% trans "language" %}</div>
-					<li>
-						<a hx-post="{% url "set_language" %}" hx-vals='{"language":"en"}' hx-target="body">{% trans "english" %}</a></li> 
-					<li><a hx-post="{% url "set_language" %}" hx-vals='{"language":"nl-nl"}' hx-target="body" >{% trans "dutch" %}</a></li> 
-					<div class="divider my-0 h-2"></div>
-				{% if request.user.is_authenticated %}
-					<li><a href="{% url 'account_logout' %}" class="border border-error">logout</a></li>
-				{% else %}
-					<li><a href="{% url 'account_login' %}" class="border border-success">login</a></li>
-				{% endif %}
-				</ul>
-			</div>
-  	</div>
-	</div>
+</div>
 </div>

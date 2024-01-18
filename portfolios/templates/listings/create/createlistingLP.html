@@ -10,13 +10,9 @@
              name="licenceplate"
              placeholder="AA-00-BB"
              value="{{ licence }}"
-             class="input input-bordered input-sm w-full max-w-xs {% if licence_error %} input-error{% endif %}" />
+             class="input input-bordered input-sm w-full max-w-xs {% if licence_error %}input-error{% endif %}" />
     </label>
-		{% if licence_error %}
-		<p class="text-error">
-			{{licence_error}}
-		</p>
-		{% endif %}
+    {% if licence_error %}<p class="text-error">{{ licence_error }}</p>{% endif %}
     <span class="flex flex-row space-x-2">
       <button class="btn btn-primary btn-wide"
               type="submit"

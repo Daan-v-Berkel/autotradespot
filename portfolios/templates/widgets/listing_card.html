@@ -2,7 +2,8 @@
   <a href="{% url 'listings:viewlisting' listing.pk %}">
     <figure class="object-cover h-72 w-full">
       {% if listing.imagemodel_set.first %}
-        <img src="{{ listing.imagemodel_set.first.image.url }}" alt="{{ listing.title }}" />
+        <img src="{{ listing.imagemodel_set.first.image.url }}"
+             alt="{{ listing.title }}" />
       {% else %}
         {% include 'svg/fallback.html' %}
       {% endif %}

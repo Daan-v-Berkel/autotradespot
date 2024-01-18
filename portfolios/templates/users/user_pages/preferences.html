@@ -25,8 +25,6 @@
            src="{% static 'images/three-dots.svg' %}"
            _="on loadr toggle .hidden" />
     </span>
-    {% if saved %}
-      <span class="rounded-sm text-success" _="on load wait 3s then remove me">{{ saved }}</span>
-    {% endif %}
+    {% if saved %}<span class="rounded-sm text-success" _="on load wait 3s then remove me">{{ saved }}</span>{% endif %}
   </form>
 </div>

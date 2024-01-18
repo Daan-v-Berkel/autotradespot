@@ -3,8 +3,7 @@
 {% block content %}
   {% load i18n %}
 
-  <div class="join flex flex-row my-4 mx-auto min-w-full"
-       role="tablist">
+  <div class="join flex flex-row my-4 mx-auto min-w-full" role="tablist">
     <ul class="join-item steps steps-vertical overflow-x-hidden bg-base-200 max-h-fit border-2 border-base-300 mb-auto md:w-full max-w-fit px-2 md:pr-8"
         _="on htmx:beforeOnLoad take .step-success from .step for event.target">
       <li id="lp_tab"

@@ -1,40 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div role="tablist" class="tabs tabs-bordered tabs-lg">
-  <input type="radio" name="how_it_works_tab" role="tab" class="tab" aria-label="Find a car" checked />
-  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-		  <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-200"> 
-    <div class="stat space-y-4">
-      <h4 class="stat-title underline text-center">Create a Listing</h4>
-      <span class="text-center text-sm align-text-top">Ready to sell your car? Placing an listing on Our Platform is a breeze!
-        Simply sign in, provide the essential details about your car, add some
-        eye-catching photos, set a price, and you're good to go. Our intuitive
-        interface makes the process quick and effortless, ensuring your listing is up
-        and running in no time. Reach potential buyers swiftly and
-      smoothly!</span>
+  <div role="tablist" class="tabs tabs-bordered tabs-lg">
+    <input type="radio"
+           name="how_it_works_tab"
+           role="tab"
+           class="tab"
+           aria-label="Find a car"
+           checked />
+    <div role="tabpanel"
+         class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-200">
+        <div class="stat space-y-4">
+          <h4 class="stat-title underline text-center">Create a Listing</h4>
+          <span class="text-center text-sm align-text-top">Ready to sell your car? Placing an listing on Our Platform is a breeze!
+            Simply sign in, provide the essential details about your car, add some
+            eye-catching photos, set a price, and you're good to go. Our intuitive
+            interface makes the process quick and effortless, ensuring your listing is up
+            and running in no time. Reach potential buyers swiftly and
+          smoothly!</span>
+        </div>
+        <div class="stat space-y-4">
+          <h4 class="stat-title underline text-center">Connect with buyers</h4>
+          <span class="text-center text-sm align-text-top">Excited to hear from potential buyers? Our Platform makes communication
+            secure and convenient. Interested buyers can easily reach out to you
+            through our platform. Update your listng at any time trough your personal profile.
+            Your contact details will only be visible after replying to messages from people interested in your listing.
+          </span>
+        </div>
+        <div class="stat space-y-4">
+          <h4 class="stat-title underline text-center">Your Car, Your Deal!</h4>
+          <span class="text-center text-sm align-text-top">Congratulations! Your car has found its new owner. At Auto TradeSpot,
+            we celebrate your success. The negotiation and deal-making process
+            happens directly between you and the interested buyer, giving you
+            complete control and ensuring a satisfactory trade.
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="stat space-y-4">
-      <h4 class="stat-title underline text-center">Connect with buyers</h4>
-      <span class="text-center text-sm align-text-top">Excited to hear from potential buyers? Our Platform makes communication
-        secure and convenient. Interested buyers can easily reach out to you
-        through our platform. Update your listng at any time trough your personal profile.
-				Your contact details will only be visible after replying to messages from people interested in your listing.
-			</span>
-    </div>
-    <div class="stat space-y-4">
-      <h4 class="stat-title underline text-center">Your Car, Your Deal!</h4>
-      <span class="text-center text-sm align-text-top">Congratulations! Your car has found its new owner. At Auto TradeSpot,
-        we celebrate your success. The negotiation and deal-making process
-        happens directly between you and the interested buyer, giving you
-        complete control and ensuring a satisfactory trade.
-			</span>
-    </div>
+    <input type="radio"
+           name="how_it_works_tab"
+           role="tab"
+           class="tab"
+           aria-label="Buy a car" />
+    <div role="tabpanel"
+         class="tab-content bg-base-100 border-base-300 rounded-box p-6">Tab content 2</div>
   </div>
-	</div>
-
-  <input type="radio" name="how_it_works_tab" role="tab" class="tab" aria-label="Buy a car" />
-  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">Tab content 2</div>
-
-</div>
 {% endblock content %}
