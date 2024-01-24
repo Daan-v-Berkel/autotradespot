@@ -3,6 +3,12 @@ import { themeChange } from 'theme-change';
 themeChange();
 
 /* Project specific Javascript goes here. */
+
+  if (localStorage.length > 0) {
+    var checked = localStorage.getItem("theme");
+    document.getElementById("theme-controller").checked = checked;
+  }
+
 function checkStep(evt) {
   console.log(evt);
   var steps = document.getElementsByClassName('step');

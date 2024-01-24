@@ -24,7 +24,11 @@
           {% endif %}
         {% endif %}
         {% if field.help_text %}<div class="helptext">{{ field.help_text|safe }}</div>{% endif %}
-        {{ errors }}
+        {% if errors %}
+          <div class="label">
+            <div class="label-text-alt text-error text-sm">{{ errors }}</div>
+          </div>
+        {% endif %}
         {{ field }}
       </label>
       {% if field.use_fieldset %}</fieldset>{% endif %}

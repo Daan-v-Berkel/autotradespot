@@ -2,8 +2,7 @@
   <form id="contactform"
         class="flex flex-col space-y-2"
         hx-post="{% url 'listings:contactform' listing_pk %}"
-        hx-target="#contact_form"
-        hx-swap="innerHTML">
+        hx-swap="none">
     {{ form.non_field_errors }}
     <label for="{{ form.from_email.id_for_label }}" class="form-control w-full">
       {{ form.from_email.errors }}
@@ -27,11 +26,4 @@
       {{ form.message }}
     </label>
   </form>
-  <span class="flex flex-row space-x-2">
-    <button form="contactform" class="btn btn-primary btn-wide" type="submit">Send</button>
-    <button class="btn btn-secondary"
-            hx-get="{% url 'listings:contactformcancel' %}"
-            hx-target="#contact"
-            hx-swap="innerHTML">Cancel</button>
-  </span>
 </span>

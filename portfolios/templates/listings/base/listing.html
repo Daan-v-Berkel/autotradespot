@@ -4,14 +4,12 @@
   {% load i18n %}
 
   <main class="">
-    <div class="w-fit min-w-[80%] max-w-[95%] mx-auto my-4 rounded-lg shadow-lg p-4 bg-base-300">
+    <div class="w-full min-w-[80%] max-w-[95%] mx-auto my-4 rounded-lg shadow-lg p-4 bg-base-300">
       {% with images=listing.imagemodel_set.all %}
         <section class="w-full space-y-1">
           <span class="flex justify-between">
-            <p class="text-3xl text-base-content">{{ listing.title }}</p>
-            {% with listing=listing %}
-              {% include 'widgets/favourite_but.html' %}
-            {% endwith %}
+            <p class="text-3xl text-base-content">{{ listing.cardetails.full_make_name }}</p>
+            {% include 'widgets/favourite_but.html' %}
           </span>
           <div class="flex space-x-4">
             <span class="text-sm text-base-content">{{ listing.viewcount }}x {% translate 'viewed' %}</span>
@@ -20,7 +18,7 @@
           </div>
         </section>
         <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-          <section class="space-y-4 flex flex-col">
+          <section class="space-y-4 flex flex-col max-w-2xl">
             <div id="mycarousel"
                  class="carousel carousel-center rounded-box max-w-2xl w-full p-4 space-x-4 bg-base-100">
               {% for image in images %}
@@ -69,45 +67,27 @@
             </div>
           </section>
         </section>
-        <section class="w-full md:w-2/5 text-base-content">
-          {% with owner=listing.owner %}
-            {% if owner.give_email %}<p>{{ owner.give_email }}</p>{% endif %}
-            {% if owner.full_adress %}<p>{{ owner.full_adress }}</p>{% endif %}
-            {% if owner.give_phone %}<p>{{ owner.give_phone }}</p>{% endif %}
-            {% if owner.full_name %}<p>{{ owner.full_name }}</p>{% endif %}
-          {% endwith %}
-          {% with details=listing.cardetails %}
-            <p>Make: {{ details.make }}</p>
-            <p>Model: {{ details.model }}</p>
-            <p>Fueltype: {{ details.get_fuel_type_display }}</p>
-            <p>Transmisson: {{ details.get_transmission_display }}</p>
-          {% endwith %}
-          this listing is {{ listing.status_name }} and
-          complete?: {{ listing.complete_for_posting.0 }}
-          <section id="contact" class="w-full">
-            {% include 'listings/contact/contact_btn.html' %}
+        <div class="flex flex-col gap-4 w-full md:w-2/5">
+          <section class="w-full text-base-content stats stats-vertical">
+            {% for detail in listing.cardetails.full_details %}
+              <div class="stat">
+                <div class="stat-title">{{ detail.0 }}</div>
+                <div class="stat-value text-3xl">{{ detail.1 }}</div>
+              </div>
+            {% endfor %}
           </section>
-        </section>
+          <section id="contact" class="w-full">
+            <button id="contact_btn"
+                    class="btn btn-primary btn-block"
+                    hx-get="{% url 'listings:contactform' listing.pk %}"
+                    hx-target="#contact_form"
+                    hx-swap="outerHTML"
+                    onclick="contact_modal.showModal()">{% translate 'Contact provider' %}</button>
+          </section>
+        </div>
       </div>
       {% if request.user == listing.owner %}
-        <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <h3 class="font-bold text-lg">Are you sure?</h3>
-            <p class="py-4">
-              You are about to delete this listing, are you sure you wish to
-              proceed?
-            </p>
-            <div class="modal-action">
-              <form method="dialog">
-                <button class="btn btn-primary">Cancel</button>
-                <button class="btn btn-error"
-                        hx-delete="{% url 'listings:modify-listing' listing.pk %}"
-                        hx-target="body">Delete listing</button>
-              </form>
-            </div>
-          </div>
-        </dialog>
-        <div class="divider divider-base-content">Provider actions</div>
+        <div class="divider divider-base-content">{% trans "Provider actions" %}</div>
         <section class="flex flex-row justify-around">
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
@@ -131,9 +111,9 @@
                      hx-swap="none" />
               <span class="label-text">
                 {% if listing.status == listing.Status.ACTIVE %}
-                  Deactivate
+                  {% trans "Deactivate" %}
                 {% else %}
-                  Activate
+                  {% trans "Activate" %}
                 {% endif %}
               </span>
             </label>
@@ -141,30 +121,63 @@
         </section>
       {% endif %}
     {% endwith %}
-    <div class="divider divider-base-content">Listing details</div>
+    <div class="divider divider-base-content">{% trans "Listing details" %}</div>
     <div class="w-full justify-around join join-vertical rounded-box">
       <div class="collapse collapse-arrow bg-base-200 join-item">
         <input type="checkbox" name="my-accordion-1" checked="checked" />
-        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
+        <div class="collapse-title text-xl font-medium text-base-content">{{ listing.title }}</div>
         <div class="collapse-content">
-          <p class="text-base-content">hello</p>
+          <p class="text-base-content">
+            <span>{{ listing.description }}</span>
+          </p>
         </div>
       </div>
       <div class="collapse collapse-arrow bg-base-200 join-item">
-        <input type="checkbox" name="my-accordion-1" />
-        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
+        <input type="checkbox" name="my-accordion-1" checked="checked" />
+        <div class="collapse-title text-xl font-medium text-base-content">{% trans "Options" %}</div>
         <div class="collapse-content">
-          <p class="text-base-content">hello</p>
-        </div>
-      </div>
-      <div class="collapse collapse-arrow bg-base-200 join-item">
-        <input type="checkbox" name="my-accordion-1" />
-        <div class="collapse-title text-xl font-medium text-base-content">Click to open this one and close others</div>
-        <div class="collapse-content">
-          <p class="text-base-content">hello</p>
+          <p class="text-base-content">
+            {% for option in listing.cardetails.options_set %}<span>{{ option }}</span>{% endfor %}
+          </p>
         </div>
       </div>
     </div>
   </div>
 </main>
 {% endblock content %}
+{% block modal %}
+  <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">{% trans "Are you sure?" %}</h3>
+      <p class="py-4">
+        {% trans "You are about to delete this listing, are you sure you wish to
+        proceed?" %}
+      </p>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-primary">{% trans "Cancel" %}</button>
+          <button class="btn btn-error"
+                  hx-post="{% url 'listings:modify-listing' listing.pk 'delete' %}"
+                  hx-target="body">{% trans "Delete listing" %}</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="contact_modal" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">{% trans "Contact provider" %}</h3>
+      <span id="contact_form" class="flex flex-col space-y-2"></span>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-primary btn-wide"
+                  hx-post="{% url 'listings:contactform' listing.pk %}"
+                  hx-include="#contactform"
+                  hx-target="#contact_btn"
+                  hx-swap="innerHTML"
+                  _="on click js document.getElementById('contact_modal').close() end">{% trans "Send" %}</button>
+          <button class="btn btn-secondary">{% trans "Cancel" %}</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+{% endblock modal %}
