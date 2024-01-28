@@ -1,4 +1,4 @@
-<div class="card card-compact w-96 bg-base-100 shadow-xl hover:scale-105 card-bordered transition-all ease-linear">
+<div class="card card-compact w-96 bg-base-100 shadow-xl hover:scale-105 card-bordered transition-all ease-linear overflow-hidden">
   <a href="{% url 'listings:viewlisting' listing.pk %}">
     <figure class="object-cover h-72 w-full">
       {% if listing.imagemodel_set.first %}

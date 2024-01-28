@@ -1,37 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="flex items-center p-4 flex-col">
-    {% load static %}
+{% load i18n %}
+<div class="flex flex-col gap-2 items-center"
+				hx-post="{% url "listings:searchfilters" %}"
+				hx-trigger="change, load"
+				hx-from=".select, .tab, .input"
+				hx-swap="innerHTML"
+				hx-target="#results"
+				hx-queue="all"
+				hx-include=".select, .tab, .input"
+				hx-indicator=".htmx-indicator">
 
-    <span class="htmx-indicator flex flex-row space-x-2 p-2">
-      <img src="{% static 'images/spinning-circles.svg' %}"
-           width="16"
-           height="16" />
-      Searching...
-    </span>
-    <section>
-      <form id="filtersform"
-            class="flex space-x-2"
-            hx-post="{% url 'listings:searchlistings' %}"
-            hx-target="#results"
-            hx-swap="innerHTML"
-            hx-indicator=".htmx-indicator"
-            _="on submit toggle @disabled until htmx:afterOnLoad">
-        <button type="submit" class="btn btn-primary">GAAA</button>
-      </section>
-      <section id="filters" class="flex gap-4 flex-col items-center w-full">
-        <div id="activefilters" class="flex flex-col w-4/5 gap-2">
-          {{ formset.management_form }}
-          {{ formset.as_div }}
-          <!-- {% include 'listings/search/filter.html' %}
-<button class="hover:decoration-icon-green py-2 px-4 flex flex-col items-center group" _="on click fetch {% url 'listings:filters' %} with method:'GET' put the result before me"><span class="ti-plus no-underline text-xl group-hover:text-icon-green"></span><span class="underline underline-offset-2 group-hover:decoration-icon-green"> Add filter</span></button> -->
-        </div>
-        <div id="detailedfilters" class="border-t-2 pt-4 w-full flex gap-4">{{ cardetail_form }}</div>
-      </section>
-    </form>
-    <section id="results" class="flex my-6 flex-wrap justify-start gap-4 w-full">
-      {% include 'base/listing_section.html' %}
-    </section>
+				{% load static %}
+	<div role="tablist" class="tabs tabs-bordered font-bold w-full">
+		<input type="radio" value="S" name="listing_type" role="tab" checked class="tab text-2xl" aria-label="{% trans "Sale" %}">
+		<div class="tab-content">
+			<section id="sale_filters" role="tab-panel"
+				class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
+				{% comment %} SALE {% endcomment %}
+				{{ salepricefilter.as_div }}
+				{{ mileagesalefilter.as_div }}
+			</section>
+		</div>
+		<input type="radio" value="L" name="listing_type" role="tab" class="tab text-2xl" aria-label="{% trans "Lease" %}">
+		<div class="tab-content">
+			<section id="lease_filters" role="tab-panel"
+			class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
+			{% comment %} LEASE {% endcomment %}
+			{{ leasetypefilter.as_div }}
+			{{ leasepricefilter.as_div }}
+			{{ mileageleasefilter.as_div }}
+			{{ leaseperiodfilter.as_div }}
+		</section>
+	</div>
+</div>
+<section
+class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center">
+{% comment %} GENERAL {% endcomment %}
+		{{ makefilter.as_div }}
+		{{ modelfilter.as_div }}
+		</section>
+			<span class="htmx-indicator hidden">
+				<img src="{% static 'images/spinning-circles.svg' %}"
+						 width="16"
+						 height="16" />
+				Searching...
+			</span>
+      {% include './listing_section_searchresults.html' %}
   </div>
 {% endblock content %}

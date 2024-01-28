@@ -17,7 +17,7 @@ class StyledModelForm(ModelForm):
         for field in self.fields.values():
             if isinstance(field, (forms.CheckboxSelectMultiple)):
                 field.widget.attrs.update({"class": "checkbox checkbox-accent"})
-            elif isinstance(field, (forms.TypedChoiceField, forms.ModelChoiceField)):
+            elif isinstance(field, (forms.TypedChoiceField, forms.ModelChoiceField, forms.ChoiceField)) or isinstance(field.widget, forms.Select):
                 field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
             elif isinstance(field.widget, (forms.Textarea)):
                 field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})
@@ -34,7 +34,7 @@ class StyledForm(forms.Form):
         for field in self.fields.values():
             if isinstance(field.widget, (forms.CheckboxSelectMultiple)):
                 field.widget.attrs.update({"class": "checkbox checkbox-accent"})
-            elif isinstance(field, (forms.TypedChoiceField, forms.ChoiceField)):
+            elif isinstance(field, (forms.TypedChoiceField, forms.ChoiceField, forms.ModelChoiceField)) or isinstance(field.widget, forms.Select):
                 field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
             elif isinstance(field.widget, (forms.Textarea)):
                 field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})

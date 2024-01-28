@@ -36,17 +36,17 @@
           <a href="{% url 'autotradespot:home' %}">home</a>
         </li>
         <li>
-          <a href="{% url 'users:detail' %}" class="border border-accent">profile</a>
+          <a href="{% url 'users:detail' %}" class="border border-accent">{% trans "profile" %}</a>
         </li>
         <li>
           <label class="flex flex-row justify-between">
-            <span class="label-text">light</span>
+            <span class="label-text">{% trans "light" %}</span>
             <input id="theme-controller"
                    type="checkbox"
                    class="toggle theme-controller"
                    data-toggle-theme="coffee"
                    {% if request.localstorage.theme %}checked{% endif %} />
-            <span class="label-text">dark</span>
+            <span class="label-text">{% trans "dark" %}</span>
           </label>
         </li>
         <div class="divider my-0 h-2">{% trans "language" %}</div>
@@ -63,11 +63,11 @@
         <div class="divider my-0 h-2"></div>
         {% if request.user.is_authenticated %}
           <li>
-            <a href="{% url 'account_logout' %}" class="border border-error">logout</a>
+            <a href="{% url 'account_logout' %}" class="border border-error">{% trans "logout" %}</a>
           </li>
         {% else %}
           <li>
-            <a href="{% url 'account_login' %}" class="border border-success">login</a>
+            <a href="{% url 'account_login' %}" class="border border-success">{% trans "login" %}</a>
           </li>
         {% endif %}
       </ul>

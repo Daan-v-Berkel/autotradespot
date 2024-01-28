@@ -9,7 +9,7 @@ module.exports = {
     'textarea',
     'textarea-bordered',
     'select',
-    'select-vordered',
+    'select-bordered',
     'select-sm',
   ],
   theme: {
