@@ -47,14 +47,6 @@
           hx-swap="innerHTML">
         <span class="hidden md:block text-sm text-base-content">{% translate "Images" %}</span>
       </li>
-      <li id="preview_tab"
-          role="tab"
-          class="step cursor-pointer"
-          hx-target="#tabcontent"
-          hx-get="{% url 'listings:listingpreview' %}"
-          hx-swap="innerHTML">
-        <span class="hidden md:block text-sm text-base-content">{% translate "Preview" %}</span>
-      </li>
     </ul>
     <div class="join-item flex flex-col justify-between w-full bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300"
          hx-target="#tabcontent"

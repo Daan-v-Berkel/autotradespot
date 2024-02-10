@@ -1,3 +1,4 @@
+{% load i18n %}
 <span id="formthing">
   <form id="details"
         class="flex flex-col space-y-4"
@@ -7,12 +8,12 @@
     {% csrf_token %} {{ form4.as_div }}
     <div class="collapse collapse-arrow border border-base-300 bg-base-100">
       <input type="checkbox" checked />
-      <div class="collapse-title text-xl font-medium flef flex-row content-between">Options</div>
+      <div class="collapse-title text-xl font-medium flef flex-row content-between">{% trans "Options" %}</div>
       <div class="collapse-content max-h-64 overflow-auto">{{ caroptions_form.as_p }}</div>
     </div>
     <button class="btn btn-primary btn-wide"
             form="details"
             type="submit"
-            _="on click add .step-success to #detail_tab">continue</button>
+            _="on click add .step-success to #detail_tab">{% trans "continue" %}</button>
   </form>
 </span>

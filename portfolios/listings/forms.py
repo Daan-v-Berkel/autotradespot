@@ -17,6 +17,11 @@ class ListingForm(StyledModelForm):
             "description",
             "type",
         )
+        labels = {
+            "title", _("title"),
+            "description", _("description"),
+            "type", _("type"),
+        }
         widgets = {
             "type": forms.Select(
                 attrs={

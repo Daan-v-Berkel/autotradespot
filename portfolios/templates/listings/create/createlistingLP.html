@@ -1,10 +1,10 @@
 <span id="formthing">
   {% load static %}
-
+  {% load i18n %}
   <form class="flex flex-col space-y-4">
     <label class="form-control w-full max-w-xs">
       <div class="label">
-        <span class="label-text text-base-content">Licenceplate number</span>
+        <span class="label-text text-base-content">{% trans "Licenceplate number" %}</span>
       </div>
       <input type="text"
              name="licenceplate"
@@ -21,7 +21,7 @@
               hx-target="#formthing"
               hx-swap="outerHTML"
               _="on click toggle .hidden on #loading then add .step-success to #lp_tab">
-        continue
+        {% trans "continue" %}
         <span id="loading" class="hidden" _="on loadr toggle .hidden">{% include 'svg/three-dots.html' %}</span>
       </button>
     </span>

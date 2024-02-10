@@ -1,12 +1,13 @@
+{% load i18n %}
 <div class="flex flex-row flex-wrap gap-4">
   {% for listing in listings %}
     {% include 'widgets/listing_card.html' %}
   {% empty %}
     <span class="flex flex-col gap-2">
-      <div>Looks like you have no favourites yet</div>
+      <div>{% trans "Looks like you have no favourites yet" %}</div>
       <button class="btn btn-primary"
               hx-get="{% url 'listings:searchlistings' %}"
-              hx-target="body">Find your car</button>
+              hx-target="body">{% trans "Find your car" %}</button>
     </span>
   {% endfor %}
 </div>

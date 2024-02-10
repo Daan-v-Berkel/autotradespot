@@ -1,3 +1,4 @@
+{% load i18n %}
 <span id="formthing">
   {% if listing and listing.imagemodel_set.all.0 %}
     <section id="previewuploaded" class="flex flex-row flex-wrap gap-4">
@@ -19,6 +20,6 @@
     {% csrf_token %} {{ imageform.image.errors }} {{ imageform.image }}
     <button class="btn btn-primary btn-wide"
             type="submit"
-            _="on click add .step-success to #image_tab">submit</button>
+            _="on click add .step-success to #image_tab">{% trans "finalize" %}</button>
   </form>
 </span>

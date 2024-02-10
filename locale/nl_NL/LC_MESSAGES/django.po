@@ -6,16 +6,17 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-17 23:39+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2024-02-10 04:12+0100\n"
+"PO-Revision-Date: 2024-02-09 22:19-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: config/settings/base.py:32
 msgid "English"
@@ -25,189 +26,296 @@ msgstr "Engels"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: portfolios/lease_finder_app/cardata .py:6 .py:100
+#: portfolios/lease_finder_app/forms.py:66
+msgid "username or email"
+msgstr "gebruikersnaam of email"
+
+#: portfolios/lease_finder_app/managers.py:16
+msgid "The Email must be set"
+msgstr "Er moet een email ingesteld zijn"
+
+#: portfolios/lease_finder_app/managers.py:32
+msgid "Superuser must have is_staff=True."
+msgstr "Superuser moet is_staff=True hebben."
+
+#: portfolios/lease_finder_app/managers.py:34
+msgid "Superuser must have is_superuser=True."
+msgstr "Superuser moet is_superuser=True hebben."
+
 #: portfolios/listings/cardata.py:6 portfolios/listings/cardata.py:100
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: portfolios/lease_finder_app/forms.py:66
-msgid "username or email"
-msgstr ""
+#: portfolios/listings/filters.py:13 portfolios/listings/filters.py:31
+#: portfolios/listings/filters.py:38 portfolios/listings/filters.py:65
+msgid "Any"
+msgstr "Alle"
 
-#: portfolios/lease_finder_app/managers.py:16
-msgid "The Email must be set"
-msgstr ""
+#: portfolios/listings/filters.py:73
+msgid "min €"
+msgstr "min €"
 
-#: portfolios/lease_finder_app/managers.py:32
-msgid "Superuser must have is_staff=True."
-msgstr ""
+#: portfolios/listings/filters.py:74
+msgid "max €"
+msgstr "max €"
 
-#: portfolios/lease_finder_app/managers.py:34
-msgid "Superuser must have is_superuser=True."
-msgstr ""
+#: portfolios/listings/filters.py:81
+msgid "min € per month"
+msgstr "min € per maand"
 
-#: portfolios/listings/forms.py:61
+#: portfolios/listings/filters.py:82
+msgid "max € per month"
+msgstr "max € per maand"
+
+#: portfolios/listings/filters.py:86
+msgid "max driven kilometers"
+msgstr "max gereden kilometers"
+
+#: portfolios/listings/filters.py:104
+msgid "min annual kilometers"
+msgstr "min jaarlijkse kilimeters"
+
+#: portfolios/listings/filters.py:110
+msgid "any period"
+msgstr "elke periode"
+
+#: portfolios/listings/filters.py:111
+msgid "1 - 12 months"
+msgstr "1 - 12 maanden"
+
+#: portfolios/listings/filters.py:112
+msgid "12 - 24 months"
+msgstr "12- 24 maanden"
+
+#: portfolios/listings/filters.py:113
+msgid "24 - 36 months"
+msgstr "24 - 36 maanden"
+
+#: portfolios/listings/filters.py:114
+msgid "36 - 48 months"
+msgstr "36 - 48 maanden"
+
+#: portfolios/listings/filters.py:115
+msgid "48 - 60 months"
+msgstr "48 - 60 maanden"
+
+#: portfolios/listings/filters.py:119
+msgid "lease duration"
+msgstr "lengte leasecontract"
+
+#: portfolios/listings/forms.py:66
+msgid "contract end date"
+msgstr "einddatum leasecontract"
+
+#: portfolios/listings/forms.py:69
 msgid "Price/M"
-msgstr ""
+msgstr "Prijs/M"
 
-#: portfolios/listings/forms.py:138
+#: portfolios/listings/forms.py:128
 msgid "extra variant details, e.g. PHEV or GT"
-msgstr ""
+msgstr "extra variant details, bv. PHEV of GT"
 
-#: portfolios/listings/models.py:48
+#: portfolios/listings/models.py:76
 msgid "Inactive"
-msgstr ""
+msgstr "Inactief"
 
-#: portfolios/listings/models.py:49
+#: portfolios/listings/models.py:77
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
-#: portfolios/listings/models.py:50
+#: portfolios/listings/models.py:78
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
-#: portfolios/listings/models.py:51
+#: portfolios/listings/models.py:79
 msgid "Reserved"
-msgstr ""
+msgstr "Gereserveerd"
 
-#: portfolios/listings/models.py:52
+#: portfolios/listings/models.py:80
 msgid "Sold"
-msgstr ""
+msgstr "Verkocht"
 
-#: portfolios/listings/models.py:53
+#: portfolios/listings/models.py:81
 msgid "Removed"
-msgstr ""
+msgstr "Verwijderd"
 
-#: portfolios/listings/models.py:54
+#: portfolios/listings/models.py:82
 msgid "Reported"
-msgstr ""
+msgstr "Gerapporteerd"
 
-#: portfolios/listings/models.py:66
+#: portfolios/listings/models.py:83
+msgid "under review"
+msgstr "onder beoordeling"
+
+#: portfolios/listings/models.py:95
 #, python-brace-format
 msgid ""
 "this listing hs been {self.status_name} and cannot be changed at this time."
 msgstr ""
+"deze advertentie is {self.status_name} en kan op dit moment niet gewijzigd "
+"worden."
 
-#: portfolios/listings/models.py:68
+#: portfolios/listings/models.py:97
 msgid ""
 "this listing has no pricing details, these are needed before being able to "
 "activate the listing."
 msgstr ""
+"deze advertentie heeft geen prijsdetails, deze zijn benodigd om de "
+"advertentie te kunnen activeren."
 
-#: portfolios/listings/models.py:70
+#: portfolios/listings/models.py:99
 msgid ""
 "this listing has either no images, or the images do not meet the minimum "
 "requirements"
 msgstr ""
+"deze advertentie heeft geen afbeeldingen, of de afbeeldingen voldoen niet "
+"aan de eisen"
 
-#: portfolios/listings/models.py:71
+#: portfolios/listings/models.py:100
 msgid "this listing has insufficient details about the listed object"
 msgstr ""
+"deze advertentie heeft niet voldoende details over het aangeboden object"
 
-#: portfolios/listings/models.py:90
+#: portfolios/listings/models.py:119
+#: portfolios/templates/listings/search/searcher.html:17
 msgid "Sale"
-msgstr ""
+msgstr "Verkoop"
 
-#: portfolios/listings/models.py:91
+#: portfolios/listings/models.py:120
+#: portfolios/templates/listings/search/searcher.html:27
 msgid "Lease"
-msgstr ""
+msgstr "Lease"
 
-#: portfolios/listings/models.py:171
+#: portfolios/listings/models.py:138
+msgid "for sale"
+msgstr "te koop"
+
+#: portfolios/listings/models.py:138
+msgid "lease"
+msgstr "lease"
+
+#: portfolios/listings/models.py:233
 msgid "Automatic"
-msgstr ""
+msgstr "Automatisch"
 
-#: portfolios/listings/models.py:172
+#: portfolios/listings/models.py:234
 msgid "Manual"
-msgstr ""
+msgstr "Handmatig"
 
-#: portfolios/listings/models.py:173
+#: portfolios/listings/models.py:235
 msgid "Half/Semi-automatic"
-msgstr ""
+msgstr "Half/semi-automatisch"
 
-#: portfolios/listings/models.py:176
+#: portfolios/listings/models.py:238
 msgid "Benzine"
-msgstr ""
+msgstr "Benzine"
 
-#: portfolios/listings/models.py:177
+#: portfolios/listings/models.py:239
 msgid "Diesel"
-msgstr ""
+msgstr "Diesel"
 
-#: portfolios/listings/models.py:178
+#: portfolios/listings/models.py:240
 msgid "LPG"
-msgstr ""
+msgstr "LPG"
 
-#: portfolios/listings/models.py:179
+#: portfolios/listings/models.py:241
 msgid "CNG"
-msgstr ""
+msgstr "CNG"
 
-#: portfolios/listings/models.py:180
+#: portfolios/listings/models.py:242
 msgid "Elektro/Benzine"
-msgstr ""
+msgstr "Electro/Benzine"
 
-#: portfolios/listings/models.py:181
+#: portfolios/listings/models.py:243
 msgid "Elektro/Diesel"
-msgstr ""
+msgstr "Electro/DIesel"
 
-#: portfolios/listings/models.py:182
+#: portfolios/listings/models.py:244
 msgid "Ethanol"
-msgstr ""
+msgstr "Ethanol"
 
-#: portfolios/listings/models.py:183
+#: portfolios/listings/models.py:245
 msgid "Elektrisch"
-msgstr ""
+msgstr "Elektrisch"
 
-#: portfolios/listings/models.py:184
+#: portfolios/listings/models.py:246
 msgid "Waterstof"
-msgstr ""
+msgstr "Waterstof"
 
-#: portfolios/listings/models.py:185
+#: portfolios/listings/models.py:247
 msgid "Overig"
-msgstr ""
+msgstr "Overig"
 
-#: portfolios/listings/models.py:211
+#: portfolios/listings/models.py:283
+msgid "mileage"
+msgstr "kilometerstand"
+
+#: portfolios/listings/models.py:285
+msgid "max km/year"
+msgstr "max km/jaar"
+
+#: portfolios/listings/models.py:287
+msgid "fuel"
+msgstr "brandstof"
+
+#: portfolios/listings/models.py:288
+msgid "transmission"
+msgstr "transmissie"
+
+#: portfolios/listings/models.py:289
+msgid "manufacture year"
+msgstr "bouwjaar"
+
+#: portfolios/listings/models.py:291
+msgid "price"
+msgstr "prijs"
+
+#: portfolios/listings/models.py:297
 msgid "Private"
-msgstr ""
+msgstr "Privé"
 
-#: portfolios/listings/models.py:212
+#: portfolios/listings/models.py:298
 msgid "Operational"
-msgstr ""
+msgstr "Operational"
 
-#: portfolios/listings/models.py:213
+#: portfolios/listings/models.py:299
 msgid "Netto Operational"
-msgstr ""
+msgstr "Netto Operational"
 
-#: portfolios/listings/models.py:214
+#: portfolios/listings/models.py:300
 msgid "Financial"
-msgstr ""
+msgstr "Financial"
 
-#: portfolios/listings/models.py:215
+#: portfolios/listings/models.py:301
 msgid "Short"
-msgstr ""
+msgstr "Short"
 
-#: portfolios/listings/models.py:229
+#: portfolios/listings/models.py:331
 msgid "Fixed price"
-msgstr ""
+msgstr "Vaste prijs"
 
-#: portfolios/listings/models.py:230
+#: portfolios/listings/models.py:332
 msgid "Negotiable"
-msgstr ""
+msgstr "Onderhandelbaar"
 
-#: portfolios/listings/models.py:231
+#: portfolios/listings/models.py:333
 msgid "Open for bidding"
-msgstr ""
+msgstr "Bieden"
 
-#: portfolios/listings/views.py:115
+#: portfolios/listings/views.py:99
 #, python-brace-format
 msgid ""
 "No data has been found for licenceplate '{licenceplate}'.\n"
 "please make sure this licenceplate you have given is correct"
 msgstr ""
+"Geen data gevonden voor kenteken’: {licenceplate}’.\n"
+"controleer a.u.b. of het ingevoerde kenteken klopt"
 
-#: portfolios/listings/views.py:319
+#: portfolios/listings/views.py:298
 msgid "Interest in your listing"
-msgstr ""
+msgstr "Interesse in uw advertentie"
 
-#: portfolios/listings/views.py:321
+#: portfolios/listings/views.py:300
 #, python-brace-format
 msgid ""
 "Hi there,\n"
@@ -217,78 +325,120 @@ msgid ""
 "\n"
 "With regards, {request.user.name}"
 msgstr ""
+"Hoi,\n"
+"\n"
+"IIk heb interesse in jouw advertentie Auto Tradespot!\n"
+"Neem alsjeblieft contact met me op via dit emailadres.\n"
+"\n"
+"Met vriendelijke groet, {request.user.name}"
 
-#: portfolios/listings/views.py:334
+#: portfolios/listings/views.py:310
 msgid ""
 "Thank you for your interest, the provider of this listing will contact you "
 "soon!"
 msgstr ""
+"Bedankt voor uw interesse, de aanbieder van deze advertentie neemt zo snel "
+"mogelijk contact met je op!"
+
+#: portfolios/templates/403.html:4 portfolios/templates/403.html:7
+#: portfolios/templates/403_csrf.html:4 portfolios/templates/403_csrf.html:7
+msgid "Forbidden"
+msgstr "Verboden"
+
+#: portfolios/templates/403.html:12 portfolios/templates/403_csrf.html:12
+msgid "You're not allowed to access this page."
+msgstr "U heeft geen toegang tot deze pagina."
+
+#: portfolios/templates/404.html:4 portfolios/templates/404.html:7
+msgid "Page not found"
+msgstr "Pagina niet gevonden"
+
+#: portfolios/templates/404.html:12
+msgid "This is not the page you were looking for."
+msgstr "Dit is niet de pagina die je zocht."
+
+#: portfolios/templates/500.html:4
+msgid "Server Error"
+msgstr "Server fout"
+
+#: portfolios/templates/500.html:8
+msgid "Looks like something went wrong!"
+msgstr "Het lijkt erop dat er iets fout gegaan is!"
+
+#: portfolios/templates/500.html:10
+msgid ""
+"We track these errors automatically, but if the problem persists feel free "
+"to contact us. In the meantime, try refreshing."
+msgstr ""
+"We volgen deze fouten automatisch, maar als het probleem blijft bestaan, "
+"voel je dan vrij om contact met ons op te nemen. Probeer ondertussen eens te "
+"verversen."
 
 #: portfolios/templates/account/account_inactive.html:6
 #: portfolios/templates/account/account_inactive.html:9
 msgid "Account Inactive"
-msgstr ""
+msgstr "Account Inactief"
 
 #: portfolios/templates/account/account_inactive.html:10
 msgid "This account is inactive."
-msgstr ""
+msgstr "Dit account is inactief."
 
 #: portfolios/templates/account/email.html:7
 msgid "Account"
-msgstr ""
+msgstr "Account"
 
 #: portfolios/templates/account/email.html:10
 msgid "E-mail Addresses"
-msgstr ""
+msgstr "Emailadressen"
 
 #: portfolios/templates/account/email.html:12
 msgid "The following e-mail addresses are associated with your account:"
-msgstr ""
+msgstr "De volgende emailadressen zijn verbonden met je account:"
 
 #: portfolios/templates/account/email.html:27
 msgid "Verified"
-msgstr ""
+msgstr "Geverifieerd"
 
 #: portfolios/templates/account/email.html:29
 msgid "Unverified"
-msgstr ""
+msgstr "Ongeverifieerd"
 
 #: portfolios/templates/account/email.html:32
 msgid "Primary"
-msgstr ""
+msgstr "Primair"
 
 #: portfolios/templates/account/email.html:40
 msgid "Make Primary"
-msgstr ""
+msgstr "maak primair"
 
 #: portfolios/templates/account/email.html:43
 msgid "Re-send Verification"
-msgstr ""
+msgstr "Verificatie nogmaals verzenden"
 
 #: portfolios/templates/account/email.html:46
 msgid "Remove"
-msgstr ""
+msgstr "Verwijder"
 
 #: portfolios/templates/account/email.html:52
 msgid "Warning:"
-msgstr ""
+msgstr "Waarschuwing:"
 
 #: portfolios/templates/account/email.html:57
 msgid "Add E-mail Address"
-msgstr ""
+msgstr "voeg e-mailadres toe"
 
 #: portfolios/templates/account/email.html:60
 msgid "Add E-mail"
-msgstr ""
+msgstr "voeg e-mail toe"
 
 #: portfolios/templates/account/email.html:68
 msgid "Do you really want to remove the selected e-mail address?"
-msgstr ""
+msgstr "Weet je zeker dat je het geselecteerde e-mailadres wil verwijderen?"
 
 #: portfolios/templates/account/email_confirm.html:7
 #: portfolios/templates/account/email_confirm.html:10
 msgid "Confirm E-mail Address"
-msgstr ""
+msgstr "Bevestig e-mailadres"
 
 #: portfolios/templates/account/email_confirm.html:14
 #, python-format
@@ -298,10 +448,13 @@ msgid ""
 "address\n"
 "  for user %(user_display)s."
 msgstr ""
+"Bevestig alsjeblieft dat <a href=“mailto:%(email)s”>%(email)s</a> een e-"
+"mailadres is\n"
+"  voor gebruiker: %(user_display)s."
 
 #: portfolios/templates/account/email_confirm.html:21
 msgid "Confirm"
-msgstr ""
+msgstr "Bevestig"
 
 #: portfolios/templates/account/email_confirm.html:26
 #, python-format
@@ -311,12 +464,16 @@ msgid ""
 "  <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>.\n"
 "\t"
 msgstr ""
+"Deze e-mail bevestigingslink is verlopen of ongeldig.\n"
+"  <a href=“%(email_url)s”>maak alsjeblieft een nieuwe bevestigingslink aan</"
+"a>.\n"
+"\t"
 
 #: portfolios/templates/account/login.html:8
 #: portfolios/templates/account/login.html:11
 #: portfolios/templates/account/login.html:54
 msgid "Sign In"
-msgstr ""
+msgstr "Inloggen"
 
 #: portfolios/templates/account/login.html:18
 #, python-format
@@ -324,10 +481,12 @@ msgid ""
 "Or, <a class=\"link link-hover link-info\" href=\"%(signup_url)s\">sign up</"
 "a> for a %(site_name)s account and sign in below:"
 msgstr ""
+"Of, <a class=“link link-hover link-info” href=“%(signup_url)s”>meld je aan</"
+"a> voor een %(site_name)s account en log hieronder in:"
 
 #: portfolios/templates/account/login.html:29
 msgid "or"
-msgstr ""
+msgstr "of"
 
 #: portfolios/templates/account/login.html:35
 #, python-format
@@ -335,46 +494,50 @@ msgid ""
 "If you have not created an account yet, then please <a class=\"link link-"
 "hover link-info\" href=\"%(signup_url)s\">sign up</a> first."
 msgstr ""
+"als je nog geen account hebt,  <a class=“link link-hover link-info” "
+"href=“%(signup_url)s”>meld je dan alsjeblieft eerst aan</a>."
 
 #: portfolios/templates/account/login.html:53
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Wachtwoord vergeten?"
 
 #: portfolios/templates/account/logout.html:6
 #: portfolios/templates/account/logout.html:9
 #: portfolios/templates/account/logout.html:18
 msgid "Sign Out"
-msgstr ""
+msgstr "Uitloggen"
 
 #: portfolios/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "Weet je zeker dat je uit wil loggen?"
 
 #: portfolios/templates/account/password_change.html:7
 #: portfolios/templates/account/password_change.html:10
 #: portfolios/templates/account/password_change.html:15
-#: portfolios/templates/account/password_reset_from_key.html:2
+#: portfolios/templates/account/password_reset_from_key.html:7
 #: portfolios/templates/account/password_reset_from_key_done.html:6
 #: portfolios/templates/account/password_reset_from_key_done.html:9
 msgid "Change Password"
-msgstr ""
+msgstr "Wachtwoord veranderen"
 
 #: portfolios/templates/account/password_reset.html:8
 #: portfolios/templates/account/password_reset.html:11
 #: portfolios/templates/account/password_reset_done.html:7
 #: portfolios/templates/account/password_reset_done.html:10
 msgid "Password Reset"
-msgstr ""
+msgstr "Wachtwoord resetten"
 
 #: portfolios/templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
 msgstr ""
+"Wachtwoord vergeten? Vul hieronder je emailadres in, en we sturen je een "
+"email om deze te resetten."
 
 #: portfolios/templates/account/password_reset.html:24
 msgid "Reset My Password"
-msgstr ""
+msgstr "Reset mijn wachtwoord"
 
 #: portfolios/templates/account/password_reset.html:27
 msgid ""
@@ -383,50 +546,57 @@ msgid ""
 "your\n"
 "  password."
 msgstr ""
+"neem alsjeblieft <a class=“link link-hover link-info” href=“mailto:"
+"info@vanberkelstudio.com”>contact</a> op als je moeite hebt om je wachtwoord "
+"te resetten."
 
 #: portfolios/templates/account/password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
+"We hebben je een email gestuurd, neem alsjeblieft contact op als je deze na "
+"een paar minuten nog niet hebt ontvangen."
 
-#: portfolios/templates/account/password_reset_from_key.html:5
+#: portfolios/templates/account/password_reset_from_key.html:13
 msgid "Bad Token"
-msgstr ""
+msgstr "Verkeerd Token"
 
-#: portfolios/templates/account/password_reset_from_key.html:10
+#: portfolios/templates/account/password_reset_from_key.html:22
 msgid ""
 " The password reset link was invalid, possibly because it\n"
 "  has already been used. Please request a "
 msgstr ""
+" Deze link is ongeldig, misschien omdat\n"
+"  deze al gebruikt is, vraag alsjeblieft een"
 
-#: portfolios/templates/account/password_reset_from_key.html:12
+#: portfolios/templates/account/password_reset_from_key.html:24
 msgid "new password reset."
-msgstr ""
+msgstr "new wachtwoord reset."
 
-#: portfolios/templates/account/password_reset_from_key.html:21
+#: portfolios/templates/account/password_reset_from_key.html:33
 msgid "change password"
-msgstr ""
+msgstr "wachtwoord veranderen"
 
-#: portfolios/templates/account/password_reset_from_key.html:25
+#: portfolios/templates/account/password_reset_from_key.html:36
 #: portfolios/templates/account/password_reset_from_key_done.html:10
 msgid "Your password is now changed."
-msgstr ""
+msgstr "Je wachtwoord is nu aangepast."
 
 #: portfolios/templates/account/password_set.html:7
 #: portfolios/templates/account/password_set.html:10
 #: portfolios/templates/account/password_set.html:18
 msgid "Set Password"
-msgstr ""
+msgstr "Zet wachtwoord"
 
 #: portfolios/templates/account/signup.html:7
 msgid "Signup"
-msgstr ""
+msgstr "Aanmelden"
 
 #: portfolios/templates/account/signup.html:10
 #: portfolios/templates/account/signup.html:25
 msgid "Sign Up"
-msgstr ""
+msgstr "Aanmelden"
 
 #: portfolios/templates/account/signup.html:12
 #, python-format
@@ -434,22 +604,24 @@ msgid ""
 "Already have an account? Then please\n"
 "  <a class=\"link link-info link-hover\" href=\"%(login_url)s\">sign in</a>."
 msgstr ""
+"Heb je al een account? Log dan \n"
+"  <a class=“link link-info link-hover” href=“%(login_url)s”>hier</a> in."
 
 #: portfolios/templates/account/signup_closed.html:6
 #: portfolios/templates/account/signup_closed.html:9
 msgid "Sign Up Closed"
-msgstr ""
+msgstr "Aanmelden gesloten"
 
 #: portfolios/templates/account/signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "Het spijt ons, maar je kunt je op dit moment niet aanmelden."
 
 #: portfolios/templates/account/verification_sent.html:6
 #: portfolios/templates/account/verification_sent.html:9
 #: portfolios/templates/account/verified_email_required.html:6
 #: portfolios/templates/account/verified_email_required.html:9
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "Verifieer je emailadres"
 
 #: portfolios/templates/account/verification_sent.html:11
 msgid ""
@@ -457,6 +629,9 @@ msgid ""
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
+"We hebben je een email. gestuurd ter verificatie. Volg de link in de mail om "
+"het aanmeldprocedure af te ronden. Neem a.u.b. contact op als je de email na "
+"een paar minuten nog niet ontvangen hebt."
 
 #: portfolios/templates/account/verified_email_required.html:12
 msgid ""
@@ -464,7 +639,7 @@ msgid ""
 "  who you claim to be. For this purpose, we require that you verify "
 "ownership of\n"
 "  your e-mail address. "
-msgstr ""
+msgstr "Dit deel van de website vereist een geverifieerd emailadres."
 
 #: portfolios/templates/account/verified_email_required.html:17
 msgid ""
@@ -473,6 +648,9 @@ msgid ""
 "receive\n"
 "  it within a few minutes."
 msgstr ""
+"We hebben je een email. gestuurd ter verificatie. Volg de link in de mail om "
+"het aanmeldprocedure af te ronden. Neem a.u.b. contact op als je de email na "
+"een paar minuten nog niet ontvangen hebt."
 
 #: portfolios/templates/account/verified_email_required.html:22
 #, python-format
@@ -480,59 +658,566 @@ msgid ""
 "<strong>Note:</strong> you can still\n"
 "  <a href=\"%(email_url)s\">change your e-mail address</a>."
 msgstr ""
+"<strong>Opmerking:</strong> je kunt nogsteeds\n"
+"  <a href=“%(email_url)s”>je emailadres wijzigen</a>."
 
 #: portfolios/templates/base/call_to_action.html:4
 msgid "place_ad"
-msgstr ""
+msgstr "plaats advertentie"
 
 #: portfolios/templates/base/call_to_action.html:5
 #: portfolios/templates/base/main_navbar.html:25
 msgid "find your car"
+msgstr "vind je auto"
+
+#: portfolios/templates/base/footer.html:14
+#: portfolios/templates/base/how_it_works.html:4
+msgid "Revamp Your Ride: Buy, Sell, Lease."
+msgstr "Revamp Your Ride: Koop, Verkoop, Lease."
+
+#: portfolios/templates/base/footer.html:18
+msgid "Legal"
+msgstr "Legaal"
+
+#: portfolios/templates/base/footer.html:20
+msgid "Terms of Service"
+msgstr "Servicevoorwaarden"
+
+#: portfolios/templates/base/footer.html:28
+msgid "Useful links"
+msgstr "Handige links"
+
+#: portfolios/templates/base/footer.html:30
+msgid "How it works"
+msgstr "Hoe het werkt"
+
+#: portfolios/templates/base/footer.html:38
+msgid "Contact"
+msgstr "Contact opnemen met aanbieder"
+
+#: portfolios/templates/base/footer.html:71
+msgid "Terms of service"
+msgstr "Servicevoorwaarden"
+
+#: portfolios/templates/base/footer.html:75
+#: portfolios/templates/base/footer.html:84
+msgid "close"
+msgstr "sluit"
+
+#: portfolios/templates/base/footer.html:80
+msgid "Cookie Policy"
+msgstr "Cookiebeleid"
+
+#: portfolios/templates/base/how_it_works.html:6
+msgid "Your Car, Your Way!"
+msgstr "Jouw auto, Jouw keus!"
+
+#: portfolios/templates/base/how_it_works.html:10
+#: portfolios/templates/information/how_it_works.html:15
+#, fuzzy
+#| msgid "create listing"
+msgid "Create a Listing"
+msgstr "maak advertentie"
+
+#: portfolios/templates/base/how_it_works.html:11
+msgid ""
+"\n"
+"        Ready to sell your car? Placing an listing on Our Platform is a "
+"breeze!\n"
+"        Simply sign in, provide the essential details about your car, add "
+"some\n"
+"        eye-catching photos, set a price, and you're good to go. Our "
+"intuitive\n"
+"        interface makes the process quick and effortless, ensuring your "
+"listing is up\n"
+"        and running in no time. Reach potential buyers swiftly and "
+"smoothly!\n"
+"        "
+msgstr ""
+
+#: portfolios/templates/base/how_it_works.html:21
+#: portfolios/templates/information/how_it_works.html:27
+msgid "Connect with buyers"
+msgstr ""
+
+#: portfolios/templates/base/how_it_works.html:22
+msgid ""
+"\n"
+"        Excited to hear from potential buyers? Our Platform makes "
+"communication\n"
+"        secure and convenient. Interested buyers can easily reach out to "
+"you\n"
+"        through our platform. Update your listng at any time trough your "
+"personal profile.\n"
+"        Your contact details will only be visible after replying to messages "
+"from people interested in your listing.\n"
+"        "
+msgstr ""
+
+#: portfolios/templates/base/how_it_works.html:31
+#: portfolios/templates/information/how_it_works.html:38
+msgid "Your Car, Your Deal!"
+msgstr ""
+
+#: portfolios/templates/base/how_it_works.html:33
+msgid ""
+"\n"
+"        Congratulations! Your car has found its new owner. At Auto "
+"TradeSpot,\n"
+"        we celebrate your success. The negotiation and deal-making process\n"
+"        happens directly between you and the interested buyer, giving you\n"
+"        complete control and ensuring a satisfactory trade.\n"
+"        "
 msgstr ""
 
 #: portfolios/templates/base/main_navbar.html:17
 msgid "create"
-msgstr ""
+msgstr "maak"
 
 #: portfolios/templates/base/main_navbar.html:19
 msgid "find"
-msgstr ""
+msgstr "vind"
 
 #: portfolios/templates/base/main_navbar.html:23
 msgid "create listing"
-msgstr "Maak advertentie"
+msgstr "maak advertentie"
 
-#: portfolios/templates/base/main_navbar.html:35
+#: portfolios/templates/base/main_navbar.html:32
 msgid "my Tradespot"
 msgstr "mijn Tradespot"
 
-#: portfolios/templates/base/main_navbar.html:49
-msgid "dutch"
-msgstr "nederlands"
+#: portfolios/templates/base/main_navbar.html:39
+msgid "profile"
+msgstr "profiel"
 
-#: portfolios/templates/base/main_navbar.html:50
+#: portfolios/templates/base/main_navbar.html:43
+msgid "light"
+msgstr "licht"
+
+#: portfolios/templates/base/main_navbar.html:49
+msgid "dark"
+msgstr "donker"
+
+#: portfolios/templates/base/main_navbar.html:52
+msgid "language"
+msgstr "taal"
+
+#: portfolios/templates/base/main_navbar.html:56
 msgid "english"
 msgstr "engels"
 
-#: portfolios/templates/legal/cookie_banner.html:4
+#: portfolios/templates/base/main_navbar.html:61
+msgid "dutch"
+msgstr "nederlands"
+
+#: portfolios/templates/base/main_navbar.html:66
+msgid "logout"
+msgstr "uitloggen"
+
+#: portfolios/templates/base/main_navbar.html:70
+msgid "login"
+msgstr "inloggen"
+
+#: portfolios/templates/information/how_it_works.html:17
+msgid ""
+"\n"
+"            Ready to sell your car? Placing an listing on Our Platform is a "
+"breeze!\n"
+"            Simply sign in, provide the essential details about your car, "
+"add some\n"
+"            eye-catching photos, set a price, and you're good to go. Our "
+"intuitive\n"
+"            interface makes the process quick and effortless, ensuring your "
+"listing is up\n"
+"            and running in no time. Reach potential buyers swiftly and "
+"smoothly!\n"
+"            "
+msgstr ""
+
+#: portfolios/templates/information/how_it_works.html:29
+msgid ""
+"\n"
+"            Excited to hear from potential buyers? Our Platform makes "
+"communication\n"
+"            secure and convenient. Interested buyers can easily reach out to "
+"you\n"
+"            through our platform. Update your listng at any time trough your "
+"personal profile.\n"
+"            Your contact details will only be visible after replying to "
+"messages from people interested in your listing.\n"
+"            "
+msgstr ""
+
+#: portfolios/templates/information/how_it_works.html:40
+msgid ""
+"\n"
+"            Congratulations! Your car has found its new owner. At Auto "
+"TradeSpot,\n"
+"            we celebrate your success. The negotiation and deal-making "
+"process\n"
+"            happens directly between you and the interested buyer, giving "
+"you\n"
+"            complete control and ensuring a satisfactory trade.\n"
+"            "
+msgstr ""
+
+#: portfolios/templates/information/how_it_works.html:56
+#: portfolios/templates/users/user_pages/favorites.html:10
+#, fuzzy
+#| msgid "find your car"
+msgid "Find your car"
+msgstr "vind je auto"
+
+#: portfolios/templates/legal/cookie_banner.html:13
 msgid ""
 "By using this website you agree to our <button class=\"link link-info\" "
 "onclick=\"cookie_modal.showModal()\">Cookiepolicy</button>"
 msgstr ""
+"Door gebruik van deze website stem je in met ons<button class=“link link-"
+"info” onclick=“cookie_modal.showModal()”>Cookiebeleid</button>"
 
-#: portfolios/templates/listings/base/listing.html:17
+#: portfolios/templates/legal/cookie_banner.html:18
+msgid "Accept"
+msgstr ""
+
+#: portfolios/templates/legal/cookies.html:2
+msgid ""
+"\n"
+"  Met dit cookiebeleid informeert Auto Tradespot de gebruiker over het "
+"gebruik van cookies of vergelijkbare opslagtechnologieën (genaamd "
+"‘’cookies’’) op deze website.\n"
+"  \n"
+"  \n"
+"  WAT ZIJN COOKIES?\n"
+"  \n"
+"  Cookies zijn kleine bestanden die door de browser op uw toestel worden "
+"opgeslagen om bepaalde informatie of fotobestanden op te slaan, zoals "
+"pixels. De volgende keer dat u onze website op uw toestel bezoekt, wordt de "
+"opgeslagen informatie in de cookies overgedragen naar onze website (“First "
+"Party Cookie”) of naar een andere website waar de cookie toe behoort (“Third "
+"Party Cookie”).\n"
+"  Door de opgeslagen en terugkerende informatie, herkent de respectieve "
+"website dat u deze hebt bezocht met de browser die u gebruikt op uw toestel. "
+"We gebruiken deze informatie om de website optimaal te kunnen ontwerpen en "
+"weer te geven in overeenstemming met uw voorkeuren.\n"
+"  In dat opzicht, wordt alleen de cookie zelf op het toestel "
+"geïdentificeerd. Persoonlijke gegevens worden alleen opgeslagen nadat u "
+"nadrukkelijk toestemming heeft gegeven of als het strikt noodzakelijk is om "
+"de aangeboden service te gebruiken.\n"
+"  \n"
+"  \n"
+"  TOESTEMMING VOOR HET GEBRUIK VAN COOKIES\n"
+"  \n"
+"  Cookies die niet strikt noodzakelijk zijn om gebruik te kunnen blijven "
+"maken van onze service, worden alleen gebruikt wanneer we uw toestemming "
+"hebben ontvangen. Als u besluit verder te gaan op de website nadat de "
+"cookiebanner is weergegeven, stemt u in met het gebruik van cookies.\n"
+"  U kunt de cookie-instellingen natuurlijk op elk gewenst moment aanpassen, "
+"bijvoorbeeld door cookie categorieën te activeren of te deactiveren.\n"
+"  Onder de punt “Deactiveren en verwijderen van alle cookies” van dit "
+"cookiebeleid leest u hoe u cookies in het algemeen (d.w.z. inclusief de "
+"essentiële cookies) kunt deactiveren of verwijderen in uw browser.\n"
+"  \n"
+"  \n"
+"  WETTELIJKE BASIS\n"
+"  \n"
+"  Wanneer de gebruiker / bezoeker toestemming heeft gegeven voor het gebruik "
+"van cookies op basis van informatie van ons op onze website "
+"(‘’cookiebanner’’), de wettigheid van het gebruik wordt bovendien beheerst "
+"door art. 6 (1) (a) GDPR. De wettelijke basis voor het gebruik van cookies "
+"is een legitiem belang (dat wil zeggen interesse in analyseren, "
+"optimalisatie en economisch belang van onze website en diensten) in de zin "
+"van art. 6 (1) (f) GDPR.\n"
+"  \n"
+"  \n"
+"  COOKIE CATEGORIEËN\n"
+"  \n"
+"  De door ons gebruikte cookies kunnen worden verdeeld in de volgende "
+"categorieën, op basis van doel en functie:\n"
+"  Strikt noodzakelijke cookies;\n"
+"  Functionele cookies;\n"
+"  Prestatie-cookies;\n"
+"  Marketing cookies / cookies van derden / op toestemming gebaseerde "
+"cookies\n"
+"  \n"
+"  \n"
+"  STRIKT NOODZAKELIJKE COOKIES\n"
+"  \n"
+"  Strikt noodzakelijke cookies garanderen functies zonder welke u deze "
+"website en services niet zou kunnen gebruiken zoals bedoeld is. Deze cookies "
+"worden alleen door ons gebruikt en zijn daarom first party cookies. Dit "
+"betekent dat alle informatie opgeslagen in deze cookies alleen naar onze "
+"website wordt gestuurd.\n"
+"  De volgende strikt noodzakelijke cookies worden op onze website gebruikt:\n"
+"  \n"
+"  \n"
+"  NAAM BESCHRIJVING / DOEL LOOPTIJD\n"
+"  \n"
+"  Deze cookie is nodig om de benodigde functies te laten werken. 30 dagen\n"
+"  Het gebruiken van strikt noodzakelijke cookies op onze website, is "
+"mogelijk zonder dat u daar toestemming voor hebt gegeven. Strikt "
+"noodzakelijke cookies kunnen daarom niet afzonderlijk worden geactiveerd of "
+"gedeactiveerd. Deze functie is alleen beschikbaar voor cookies waar u "
+"toestemming voor moet geven, d.w.z. de functionele, prestatie- en marketing "
+"cookies. U kunt de cookies echter op ieder moment deactiveren in uw browser "
+"(zie beneden, punt “Deactiveren en verwijderen van alle cookies”).\n"
+"  \n"
+"  \n"
+"  FUNCTIONELE COOKIES\n"
+"  \n"
+"  Met de functionele cookies kan onze website informatie opslaan die al "
+"bekend is (zoals de geregistreerde gebruikersnaam of taalkeuze) en gebaseerd "
+"op deze informatie, u verbeterde en meer gepersonaliseerde functies "
+"aanbieden. Deze cookies verzamelen en slaan alleen anonieme informatie op.\n"
+"  Op onze website worden geen functionele cookies gebruikt.\n"
+"  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
+"(opt-out) door je cookie-instellingen aan te passen.\n"
+"  \n"
+"  \n"
+"  PERFORMANCE COOKIES\n"
+"  \n"
+"  Prestatie-cookies verzamelen informatie over hoe onze websites worden "
+"gebruikt om hun aantrekkelijkheid, inhoud en functionaliteit te verbeteren. "
+"Deze cookies helpen ons om bijvoorbeeld te bepalen welke pagina’s op onze "
+"website worden bezocht en in welke inhoud bezoekers met name geïnteresseerd "
+"zijn. In het bijzonder kijken we naar het aantal bezoeken op een pagina, het "
+"aantal bezochte subpagina’s, de tijd besteedt op onze website, de volgorde "
+"van de bezochte pagina’s, welke zoektermen u naar ons hebben gebracht, de "
+"regio en indien van toepassing vanuit welke stad u onze website hebt "
+"bekeken. Ook leggen we beweging, clicks en het scrollen met de muis vast om "
+"te begrijpen welke gedeelten van onze website vooral interessant zijn voor "
+"bezoekers. Zodoende, kunnen we de inhoud op onze website aanpassen en "
+"optimaliseren om specifieker aan de behoefte van onze bezoekers te voldoen. "
+"Het IP-adres dat van je computer wordt doorgegeven, wegens technische "
+"redenen, wordt automatisch anoniem gemaakt en stelt ons niet in staat om "
+"conclusies te trekken over de individuele gebruiker.\n"
+"  De gebruiker heeft het recht om bezwaar te maken over de verwerking van "
+"persoonsgegevens die worden gebruikt voor statistische doeleinden in "
+"overeenstemming met art. 89 lid 1 GDPR, om redenen die voortkomen uit een "
+"specifieke situatie van de gebruiker in kwestie. Om de bovengenoemde en "
+"andere rechten van de betrokkene uit te oefenen, kan de betrokken partij op "
+"ieder moment contact met ons opnemen via het contactadres, dat in het "
+"impressum of de privacyverklaring gevonden kan worden.\n"
+"  De volgende prestatie-cookies worden op onze website gebruikt:\n"
+"  \n"
+"  \n"
+"  NAAM BESCHRIJVING / DOEL LOOPTIJD\n"
+"  \n"
+"  Deze cookie verzamelt anonieme informatie over hoe gebruikers deze site "
+"gebruiken voor analysedoeleinden. 2 jaar\n"
+"  Deze cookie beperkt het verzamelen van gegevens wanneer er te veel "
+"verzoeken binnenkomen op een pagina. Sommige verzoeken worden geblokkeerd en "
+"de resultaten worden geëxtrapoleerd. 10 minuten\n"
+"  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
+"(opt-out) door je cookie-instellingen aan te passen.\n"
+"  \n"
+"  \n"
+"  MARKETING COOKIES / COOKIES VAN DERDEN / OP TOESTEMMING GEBASEERDE "
+"COOKIES\n"
+"  \n"
+"  Marketing cookies / Cookies van derden / op toestemming gebaseerde cookies "
+"worden gebruikt om informatie te verzamelen over bezochte websites door de "
+"bezoeker om zo doelgericht te adverteren voor de gebruiker.\n"
+"  Op onze website worden geen marketing cookies / cookies van derden / op "
+"toestemming gebaseerde cookies gebruikt.\n"
+"  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
+"(opt-out) door je cookie-instellingen aan te passen.\n"
+"  \n"
+"  \n"
+"  DEACTIVEREN EN VERWIJDEREN VAN ALLE COOKIES\n"
+"  \n"
+"  Je kunt je browserinstellingen zo instellen dat cookies normaliter niet op "
+"uw apparaat kunnen worden opgeslagen en / of dat u telkens wordt gevraagd of "
+"u het ermee eens bent dat cookies worden ingeschakeld. U kunt ook, op ieder "
+"moment, cookies verwijderen die opnieuw zijn ingeschakeld. U vindt hoe dit "
+"in detail werkt via de helpfunctie van uw browser.\n"
+"  Onthoud a.u.b. dat het deactiveren van cookies kan leiden tot functionele "
+"restricties van onze website.\n"
+"  "
+msgstr ""
+
+#: portfolios/templates/legal/terms_of_service.html:2
+msgid ""
+"\n"
+"  ALGEMENE VOORWAARDEN AUTOTRADESPOT.NL\n"
+"  \n"
+"  Deze Algemene Voorwaarden (de Voorwaarden) zijn van toepassing op ieder "
+"gebruik van de Website www.autotradespot.nl (de Website) en alle "
+"subdomeinen. De Voorwaarden zijn ook van toepassing op alle diensten die "
+"daarnaast door ons worden aangeboden.\n"
+"  Als je een vraag hebt over deze voorwaarden of om een andere reden contact "
+"met ons op wil nemen door een mail te sturen naar service@autotradespot.nl.\n"
+"  KvK-nummer: 99999999\n"
+"  \n"
+"  \n"
+"  Artikel 1 – Algemeen\n"
+"  \n"
+"  De Voorwaarden zijn van toepassing op iedereen die de Website gebruikt.\n"
+"  Wij zullen je de Voorwaarden op verzoek kosteloos toezenden. De "
+"Voorwaarden zijn ook beschikbaar op onze website.\n"
+"  Wij hebben het recht de Voorwaarden te wijzigen. Je stemt ermee in dat "
+"steeds de laatste versie van deze Voorwaarden van toepassing zal zijn.\n"
+"  Afspraken die afwijken van deze Voorwaarden zijn alleen geldig als wij "
+"deze afspraken schriftelijk met je zijn overeengekomen.\n"
+"  Als een deel van de Voorwaarden nietig of vernietigbaar is, verandert dat "
+"niets aan de geldigheid van de rest van de Voorwaarden. Het nietige of "
+"vernietigde deel wordt vervangen door een bepaling die zoveel mogelijk de "
+"inhoud van de nietige bepaling volgt.\n"
+"  \n"
+"  \n"
+"  Artikel 2 – Het Platform\n"
+"  \n"
+"  Het doel van de Website is om een platform te bieden waarbij consumenten "
+"hun lopende private lease contract ter overname kunnen aanbieden, en andere "
+"consumenten hierop kunnen reageren om deze over te nemen. (de “Dienst”)\n"
+"  Wij zijn geen partij bij de afspraken die gebruikers onderling maken. Wij "
+"zijn daarom niet verantwoordelijk voor de afspraken die je met andere "
+"gebruikers maakt.\n"
+"  Wanneer je een conflict krijgt met een andere gebruiker moeten jullie dit "
+"conflict zelf oplossen.\n"
+"  \n"
+"  \n"
+"  Artikel 3 – Gebruiksregels van de Website\n"
+"  \n"
+"  Je mag de Website niet zo gebruiken dat je daarmee de Nederlandse of "
+"andere toepasselijke wet- of regelgeving schendt.\n"
+"  Je mag het volgende niet via de Website verspreiden:\n"
+"  Pornografische filmpjes, afbeeldingen of andere media met een erotische "
+"inhoud;\n"
+"  Teksten of afbeeldingen die beledigend, racistisch, discriminerend of "
+"haatzaaiend zijn;\n"
+"  Ongevraagde reclame (spam);\n"
+"  Foute of misleidende informatie; en\n"
+"  Virussen, malware, spyware of andere software die bedoeld is om schade aan "
+"computers van ons of andere gebruikers aan te richten.\n"
+"  Je mag geen account aanmaken onder de naam van iemand anders of zich op "
+"een andere manier voordoen als iemand anders.\n"
+"  Je bent verplicht om de verkregen persoonsgegevens van andere gebruikers "
+"geheim te houden en deze gegevens niet te misbruiken.\n"
+"  Je mag geen andere gebruikers benaderen voor andere commerciële doeleinden "
+"dan waarvoor de Website is bedoeld.\n"
+"  Als je melding wilt maken van een gebruiker die de Website misbruikt kun "
+"je een bericht sturen naar service@eautotradespot.nl.\n"
+"  \n"
+"  \n"
+"  Artikel 4 – Beschikbaarheid van de Website\n"
+"  \n"
+"  Wij doen ons uiterste best om te zorgen dat de Website beschikbaar is.\n"
+"  Wij garanderen niet dat Website foutloos werkt of altijd beschikbaar is. "
+"Wij zijn dan ook niet aansprakelijk voor schade, geleden als de Website niet "
+"of niet veilig werkt.\n"
+"  Wij zijn ook niet aansprakelijk voor schade geleden door verkeerde "
+"informatie op de Website.\n"
+"  \n"
+"  \n"
+"  Artikel 5 – Gebruikersaccount\n"
+"  \n"
+"  Je moet minstens 18 jaar oud zijn om een account aan te mogen maken.\n"
+"  Je moet de inloggegevens van je account afschermen voor anderen en je "
+"wachtwoord geheim houden. Wij mogen ervan uitgaan dat alles wat er gebeurt "
+"op of met jouw account, door jou gedaan wordt of onder jouw toezicht "
+"gebeurt.\n"
+"  Als je denkt of weet dat jouw account misbruikt wordt, moet je dat zo snel "
+"mogelijk melden bij ons. Wij zullen dan gepaste maatregelen nemen.\n"
+"  \n"
+"  \n"
+"  Artikel 6 – Prijzen en betaling\n"
+"  \n"
+"  Voor het plaatsen van een advertentie moet je een prijs betalen. Deze "
+"prijs staat op de Website. Als je betaald hebt heb je geen recht op "
+"terugbetaling van het betaalde bedrag.\n"
+"  \n"
+"  \n"
+"  Artikel 7 – Uitsluiting\n"
+"  \n"
+"  Als wij vinden dat je de wet of deze voorwaarden overtreedt, kunnen wij je "
+"(deels) uitsluiten van de Dienst. Wij kunnen je ook (deels) uitsluiten van "
+"de Dienst als je niet op tijd of helemaal niet betaalt. We kunnen je "
+"bijvoorbeeld uitsluiten van de Dienst door:\n"
+"  jouw account te verwijderen; en\n"
+"  onderdelen van de Dienst voor je te blokkeren.\n"
+"  \n"
+"  \n"
+"  Artikel 8 – Geheimhouding\n"
+"  \n"
+"  Wij zijn verplicht al jouw vertrouwelijke informatie geheim te houden. "
+"Onder ‘vertrouwelijke informatie’ begrijpen wij alle informatie waarvan je "
+"hebt aangegeven dat deze vertrouwelijk is of waarvan het uit de aard van de "
+"informatie voortvloeit. Jouw persoonsgegevens zoals bedoeld in de Algemene "
+"Verordening Gegevensbescherming geven wij alleen vrij als wij daartoe "
+"wettelijk verplicht zijn.\n"
+"  \n"
+"  \n"
+"  Artikel 9 – Conflictoplossing\n"
+"  \n"
+"  Wij zijn niet verplicht om te helpen bij conflicten tussen contract "
+"aanbieder en contract overnemer.\n"
+"  \n"
+"  \n"
+"  Artikel 10 – Aansprakelijkheid\n"
+"  \n"
+"  Wij zijn niet aansprakelijk voor:\n"
+"  directe of indirecte schade die je lijdt door het gebruiken van onze "
+"Website, ongeacht of de schadeclaim gebaseerd is op een garantieregeling, "
+"overeenkomsten of welk ander wettelijk principe dan ook;\n"
+"  directe of indirecte schade die je lijdt door (verkeerde) informatie op de "
+"Website, ongeacht of die informatie van ons komt of van derde partijen;\n"
+"  schade die voortkomt uit fouten van derden of voortvloeit uit het niet "
+"beschikbaar zijn van de Website, om redenen die buiten onze macht liggen.\n"
+"  \n"
+"  \n"
+"  Artikel 11 – Privacy Policy\n"
+"  \n"
+"  Wij beschermen jouw persoonsgegevens in overeenstemming met de Algemene "
+"Verordening Gegevensbescherming (AVG). Je kunt voor meer informatie onze "
+"Privacy Policy raadplegen.\n"
+"  \n"
+"  \n"
+"  Artikel 12 – Vrijwaring\n"
+"  \n"
+"  Door de Website te gebruiken, vrijwaar je ons voor aanspraken, vorderingen "
+"en (schade)vergoedingen van derden. Deze aansprakelijkheidsbeperking sluit "
+"niet onze aansprakelijkheid uit in het geval van kwade opzet of bewuste "
+"roekeloosheid.\n"
+"  \n"
+"  \n"
+"  Artikel 13 – Intellectueel eigendom\n"
+"  \n"
+"  Je geeft ons een licentie om content die je uploadt onbeperkt te "
+"gebruiken. Deze licentie is:\n"
+"  niet-exclusief;\n"
+"  kosten- en rechtenvrij;\n"
+"  overdraagbaar;\n"
+"  Door de Website te gebruiken, verklaar je dat:\n"
+"  je het (intellectueel) eigendom hebt over informatie en media die je "
+"uploadt op de Website; of\n"
+"  je bevoegd bent om de media of informatie die je uploadt, te delen en aan "
+"ons in licentie te geven.\n"
+"  Je mag inhoud van de Website niet delen, verkopen of exploiteren, op welke "
+"manier dan ook.\n"
+"  \n"
+"  \n"
+"  Artikel 14 – Geschillen\n"
+"  \n"
+"  Als er een geschil ontstaat tussen jou en ons, is het Nederlands recht van "
+"toepassing. In dat geval is de rechtbank Amsterdam bevoegd om over het "
+"geschil te oordelen.\n"
+"  "
+msgstr ""
+
+#: portfolios/templates/listings/base/listing.html:15
 msgid "viewed"
-msgstr ""
+msgstr "gezien"
 
-#: portfolios/templates/listings/base/listing.html:18
+#: portfolios/templates/listings/base/listing.html:16
 msgid "saved"
-msgstr ""
+msgstr "opgeslagen"
 
-#: portfolios/templates/listings/base/listing.html:49
+#: portfolios/templates/listings/base/listing.html:47
 msgid "This listing does not seem to have any images."
-msgstr ""
+msgstr "Deze advertentie lijkt geen afbeeldingen te hebben."
 
-#: portfolios/templates/listings/base/listing.html:52
+#: portfolios/templates/listings/base/listing.html:50
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\t\t\t\tYou can add images by modifying this listing.</br />\n"
@@ -540,126 +1225,213 @@ msgid ""
 "info@autotradespot.com\" class=\"link link-hover link-info\">Contact us</a>\n"
 "\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
+"\n"
+"Je kunt afbeeldingen toevoegen door deze advertentie aan te passen.\n"
+"Is er iets mis? neem dan a.u.b. <a href=“mailto:info@autotradespot.com” "
+"class=“link link-hover link-info”>Contact</a> op"
 
+#: portfolios/templates/listings/base/listing.html:85
+#: portfolios/templates/listings/base/listing.html:168
 #: portfolios/templates/listings/contact/contact_btn.html:7
 msgid "Contact provider"
-msgstr ""
+msgstr "Contacteer aanbieder"
 
-#: portfolios/templates/listings/create/createlisting.html:18
+#: portfolios/templates/listings/base/listing.html:90
+msgid "Provider actions"
+msgstr "Acties voor eigenaar"
+
+#: portfolios/templates/listings/base/listing.html:114
+msgid "Deactivate"
+msgstr "Deactiveer"
+
+#: portfolios/templates/listings/base/listing.html:116
+msgid "Activate"
+msgstr "Activeer"
+
+#: portfolios/templates/listings/base/listing.html:124
+msgid "Listing details"
+msgstr "Advertentie details"
+
+#: portfolios/templates/listings/base/listing.html:137
+#: portfolios/templates/listings/create/createlistingdetails.html:11
+msgid "Options"
+msgstr "Opties"
+
+#: portfolios/templates/listings/base/listing.html:151
+msgid "Are you sure?"
+msgstr "Weet je het zeker?"
+
+#: portfolios/templates/listings/base/listing.html:158
+#: portfolios/templates/listings/base/listing.html:178
+msgid "Cancel"
+msgstr "Afbreken"
+
+#: portfolios/templates/listings/base/listing.html:161
+msgid "Delete listing"
+msgstr "Verwijder advertentie"
+
+#: portfolios/templates/listings/base/listing.html:177
+msgid "Send"
+msgstr "Verzenden"
+
+#: portfolios/templates/listings/create/createlisting.html:17
 msgid "Licenceplate"
-msgstr ""
+msgstr "Kenteken"
 
-#: portfolios/templates/listings/create/createlisting.html:26
+#: portfolios/templates/listings/create/createlisting.html:25
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
-#: portfolios/templates/listings/create/createlisting.html:34
+#: portfolios/templates/listings/create/createlisting.html:33
 msgid "Make/Model"
-msgstr ""
+msgstr "Merk/Model"
 
-#: portfolios/templates/listings/create/createlisting.html:42
+#: portfolios/templates/listings/create/createlisting.html:41
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
-#: portfolios/templates/listings/create/createlisting.html:50
+#: portfolios/templates/listings/create/createlisting.html:49
 msgid "Images"
-msgstr ""
+msgstr "Afbeeldingen"
 
-#: portfolios/templates/listings/create/createlisting.html:58
-#: portfolios/templates/listings/create/listingpreview.html:70
-msgid "Preview"
-msgstr ""
-
-#: portfolios/templates/listings/create/createlisting.html:71
+#: portfolios/templates/listings/create/createlisting.html:62
 msgid "clear"
-msgstr ""
+msgstr "wissen"
 
-#: portfolios/templates/listings/create/createlisting.html:74
+#: portfolios/templates/listings/create/createlisting.html:65
 msgid "continue later"
-msgstr ""
+msgstr "opslaan voor later"
+
+#: portfolios/templates/listings/create/createlistingLP.html:7
+#, fuzzy
+#| msgid "Licenceplate"
+msgid "Licenceplate number"
+msgstr "Kenteken"
+
+#: portfolios/templates/listings/create/createlistingLP.html:24
+#: portfolios/templates/listings/create/createlistingdetails.html:17
+#: portfolios/templates/listings/create/createlistingmake.html:13
+#: portfolios/templates/listings/create/createlistingtype.html:11
+#, fuzzy
+#| msgid "continue later"
+msgid "continue"
+msgstr "opslaan voor later"
+
+#: portfolios/templates/listings/create/uploadlistingimages.html:23
+msgid "finalize"
+msgstr "afronden"
+
+#: portfolios/templates/listings/search/filter.html:8
+#, fuzzy
+#| msgid "Delete listing"
+msgid "Delete"
+msgstr "Verwijder advertentie"
+
+#: portfolios/templates/listings/search/listing_section_searchresults.html:4
+#, python-format
+msgid "found %(c)s results"
+msgstr "%(c)s resultaten gevonden"
 
 #: portfolios/templates/users/profile/user_profile.html:18
 msgid "Profile"
-msgstr ""
+msgstr "Profiel"
 
 #: portfolios/templates/users/profile/user_profile.html:27
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: portfolios/templates/users/profile/user_profile.html:36
 msgid "Listings"
-msgstr ""
+msgstr "Advertenties"
 
 #: portfolios/templates/users/profile/user_profile.html:45
 msgid "Favourites"
+msgstr "Favorieten"
+
+#: portfolios/templates/users/user_pages/favorites.html:7
+msgid "Looks like you have no favourites yet"
 msgstr ""
+
+#: portfolios/templates/users/user_pages/listings.html:7
+msgid "Looks like you have not created any listing yet"
+msgstr ""
+
+#: portfolios/templates/users/user_pages/listings.html:8
+#, fuzzy
+#| msgid "create listing"
+msgid "Create a listing"
+msgstr "maak advertentie"
 
 #: portfolios/templates/users/user_pages/preferences.html:18
 #: portfolios/templates/users/user_pages/profile.html:10
 msgid "save changes"
+msgstr "wijzigingen opslaan"
+
+#: portfolios/templates/widgets/image_select.html:7
+msgid "Upload images"
 msgstr ""
 
 #: portfolios/users/admin.py:25
 msgid "Personal info"
-msgstr ""
+msgstr "Persoonsinformatie"
 
 #: portfolios/users/admin.py:27
 msgid "Permissions"
-msgstr ""
+msgstr "Rechten"
 
 #: portfolios/users/admin.py:38
 msgid "Important dates"
-msgstr ""
+msgstr "Belangrijke data"
 
 #: portfolios/users/apps.py:7
 msgid "Users"
-msgstr ""
+msgstr "Gebruikers"
 
 #: portfolios/users/forms.py:31 portfolios/users/forms.py:61
 #: portfolios/users/tests/test_forms.py:36
 msgid "This email has already been taken."
-msgstr ""
+msgstr "Deze email is al in gebruik."
 
 #: portfolios/users/forms.py:69
 msgid "recieve marketing emails"
-msgstr ""
+msgstr "ontvang marketing gerelateerde emails"
 
 #: portfolios/users/forms.py:70
 msgid "recieve listing updates"
-msgstr ""
+msgstr "ontvang updates van je advertenties"
 
 #: portfolios/users/forms.py:71
 msgid "recieve updates about favourites"
-msgstr ""
+msgstr "ontvang updates van je favorieten"
 
 #: portfolios/users/forms.py:72
 msgid "display contact information publicly"
-msgstr ""
+msgstr "geef mijn contactinformatie publiekelijk weer"
 
 #: portfolios/users/models.py:20
 msgid "name"
-msgstr ""
+msgstr "naam"
 
 #: portfolios/users/models.py:23
 msgid "Phone number"
-msgstr ""
+msgstr "Telefoonnummer"
 
 #: portfolios/users/models.py:24
 msgid "email address"
-msgstr ""
+msgstr "emailadres"
 
 #: portfolios/users/models.py:25
 msgid "username, (displayed to other users)"
-msgstr ""
+msgstr "gebruikersnaam, (weergegeven aan andere gebruikers)"
 
 #: portfolios/users/tests/test_views.py:67 portfolios/users/views.py:34
 msgid "Information successfully updated"
-msgstr ""
+msgstr "informatie succesvol geüpdatet"
 
 #: portfolios/users/views.py:71
 msgid "Your preferences have been saved succesfully!"
-msgstr ""
+msgstr "Je voorkeuren zijn succesvol opgeslagen."
 
 #: portfolios/users/views.py:83
 msgid "Your profile has been saved succesfully!"
-msgstr ""
+msgstr "Je profiel is succesvol opgeslagen."

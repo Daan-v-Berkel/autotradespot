@@ -1,10 +1,11 @@
+{% load i18n %}
 <div class="flex flex-row flex-wrap gap-4">
   {% for listing in listings %}
     {% include 'widgets/listing_card.html' %}
   {% empty %}
     <span class="flex flex-col gap-2">
-      <div>Looks like you have not created any listing yet</div>
-      <a class="btn btn-primary" href="{% url 'listings:createlistingnew' %}">Create a listing</a>
+      <div>{% trans "Looks like you have not created any listing yet" %}</div>
+      <a class="btn btn-primary" href="{% url 'listings:createlistingnew' %}">{% trans "Create a listing" %}</a>
     </span>
   {% endfor %}
 </div>

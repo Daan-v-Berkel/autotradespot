@@ -136,8 +136,8 @@
         <input type="checkbox" name="my-accordion-1" checked="checked" />
         <div class="collapse-title text-xl font-medium text-base-content">{% trans "Options" %}</div>
         <div class="collapse-content">
-          <p class="text-base-content">
-            {% for option in listing.cardetails.options_set %}<span>{{ option }}</span>{% endfor %}
+          <p class="text-base-content w-full flex flex-row justify-between flex-wrap">
+            {% for option in listing.cardetails.options.all %}<span class="w-full max-w-full md:max-w-[50%] py-2 border-b border-base-100">{{ option }}</span>{% endfor %}
           </p>
         </div>
       </div>
