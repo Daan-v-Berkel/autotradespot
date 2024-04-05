@@ -12,15 +12,15 @@ from .tasks import send_contact_email_task
 class ListingForm(StyledModelForm):
     class Meta:
         model = models.Listing
-        fields = (
+        fields = [
             "title",
             "description",
             "type",
-        )
+        ]
         labels = {
-            "title", _("title"),
-            "description", _("description"),
-            "type", _("type"),
+            "title": _("title"),
+            "description": _("description"),
+            "type": _("type"),
         }
         widgets = {
             "type": forms.Select(
