@@ -19,10 +19,8 @@
     {% block page_specific %}
     {% endblock page_specific %}
     {% block css %}
-      <script src="https://unpkg.com/htmx.org@1.9.6"
-              integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
-              crossorigin="anonymous"></script>
-      <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
       {% render_bundle 'project' 'css' %}
     {% endblock css %}
     {% block javascript %}
