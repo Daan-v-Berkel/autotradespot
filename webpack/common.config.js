@@ -27,8 +27,9 @@ module.exports = {
     rules: [
       // we pass the output from babel loader to react-hot loader
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        options: { presets: ["@babel/preset-env", "@babel/preset-react"] }
       },
       {
         test: /\.s?css$/i,

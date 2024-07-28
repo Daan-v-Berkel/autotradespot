@@ -1,4 +1,5 @@
 import '../sass/project.scss';
+import '../front-end/test.jsx';
 import { themeChange } from 'theme-change';
 themeChange();
 

@@ -15,3 +15,6 @@ def Cookies(request):
 
 def HowItWorks(request):
     return render(request, 'information/how_it_works.html')
+
+def Test(request):
+    return render(request, 'testerpage.html')

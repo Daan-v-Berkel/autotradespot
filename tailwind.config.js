@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./portfolios/templates/**/*.{html,js}'],
+  content: ['./portfolios/templates/**/*.{html,js}',
+    './portfolios/static/front-end/**/*.{jsx}',
+  ],
   safelist: [
     'alert-success',
     'alert-info',

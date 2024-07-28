@@ -354,3 +354,11 @@ def FilterListings(request):
 	print(qs)
 
 	return render(request, "listings/search/listing_section_searchresults.html", context={'listings':qs})
+
+
+
+## NEW LISTING CREATION ##
+@login_required(login_url="account_login")
+@verified_email_required
+def CreateListing(request):
+	return render(request, "listings/create/base.html")

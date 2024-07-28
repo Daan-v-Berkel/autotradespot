@@ -25,3 +25,9 @@ django-webpack-loader==2.0.1  # https://github.com/django-webpack/django-webpack
 # ------------------------------------------------------------------------------
 django-imagekit
 django-phonenumber-field[phonenumbers]
+
+
+# API
+# ------------------------------------------------------------------------------
+djangorestframework
+django-cors-headers

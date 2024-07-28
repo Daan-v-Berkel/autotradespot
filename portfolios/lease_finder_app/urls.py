@@ -7,4 +7,5 @@ urlpatterns = [
     path("", views.Home, name="home"),
     path("cookies/", views.Cookies, name="cookies"),
     path("how-it-works/", views.HowItWorks, name="howitworks"),
+    path("test/", views.Test, name="test"),
 ]
