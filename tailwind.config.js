@@ -13,6 +13,9 @@ module.exports = {
     'select',
     'select-bordered',
     'select-sm',
+    'step-primary',
+    'step-success',
+    'step-warning',
   ],
   theme: {
     extend: {

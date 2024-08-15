@@ -2,5 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-<div id="create-listing-base"></div>
+<div id="create-listing-base"></div> 
+{{ modelContext|json_script:'car_context' }}
 {% endblock content %}

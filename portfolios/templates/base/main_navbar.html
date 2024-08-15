@@ -16,13 +16,17 @@
     <a class="btn btn-outline text-xl"
        href="{% url 'listings:createlistingnew' %}">{% trans "create" %}</a>
     <a class="btn btn-outline text-xl"
+       href="{% url 'listings:createlistingreact' %}">{% trans "create react" %}</a>
+       <a class="btn btn-outline text-xl"
        href="{% url 'listings:searchlistings' %}">{% trans "find" %}</a>
-  </div>
-  <div class="navbar-center hidden md:flex space-x-4">
-    <a class="btn btn-outline text-xl"
-       href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
-    <a class="btn btn-outline text-xl"
-       href="{% url 'listings:searchlistings' %}">{% trans "find your car" %}</a>
+      </div>
+      <div class="navbar-center hidden md:flex space-x-4">
+        <a class="btn btn-outline text-xl"
+        href="{% url 'listings:createlistingnew' %}">{% trans "create listing" %}</a>
+        <a class="btn btn-outline text-xl"
+           href="{% url 'listings:createlistingreact' %}">{% trans "create react" %}</a>
+        <a class="btn btn-outline text-xl"
+        href="{% url 'listings:searchlistings' %}">{% trans "find your car" %}</a>
   </div>
   <div class="navbar-center flex md:hidden spaxe-x-4"></div>
   <div class="navbar-end space-x-2">

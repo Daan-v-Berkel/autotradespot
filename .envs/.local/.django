@@ -12,3 +12,7 @@ REDIS_URL=redis://redis:6379/0
 # Flower
 CELERY_FLOWER_USER=qdkOinJKDTCPESAPvlmSKBVcPUxWGvXe
 CELERY_FLOWER_PASSWORD=UtIiPPhBCbcWtBiLUQ3CsmF4GzcGY3Pi2fwILEkLovMrnKaaWMl814kzmPgktxtQ
+
+# Database
+# ------------------------------------------------------------------------------
+DATABASE_URL=postgres://ISWdgciQdaEoiEKilTkOjgeEVoOEKkgd:iuzmYtDcm6ibs3nxhb6Fn88cQa3w7NFnj818GNP4umDGWNU1hdrRCrnhe8N4bTem@postgres:5432/portfolios

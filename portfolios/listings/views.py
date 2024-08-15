@@ -361,4 +361,17 @@ def FilterListings(request):
 @login_required(login_url="account_login")
 @verified_email_required
 def CreateListing(request):
-	return render(request, "listings/create/base.html")
+
+	car_context = {
+		'car_makes': [{
+			'id': c[0],
+			'name': c[1],
+		} for c in models.CarMake.objects.all().values_list('makeId', 'name')],
+		'car_models': [{
+			'id': c[0],
+			'name': c[1],
+			'makeId': c[2],
+		} for c in models.CarModel.objects.all().values_list('modelId', 'name', 'make__makeId')],
+	}
+
+	return render(request, "listings/create/base.html", context={'modelContext':car_context})
