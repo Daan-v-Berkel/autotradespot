@@ -35,8 +35,7 @@ def viewListing(request, pk):
 	listing = models.Listing.objects.prefetch_related("imagemodel_set").get(pk=pk)
 
 	if listing.visible_to_public():
-			if request.user != listing.owner and not request.session.get(f"listing_viewed_{listing.pk}", False):
-					request.session[f"listing_viewed_{listing.pk}"] = "true"
+			if request.user != listing.owner:
 					listing.increment_views()
 	else:
 			if not request.user.is_staff and not request.user == listing.owner:

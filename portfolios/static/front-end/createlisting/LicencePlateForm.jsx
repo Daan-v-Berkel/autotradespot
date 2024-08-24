@@ -5,7 +5,9 @@ export default function LicencePlateForm(props) {
 
     const [formData, setFormData] = useState({
         licenceplate: "",
-        errors: {},
+        errors: {
+          licenceplate: "",
+        },
         loading: false,
       });
     
@@ -22,7 +24,7 @@ export default function LicencePlateForm(props) {
         }
     
         setFormData((prevState) => ({ ...prevState, errors:errors }));
-        console.log(`errors: ${JSON.stringify(formData.errors)}`)
+        console.log(`errors: ${errors}`)
         return Object.keys(errors).length === 0 ;
       };
     
