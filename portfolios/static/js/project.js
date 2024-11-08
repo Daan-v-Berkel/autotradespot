@@ -1,5 +1,7 @@
 import '../sass/project.scss';
+import * as frontEnd from '../front-end/main.jsx';
 import { themeChange } from 'theme-change';
+
 themeChange();
 
 /* Project specific Javascript goes here. */

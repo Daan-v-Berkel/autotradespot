@@ -18,6 +18,8 @@ urlpatterns = [
     path("", include("portfolios.lease_finder_app.urls", namespace="autotradespot")),
     # Listings
     path("listings/", include("portfolios.listings.urls", namespace="listings")),
+    # API
+    path("api/", include("portfolios.ats_api.urls", namespace="api")),
     # translations
     path("", include("django.conf.urls.i18n")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

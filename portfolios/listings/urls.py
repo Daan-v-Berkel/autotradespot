@@ -22,4 +22,5 @@ urlpatterns = [
     path("models/<str:filter>", views.getModels, name="getmodels"),
     path("search", views.searchListing, name="searchlistings"),
     path("search/filter", views.FilterListings, name="searchfilters"),
+    path("react/create", views.CreateListing, name="createlistingreact"),
 ]

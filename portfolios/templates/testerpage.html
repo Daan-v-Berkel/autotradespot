@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load i18n %}
+<div class="p-6 max-w-6xl mx-auto">
+    <h3 class="text-center text-2xl mb-4 text-accent">
+        {% trans "Revamp Your Ride: Buy, Sell, Lease." %}
+        <br />
+        {% trans "Your Car, Your Way!" %}
+    </h3>
+    <div class="stats stats-vertical lg:stats-horizontal shadow bg-base-200">
+        <div class="stat space-y-4">
+            <h4 class="stat-title underline text-center">{% trans "Create a Listing" %}</h4>
+            <span class="text-center text-sm align-text-top">{% blocktrans %}
+                Ready to sell your car? Placing an listing on Our Platform is a breeze!
+                Simply sign in, provide the essential details about your car, add some
+                eye-catching photos, set a price, and you're good to go. Our intuitive
+                interface makes the process quick and effortless, ensuring your listing is up
+                and running in no time. Reach potential buyers swiftly and smoothly!
+                {% endblocktrans %}
+                <div id="my-div"></div>
+        </span>
+    </div>
+    <div class="stat space-y-4">
+      <h4 class="stat-title underline text-center">{% trans "Connect with buyers" %}</h4>
+      <span class="text-center text-sm align-text-top">{% blocktrans %}
+        Excited to hear from potential buyers? Our Platform makes communication
+        secure and convenient. Interested buyers can easily reach out to you
+        through our platform. Update your listng at any time trough your personal profile.
+        Your contact details will only be visible after replying to messages from people interested in your listing.
+        {% endblocktrans %}
+      </span>
+    </div>
+    <div class="stat space-y-4">
+      <h4 class="stat-title underline text-center">{% trans "Your Car, Your Deal!" %}</h4>
+      <span class="text-center text-sm align-text-top">
+        {% blocktrans %}
+        Congratulations! Your car has found its new owner. At Auto TradeSpot,
+        we celebrate your success. The negotiation and deal-making process
+        happens directly between you and the interested buyer, giving you
+        complete control and ensuring a satisfactory trade.
+        {% endblocktrans %}
+      </span>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

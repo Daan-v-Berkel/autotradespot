@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./portfolios/templates/**/*.{html,js}'],
+  content: ['./portfolios/templates/**/*.{html,js}',
+    './portfolios/static/front-end/**/*.{jsx}',
+  ],
   safelist: [
     'alert-success',
     'alert-info',
@@ -11,6 +13,9 @@ module.exports = {
     'select',
     'select-bordered',
     'select-sm',
+    'step-primary',
+    'step-success',
+    'step-warning',
   ],
   theme: {
     extend: {

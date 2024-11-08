@@ -61,13 +61,12 @@ class Listing(models.Model):
 		description = models.TextField(max_length=3000, blank=True)
 		available_from = models.DateField(default=timezone.now)
 		favourites_list = models.ManyToManyField(User, related_name="favourites_list", blank=True, default=None)
-		viewcount = models.IntegerField(default=0)
 
 		objects = ListingQuerySet.as_manager()
 
 		def increment_views(self):
-				self.viewcount += 1
-				self.save()
+				view, created = ListingViews.objects.get_or_create(listing=self, user=self.owner)
+				view.save()
 
 		created = models.DateField(editable=False)
 		modified = models.DateField()
@@ -194,6 +193,14 @@ class ImageModel(models.Model):
 		def name(self):
 				return Path(self.image.url).stem
 
+class ListingViews(models.Model):
+		listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
+		user = models.ForeignKey(User, on_delete=models.CASCADE)
+		last_viewed_at = models.DateTimeField(auto_now=True)
+
+		def __str__(self):
+			return f"listing viewed by {self.user.username}"
+		
 
 ## CAR MODELS
 class CarMake(models.Model):
@@ -246,6 +253,22 @@ class CarDetails(models.Model):
 				HYDRO = "H", _("Waterstof")
 				OTHER = "O", _("Overig")
 
+		class BodyType(models.TextChoices):
+				COMPACT = "C", _("Compact")
+				CONVERTABLE = "CO", _("Convertible")
+				COUPE = "COU", _("Coupe")
+				SUV = "SUV", _("SUV")
+				STATION_WAGON = "SW", _("Station wagon")
+				SEDAN = "S", _("Sedan")
+				VAN = "V", _("Van")
+				TRANSPORTER = "T", _("Transporter")
+				OTHER = "O", _("Overig")
+
+		class Condition(models.TextChoices):
+				NEW = "N", _("New")
+				USED = "U", _("Used")
+				CLASSIC = "C", _("Classic")
+
 		def manufacture_years():
 				return [(i, i) for i in reversed(range(1950, datetime.now().year))]
 
@@ -253,7 +276,7 @@ class CarDetails(models.Model):
 				Listing, related_name="cardetails", blank=False, default=None, on_delete=models.CASCADE
 		)
 		transmission = models.CharField(max_length=6, choices=Transmission.choices, default=Transmission.MANUAL)
-		fuel_type = models.CharField(max_length=1, choices=FuelType.choices, default=FuelType.OTHER)
+		fuel_type = models.CharField(max_length=1, choices=FuelType.choices, default=FuelType.BENZINE)
 		color = models.CharField(max_length=64, blank=True, null=True)
 		color_interior = models.CharField(max_length=64, blank=True, null=True)
 		num_doors = models.IntegerField(blank=True, null=True)
@@ -263,7 +286,9 @@ class CarDetails(models.Model):
 		variant = models.CharField(max_length=64, blank=True, null=True)
 		manufacture_year = models.IntegerField(blank=False, choices=manufacture_years)
 		mileage = models.IntegerField(blank=False)
-		options = models.ManyToManyField(CarOption, related_name="options", blank=True, null=True)
+		body_type = models.CharField(max_length=3, choices=BodyType.choices, default=BodyType.COMPACT)
+		condition = models.CharField(max_length=1, choices=Condition.choices, default=Condition.USED)
+		options = models.ManyToManyField(CarOption, related_name="options", blank=True)
 
 		def __str__(self) -> str:
 				return f"details for {self.owning_listing}"

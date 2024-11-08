@@ -35,8 +35,7 @@ def viewListing(request, pk):
 	listing = models.Listing.objects.prefetch_related("imagemodel_set").get(pk=pk)
 
 	if listing.visible_to_public():
-			if request.user != listing.owner and not request.session.get(f"listing_viewed_{listing.pk}", False):
-					request.session[f"listing_viewed_{listing.pk}"] = "true"
+			if request.user != listing.owner:
 					listing.increment_views()
 	else:
 			if not request.user.is_staff and not request.user == listing.owner:
@@ -354,3 +353,24 @@ def FilterListings(request):
 	print(qs)
 
 	return render(request, "listings/search/listing_section_searchresults.html", context={'listings':qs})
+
+
+
+## NEW LISTING CREATION ##
+@login_required(login_url="account_login")
+@verified_email_required
+def CreateListing(request):
+
+	car_context = {
+		'car_makes': [{
+			'id': c[0],
+			'name': c[1],
+		} for c in models.CarMake.objects.all().values_list('makeId', 'name')],
+		'car_models': [{
+			'id': c[0],
+			'name': c[1],
+			'makeId': c[2],
+		} for c in models.CarModel.objects.all().values_list('modelId', 'name', 'make__makeId')],
+	}
+
+	return render(request, "listings/create/base.html", context={'modelContext':car_context})
