@@ -2,6 +2,6 @@
 # ------------------------------------------------------------------------------
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
-POSTGRES_DB=portfolios
+POSTGRES_DB=autotradespot
 POSTGRES_USER=ISWdgciQdaEoiEKilTkOjgeEVoOEKkgd
 POSTGRES_PASSWORD=iuzmYtDcm6ibs3nxhb6Fn88cQa3w7NFnj818GNP4umDGWNU1hdrRCrnhe8N4bTem

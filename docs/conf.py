@@ -27,7 +27,7 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "Portfolios"
+project = "AutoTradeSpot"
 copyright = """2023, Daan van Berkel"""
 author = "Daan van Berkel"
 

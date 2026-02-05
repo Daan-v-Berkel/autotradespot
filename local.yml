@@ -1,16 +1,16 @@
 version: '3'
 
 volumes:
-  portfolios_local_postgres_data: {}
-  portfolios_local_postgres_data_backups: {}
+  autotradespot_local_postgres_data: {}
+  autotradespot_local_postgres_data_backups: {}
 
 services:
   django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
-    image: portfolios_local_django
-    container_name: portfolios_local_django
+    image: autotradespot_local_django
+    container_name: autotradespot_local_django
     depends_on:
       - postgres
       - redis
@@ -28,17 +28,17 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: portfolios_production_postgres
-    container_name: portfolios_local_postgres
+    image: autotradespot_production_postgres
+    container_name: autotradespot_local_postgres
     volumes:
-      - portfolios_local_postgres_data:/var/lib/postgresql/data
-      - portfolios_local_postgres_data_backups:/backups
+      - autotradespot_local_postgres_data:/var/lib/postgresql/data
+      - autotradespot_local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
 
   docs:
-    image: portfolios_local_docs
-    container_name: portfolios_local_docs
+    image: autotradespot_local_docs
+    container_name: autotradespot_local_docs
     build:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
@@ -47,25 +47,25 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./portfolios:/app/portfolios:z
+      - ./autotradespot:/app/autotradespot:z
     ports:
       - '9000:9000'
     command: /start-docs
 
   mailpit:
     image: axllent/mailpit:latest
-    container_name: portfolios_local_mailpit
+    container_name: autotradespot_local_mailpit
     ports:
       - '8025:8025'
 
   redis:
     image: redis:6
-    container_name: portfolios_local_redis
+    container_name: autotradespot_local_redis
 
   celeryworker:
     <<: *django
-    image: portfolios_local_celeryworker
-    container_name: portfolios_local_celeryworker
+    image: autotradespot_local_celeryworker
+    container_name: autotradespot_local_celeryworker
     depends_on:
       - redis
       - postgres
@@ -75,8 +75,8 @@ services:
 
   celerybeat:
     <<: *django
-    image: portfolios_local_celerybeat
-    container_name: portfolios_local_celerybeat
+    image: autotradespot_local_celerybeat
+    container_name: autotradespot_local_celerybeat
     depends_on:
       - redis
       - postgres
@@ -86,8 +86,8 @@ services:
 
   flower:
     <<: *django
-    image: portfolios_local_flower
-    container_name: portfolios_local_flower
+    image: autotradespot_local_flower
+    container_name: autotradespot_local_flower
     ports:
       - '5555:5555'
     command: /start-flower
@@ -96,8 +96,8 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/node/Dockerfile
-    image: portfolios_local_node
-    container_name: portfolios_local_node
+    image: autotradespot_local_node
+    container_name: autotradespot_local_node
     depends_on:
       - django
     volumes:

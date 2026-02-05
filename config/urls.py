@@ -11,14 +11,14 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("portfolios.users.urls", namespace="users")),
+    path("users/", include("autotradespot.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Base app
-    path("", include("portfolios.lease_finder_app.urls", namespace="autotradespot")),
+    path("", include("autotradespot.lease_finder_app.urls", namespace="autotradespot")),
     # Listings
-    path("listings/", include("portfolios.listings.urls", namespace="listings")),
+    path("listings/", include("autotradespot.listings.urls", namespace="listings")),
     # API
-    path("api/", include("portfolios.ats_api.urls", namespace="api")),
+    path("api/", include("autotradespot.ats_api.urls", namespace="api")),
     # translations
     path("", include("django.conf.urls.i18n")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

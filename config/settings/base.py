@@ -8,8 +8,8 @@ import environ
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# portfolios/
-APPS_DIR = BASE_DIR / "portfolios"
+# autotradespot/
+APPS_DIR = BASE_DIR / "autotradespot"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -85,10 +85,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "portfolios.users",
-    "portfolios.lease_finder_app.apps.LeaseFinderAppConfig",
-    "portfolios.listings.apps.ListingsConfig",
-    "portfolios.ats_api.apps.AtsApiConfig",
+    "autotradespot.users",
+    "autotradespot.lease_finder_app.apps.LeaseFinderAppConfig",
+    "autotradespot.listings.apps.ListingsConfig",
+    "autotradespot.ats_api.apps.AtsApiConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -97,7 +97,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "portfolios.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "autotradespot.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "portfolios.users.context_processors.allauth_settings",
+                "autotradespot.users.context_processors.allauth_settings",
             ],
         },
     }
@@ -316,13 +316,13 @@ ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_MAX_EMAIL_ADDRESSES = 2
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "portfolios.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "autotradespot.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-ACCOUNT_FORMS = {"signup": "portfolios.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "autotradespot.users.forms.UserSignupForm"}
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "portfolios.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "autotradespot.users.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-SOCIALACCOUNT_FORMS = {"signup": "portfolios.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "autotradespot.users.forms.UserSocialSignupForm"}
 
 
 # django-webpack-loader
@@ -338,7 +338,7 @@ WEBPACK_LOADER = {
 # Your stuff...
 # ------------------------------------------------------------------------------
 
-BASE_ATS_DIR = BASE_DIR / "portfolios"
+BASE_ATS_DIR = BASE_DIR / "autotradespot"
 FILE_UPLOAD_TEMP_DIR = BASE_ATS_DIR / "tmp"
 
 CARDATA_API_APP_TOKEN = "myjMKXK077RBPzTj5MnA0F2oM"
