@@ -1,10 +1,10 @@
-.. Portfolios documentation master file, created by
+.. AutoTradeSpot documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Portfolios's documentation!
-======================================================================
+Welcome to AutoTradeSpot's documentation!
+=======================================================================
 
 .. toctree::
    :maxdepth: 2

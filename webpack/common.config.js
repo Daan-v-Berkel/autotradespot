@@ -7,11 +7,11 @@ module.exports = {
   target: 'web',
   context: path.join(__dirname, '../'),
   entry: {
-    project: path.resolve(__dirname, '../portfolios/static/js/project'),
-    vendors: path.resolve(__dirname, '../portfolios/static/js/vendors'),
+    project: path.resolve(__dirname, '../autotradespot/static/js/project'),
+    vendors: path.resolve(__dirname, '../autotradespot/static/js/vendors'),
   },
   output: {
-    path: path.resolve(__dirname, '../portfolios/static/webpack_bundles/'),
+    path: path.resolve(__dirname, '../autotradespot/static/webpack_bundles/'),
     publicPath: '/static/webpack_bundles/',
     filename: 'js/[name]-[fullhash].js',
     chunkFilename: 'js/[name]-[hash].js',

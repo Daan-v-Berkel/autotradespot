@@ -1,4 +1,4 @@
-# Translations for the Portfolios project
+# Translations for the autotradespot project
 # Copyright (C) 2023 Daan van Berkel
 # Daan van Berkel <daan-van-berkel@vanberkelstudio.com>, 2023.
 #
@@ -7,301 +7,256 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-10 04:12+0100\n"
+"POT-Creation-Date: 2026-02-05 23:24+0100\n"
 "Language: en-US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config/settings/base.py:32
-msgid "English"
-msgstr ""
-
-#: config/settings/base.py:33
-msgid "Dutch"
-msgstr ""
-
-#: portfolios/lease_finder_app/forms.py:66
 msgid "username or email"
 msgstr ""
 
-#: portfolios/lease_finder_app/managers.py:16
 msgid "The Email must be set"
 msgstr ""
 
-#: portfolios/lease_finder_app/managers.py:32
 msgid "Superuser must have is_staff=True."
 msgstr ""
 
-#: portfolios/lease_finder_app/managers.py:34
 msgid "Superuser must have is_superuser=True."
 msgstr ""
 
-#: portfolios/listings/cardata.py:6 portfolios/listings/cardata.py:100
 msgid "Unknown"
 msgstr ""
 
-#: portfolios/listings/filters.py:13 portfolios/listings/filters.py:31
-#: portfolios/listings/filters.py:38 portfolios/listings/filters.py:65
 msgid "Any"
 msgstr ""
 
-#: portfolios/listings/filters.py:73
 msgid "min €"
 msgstr ""
 
-#: portfolios/listings/filters.py:74
 msgid "max €"
 msgstr ""
 
-#: portfolios/listings/filters.py:81
 msgid "min € per month"
 msgstr ""
 
-#: portfolios/listings/filters.py:82
 msgid "max € per month"
 msgstr ""
 
-#: portfolios/listings/filters.py:86
 msgid "max driven kilometers"
 msgstr ""
 
-#: portfolios/listings/filters.py:104
 msgid "min annual kilometers"
 msgstr ""
 
-#: portfolios/listings/filters.py:110
 msgid "any period"
 msgstr ""
 
-#: portfolios/listings/filters.py:111
 msgid "1 - 12 months"
 msgstr ""
 
-#: portfolios/listings/filters.py:112
 msgid "12 - 24 months"
 msgstr ""
 
-#: portfolios/listings/filters.py:113
 msgid "24 - 36 months"
 msgstr ""
 
-#: portfolios/listings/filters.py:114
 msgid "36 - 48 months"
 msgstr ""
 
-#: portfolios/listings/filters.py:115
 msgid "48 - 60 months"
 msgstr ""
 
-#: portfolios/listings/filters.py:119
 msgid "lease duration"
 msgstr ""
 
-#: portfolios/listings/forms.py:66
+msgid "title"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "type"
+msgstr ""
+
 msgid "contract end date"
 msgstr ""
 
-#: portfolios/listings/forms.py:69
 msgid "Price/M"
 msgstr ""
 
-#: portfolios/listings/forms.py:128
 msgid "extra variant details, e.g. PHEV or GT"
 msgstr ""
 
-#: portfolios/listings/models.py:76
 msgid "Inactive"
 msgstr ""
 
-#: portfolios/listings/models.py:77
 msgid "Active"
 msgstr ""
 
-#: portfolios/listings/models.py:78
 msgid "Draft"
 msgstr ""
 
-#: portfolios/listings/models.py:79
 msgid "Reserved"
 msgstr ""
 
-#: portfolios/listings/models.py:80
 msgid "Sold"
 msgstr ""
 
-#: portfolios/listings/models.py:81
 msgid "Removed"
 msgstr ""
 
-#: portfolios/listings/models.py:82
 msgid "Reported"
 msgstr ""
 
-#: portfolios/listings/models.py:83
 msgid "under review"
 msgstr ""
 
-#: portfolios/listings/models.py:95
 #, python-brace-format
 msgid ""
 "this listing hs been {self.status_name} and cannot be changed at this time."
 msgstr ""
 
-#: portfolios/listings/models.py:97
 msgid ""
 "this listing has no pricing details, these are needed before being able to "
 "activate the listing."
 msgstr ""
 
-#: portfolios/listings/models.py:99
-msgid ""
-"this listing has either no images, or the images do not meet the minimum "
-"requirements"
-msgstr ""
-
-#: portfolios/listings/models.py:100
-msgid "this listing has insufficient details about the listed object"
-msgstr ""
-
-#: portfolios/listings/models.py:119
-#: portfolios/templates/listings/search/searcher.html:17
 msgid "Sale"
 msgstr ""
 
-#: portfolios/listings/models.py:120
-#: portfolios/templates/listings/search/searcher.html:27
 msgid "Lease"
 msgstr ""
 
-#: portfolios/listings/models.py:138
 msgid "for sale"
 msgstr ""
 
-#: portfolios/listings/models.py:138
 msgid "lease"
 msgstr ""
 
-#: portfolios/listings/models.py:233
 msgid "Automatic"
 msgstr ""
 
-#: portfolios/listings/models.py:234
 msgid "Manual"
 msgstr ""
 
-#: portfolios/listings/models.py:235
 msgid "Half/Semi-automatic"
 msgstr ""
 
-#: portfolios/listings/models.py:238
 msgid "Benzine"
 msgstr ""
 
-#: portfolios/listings/models.py:239
 msgid "Diesel"
 msgstr ""
 
-#: portfolios/listings/models.py:240
 msgid "LPG"
 msgstr ""
 
-#: portfolios/listings/models.py:241
 msgid "CNG"
 msgstr ""
 
-#: portfolios/listings/models.py:242
 msgid "Elektro/Benzine"
 msgstr ""
 
-#: portfolios/listings/models.py:243
 msgid "Elektro/Diesel"
 msgstr ""
 
-#: portfolios/listings/models.py:244
 msgid "Ethanol"
 msgstr ""
 
-#: portfolios/listings/models.py:245
 msgid "Elektrisch"
 msgstr ""
 
-#: portfolios/listings/models.py:246
 msgid "Waterstof"
 msgstr ""
 
-#: portfolios/listings/models.py:247
 msgid "Overig"
 msgstr ""
 
-#: portfolios/listings/models.py:283
+msgid "Compact"
+msgstr ""
+
+msgid "Convertible"
+msgstr ""
+
+msgid "Coupe"
+msgstr ""
+
+msgid "SUV"
+msgstr ""
+
+msgid "Station wagon"
+msgstr ""
+
+msgid "Sedan"
+msgstr ""
+
+msgid "Van"
+msgstr ""
+
+msgid "Transporter"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Used"
+msgstr ""
+
+msgid "Classic"
+msgstr ""
+
 msgid "mileage"
 msgstr ""
 
-#: portfolios/listings/models.py:285
 msgid "max km/year"
 msgstr ""
 
-#: portfolios/listings/models.py:287
 msgid "fuel"
 msgstr ""
 
-#: portfolios/listings/models.py:288
 msgid "transmission"
 msgstr ""
 
-#: portfolios/listings/models.py:289
 msgid "manufacture year"
 msgstr ""
 
-#: portfolios/listings/models.py:291
 msgid "price"
 msgstr ""
 
-#: portfolios/listings/models.py:297
 msgid "Private"
 msgstr ""
 
-#: portfolios/listings/models.py:298
 msgid "Operational"
 msgstr ""
 
-#: portfolios/listings/models.py:299
 msgid "Netto Operational"
 msgstr ""
 
-#: portfolios/listings/models.py:300
 msgid "Financial"
 msgstr ""
 
-#: portfolios/listings/models.py:301
 msgid "Short"
 msgstr ""
 
-#: portfolios/listings/models.py:331
 msgid "Fixed price"
 msgstr ""
 
-#: portfolios/listings/models.py:332
 msgid "Negotiable"
 msgstr ""
 
-#: portfolios/listings/models.py:333
 msgid "Open for bidding"
 msgstr ""
 
-#: portfolios/listings/views.py:99
 #, python-brace-format
 msgid ""
-"No data has been found for licenceplate '{licenceplate}'.\n"
-"please make sure this licenceplate you have given is correct"
+"No data has been found for licenceplate '{licenceplate}'.<br /> please make "
+"sure this licenceplate you have given is correct"
 msgstr ""
 
-#: portfolios/listings/views.py:298
 msgid "Interest in your listing"
 msgstr ""
 
-#: portfolios/listings/views.py:300
 #, python-brace-format
 msgid ""
 "Hi there,\n"
@@ -312,110 +267,82 @@ msgid ""
 "With regards, {request.user.name}"
 msgstr ""
 
-#: portfolios/listings/views.py:310
 msgid ""
 "Thank you for your interest, the provider of this listing will contact you "
 "soon!"
 msgstr ""
 
-#: portfolios/templates/403.html:4 portfolios/templates/403.html:7
-#: portfolios/templates/403_csrf.html:4 portfolios/templates/403_csrf.html:7
 msgid "Forbidden"
 msgstr ""
 
-#: portfolios/templates/403.html:12 portfolios/templates/403_csrf.html:12
 msgid "You're not allowed to access this page."
 msgstr ""
 
-#: portfolios/templates/404.html:4 portfolios/templates/404.html:7
 msgid "Page not found"
 msgstr ""
 
-#: portfolios/templates/404.html:12
 msgid "This is not the page you were looking for."
 msgstr ""
 
-#: portfolios/templates/500.html:4
 msgid "Server Error"
 msgstr ""
 
-#: portfolios/templates/500.html:8
 msgid "Looks like something went wrong!"
 msgstr ""
 
-#: portfolios/templates/500.html:10
 msgid ""
 "We track these errors automatically, but if the problem persists feel free "
 "to contact us. In the meantime, try refreshing."
 msgstr ""
 
-#: portfolios/templates/account/account_inactive.html:6
-#: portfolios/templates/account/account_inactive.html:9
 msgid "Account Inactive"
 msgstr ""
 
-#: portfolios/templates/account/account_inactive.html:10
 msgid "This account is inactive."
 msgstr ""
 
-#: portfolios/templates/account/email.html:7
 msgid "Account"
 msgstr ""
 
-#: portfolios/templates/account/email.html:10
 msgid "E-mail Addresses"
 msgstr ""
 
-#: portfolios/templates/account/email.html:12
 msgid "The following e-mail addresses are associated with your account:"
 msgstr ""
 
-#: portfolios/templates/account/email.html:27
 msgid "Verified"
 msgstr ""
 
-#: portfolios/templates/account/email.html:29
 msgid "Unverified"
 msgstr ""
 
-#: portfolios/templates/account/email.html:32
 msgid "Primary"
 msgstr ""
 
-#: portfolios/templates/account/email.html:40
 msgid "Make Primary"
 msgstr ""
 
-#: portfolios/templates/account/email.html:43
 msgid "Re-send Verification"
 msgstr ""
 
-#: portfolios/templates/account/email.html:46
 msgid "Remove"
 msgstr ""
 
-#: portfolios/templates/account/email.html:52
 msgid "Warning:"
 msgstr ""
 
-#: portfolios/templates/account/email.html:57
 msgid "Add E-mail Address"
 msgstr ""
 
-#: portfolios/templates/account/email.html:60
 msgid "Add E-mail"
 msgstr ""
 
-#: portfolios/templates/account/email.html:68
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr ""
 
-#: portfolios/templates/account/email_confirm.html:7
-#: portfolios/templates/account/email_confirm.html:10
 msgid "Confirm E-mail Address"
 msgstr ""
 
-#: portfolios/templates/account/email_confirm.html:14
 #, python-format
 msgid ""
 "Please\n"
@@ -424,11 +351,9 @@ msgid ""
 "  for user %(user_display)s."
 msgstr ""
 
-#: portfolios/templates/account/email_confirm.html:21
 msgid "Confirm"
 msgstr ""
 
-#: portfolios/templates/account/email_confirm.html:26
 #, python-format
 msgid ""
 "This e-mail confirmation link expired or is invalid.\n"
@@ -437,71 +362,47 @@ msgid ""
 "\t"
 msgstr ""
 
-#: portfolios/templates/account/login.html:8
-#: portfolios/templates/account/login.html:11
-#: portfolios/templates/account/login.html:54
 msgid "Sign In"
 msgstr ""
 
-#: portfolios/templates/account/login.html:18
 #, python-format
 msgid ""
 "Or, <a class=\"link link-hover link-info\" href=\"%(signup_url)s\">sign up</"
 "a> for a %(site_name)s account and sign in below:"
 msgstr ""
 
-#: portfolios/templates/account/login.html:29
 msgid "or"
 msgstr ""
 
-#: portfolios/templates/account/login.html:35
 #, python-format
 msgid ""
 "If you have not created an account yet, then please <a class=\"link link-"
 "hover link-info\" href=\"%(signup_url)s\">sign up</a> first."
 msgstr ""
 
-#: portfolios/templates/account/login.html:53
 msgid "Forgot Password?"
 msgstr ""
 
-#: portfolios/templates/account/logout.html:6
-#: portfolios/templates/account/logout.html:9
-#: portfolios/templates/account/logout.html:18
 msgid "Sign Out"
 msgstr ""
 
-#: portfolios/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
 msgstr ""
 
-#: portfolios/templates/account/password_change.html:7
-#: portfolios/templates/account/password_change.html:10
-#: portfolios/templates/account/password_change.html:15
-#: portfolios/templates/account/password_reset_from_key.html:7
-#: portfolios/templates/account/password_reset_from_key_done.html:6
-#: portfolios/templates/account/password_reset_from_key_done.html:9
 msgid "Change Password"
 msgstr ""
 
-#: portfolios/templates/account/password_reset.html:8
-#: portfolios/templates/account/password_reset.html:11
-#: portfolios/templates/account/password_reset_done.html:7
-#: portfolios/templates/account/password_reset_done.html:10
 msgid "Password Reset"
 msgstr ""
 
-#: portfolios/templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
 msgstr ""
 
-#: portfolios/templates/account/password_reset.html:24
 msgid "Reset My Password"
 msgstr ""
 
-#: portfolios/templates/account/password_reset.html:27
 msgid ""
 "Please <a class=\"link link-hover link-info\" href=\"mailto:"
 "info@vanberkelstudio.com\">contact us</a> if you have any trouble resetting "
@@ -509,81 +410,58 @@ msgid ""
 "  password."
 msgstr ""
 
-#: portfolios/templates/account/password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
 
-#: portfolios/templates/account/password_reset_from_key.html:13
 msgid "Bad Token"
 msgstr ""
 
-#: portfolios/templates/account/password_reset_from_key.html:22
 msgid ""
 " The password reset link was invalid, possibly because it\n"
 "  has already been used. Please request a "
 msgstr ""
 
-#: portfolios/templates/account/password_reset_from_key.html:24
 msgid "new password reset."
 msgstr ""
 
-#: portfolios/templates/account/password_reset_from_key.html:33
 msgid "change password"
 msgstr ""
 
-#: portfolios/templates/account/password_reset_from_key.html:36
-#: portfolios/templates/account/password_reset_from_key_done.html:10
 msgid "Your password is now changed."
 msgstr ""
 
-#: portfolios/templates/account/password_set.html:7
-#: portfolios/templates/account/password_set.html:10
-#: portfolios/templates/account/password_set.html:18
 msgid "Set Password"
 msgstr ""
 
-#: portfolios/templates/account/signup.html:7
 msgid "Signup"
 msgstr ""
 
-#: portfolios/templates/account/signup.html:10
-#: portfolios/templates/account/signup.html:25
 msgid "Sign Up"
 msgstr ""
 
-#: portfolios/templates/account/signup.html:12
 #, python-format
 msgid ""
 "Already have an account? Then please\n"
 "  <a class=\"link link-info link-hover\" href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
-#: portfolios/templates/account/signup_closed.html:6
-#: portfolios/templates/account/signup_closed.html:9
 msgid "Sign Up Closed"
 msgstr ""
 
-#: portfolios/templates/account/signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
 msgstr ""
 
-#: portfolios/templates/account/verification_sent.html:6
-#: portfolios/templates/account/verification_sent.html:9
-#: portfolios/templates/account/verified_email_required.html:6
-#: portfolios/templates/account/verified_email_required.html:9
 msgid "Verify Your E-mail Address"
 msgstr ""
 
-#: portfolios/templates/account/verification_sent.html:11
 msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
 
-#: portfolios/templates/account/verified_email_required.html:12
 msgid ""
 "This part of the site requires us to verify that you are\n"
 "  who you claim to be. For this purpose, we require that you verify "
@@ -591,7 +469,6 @@ msgid ""
 "  your e-mail address. "
 msgstr ""
 
-#: portfolios/templates/account/verified_email_required.html:17
 msgid ""
 "We have sent an e-mail to you for verification. Please\n"
 "  click on the link inside this e-mail. Please contact us if you do not "
@@ -599,70 +476,51 @@ msgid ""
 "  it within a few minutes."
 msgstr ""
 
-#: portfolios/templates/account/verified_email_required.html:22
 #, python-format
 msgid ""
 "<strong>Note:</strong> you can still\n"
 "  <a href=\"%(email_url)s\">change your e-mail address</a>."
 msgstr ""
 
-#: portfolios/templates/base/call_to_action.html:4
 msgid "place_ad"
 msgstr ""
 
-#: portfolios/templates/base/call_to_action.html:5
-#: portfolios/templates/base/main_navbar.html:25
 msgid "find your car"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:14
-#: portfolios/templates/base/how_it_works.html:4
 msgid "Revamp Your Ride: Buy, Sell, Lease."
 msgstr ""
 
-#: portfolios/templates/base/footer.html:18
 msgid "Legal"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:20
 msgid "Terms of Service"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:28
 msgid "Useful links"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:30
 msgid "How it works"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:38
 msgid "Contact"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:71
 msgid "Terms of service"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:75
-#: portfolios/templates/base/footer.html:84
 msgid "close"
 msgstr ""
 
-#: portfolios/templates/base/footer.html:80
 msgid "Cookie Policy"
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:6
 msgid "Your Car, Your Way!"
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:10
-#: portfolios/templates/information/how_it_works.html:15
 msgid "Create a Listing"
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:11
 msgid ""
 "\n"
 "        Ready to sell your car? Placing an listing on Our Platform is a "
@@ -678,12 +536,9 @@ msgid ""
 "        "
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:21
-#: portfolios/templates/information/how_it_works.html:27
 msgid "Connect with buyers"
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:22
 msgid ""
 "\n"
 "        Excited to hear from potential buyers? Our Platform makes "
@@ -697,12 +552,9 @@ msgid ""
 "        "
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:31
-#: portfolios/templates/information/how_it_works.html:38
 msgid "Your Car, Your Deal!"
 msgstr ""
 
-#: portfolios/templates/base/how_it_works.html:33
 msgid ""
 "\n"
 "        Congratulations! Your car has found its new owner. At Auto "
@@ -713,55 +565,45 @@ msgid ""
 "        "
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:17
 msgid "create"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:19
+msgid "create react"
+msgstr ""
+
 msgid "find"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:23
 msgid "create listing"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:32
 msgid "my Tradespot"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:39
 msgid "profile"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:43
 msgid "light"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:49
 msgid "dark"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:52
 msgid "language"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:56
 msgid "english"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:61
 msgid "dutch"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:66
 msgid "logout"
 msgstr ""
 
-#: portfolios/templates/base/main_navbar.html:70
 msgid "login"
 msgstr ""
 
-#: portfolios/templates/information/how_it_works.html:17
 msgid ""
 "\n"
 "            Ready to sell your car? Placing an listing on Our Platform is a "
@@ -777,7 +619,6 @@ msgid ""
 "            "
 msgstr ""
 
-#: portfolios/templates/information/how_it_works.html:29
 msgid ""
 "\n"
 "            Excited to hear from potential buyers? Our Platform makes "
@@ -791,7 +632,6 @@ msgid ""
 "            "
 msgstr ""
 
-#: portfolios/templates/information/how_it_works.html:40
 msgid ""
 "\n"
 "            Congratulations! Your car has found its new owner. At Auto "
@@ -804,31 +644,26 @@ msgid ""
 "            "
 msgstr ""
 
-#: portfolios/templates/information/how_it_works.html:56
-#: portfolios/templates/users/user_pages/favorites.html:10
 msgid "Find your car"
 msgstr ""
 
-#: portfolios/templates/legal/cookie_banner.html:13
 msgid ""
 "By using this website you agree to our <button class=\"link link-info\" "
 "onclick=\"cookie_modal.showModal()\">Cookiepolicy</button>"
 msgstr ""
 
-#: portfolios/templates/legal/cookie_banner.html:18
 msgid "Accept"
 msgstr ""
 
-#: portfolios/templates/legal/cookies.html:2
 msgid ""
 "\n"
 "  Met dit cookiebeleid informeert Auto Tradespot de gebruiker over het "
 "gebruik van cookies of vergelijkbare opslagtechnologieën (genaamd "
 "‘’cookies’’) op deze website.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  WAT ZIJN COOKIES?\n"
-"  \n"
+"\n"
 "  Cookies zijn kleine bestanden die door de browser op uw toestel worden "
 "opgeslagen om bepaalde informatie of fotobestanden op te slaan, zoals "
 "pixels. De volgende keer dat u onze website op uw toestel bezoekt, wordt de "
@@ -843,10 +678,10 @@ msgid ""
 "geïdentificeerd. Persoonlijke gegevens worden alleen opgeslagen nadat u "
 "nadrukkelijk toestemming heeft gegeven of als het strikt noodzakelijk is om "
 "de aangeboden service te gebruiken.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  TOESTEMMING VOOR HET GEBRUIK VAN COOKIES\n"
-"  \n"
+"\n"
 "  Cookies die niet strikt noodzakelijk zijn om gebruik te kunnen blijven "
 "maken van onze service, worden alleen gebruikt wanneer we uw toestemming "
 "hebben ontvangen. Als u besluit verder te gaan op de website nadat de "
@@ -856,10 +691,10 @@ msgid ""
 "  Onder de punt “Deactiveren en verwijderen van alle cookies” van dit "
 "cookiebeleid leest u hoe u cookies in het algemeen (d.w.z. inclusief de "
 "essentiële cookies) kunt deactiveren of verwijderen in uw browser.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  WETTELIJKE BASIS\n"
-"  \n"
+"\n"
 "  Wanneer de gebruiker / bezoeker toestemming heeft gegeven voor het gebruik "
 "van cookies op basis van informatie van ons op onze website "
 "(‘’cookiebanner’’), de wettigheid van het gebruik wordt bovendien beheerst "
@@ -867,10 +702,10 @@ msgid ""
 "is een legitiem belang (dat wil zeggen interesse in analyseren, "
 "optimalisatie en economisch belang van onze website en diensten) in de zin "
 "van art. 6 (1) (f) GDPR.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  COOKIE CATEGORIEËN\n"
-"  \n"
+"\n"
 "  De door ons gebruikte cookies kunnen worden verdeeld in de volgende "
 "categorieën, op basis van doel en functie:\n"
 "  Strikt noodzakelijke cookies;\n"
@@ -878,20 +713,20 @@ msgid ""
 "  Prestatie-cookies;\n"
 "  Marketing cookies / cookies van derden / op toestemming gebaseerde "
 "cookies\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  STRIKT NOODZAKELIJKE COOKIES\n"
-"  \n"
+"\n"
 "  Strikt noodzakelijke cookies garanderen functies zonder welke u deze "
 "website en services niet zou kunnen gebruiken zoals bedoeld is. Deze cookies "
 "worden alleen door ons gebruikt en zijn daarom first party cookies. Dit "
 "betekent dat alle informatie opgeslagen in deze cookies alleen naar onze "
 "website wordt gestuurd.\n"
 "  De volgende strikt noodzakelijke cookies worden op onze website gebruikt:\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  NAAM BESCHRIJVING / DOEL LOOPTIJD\n"
-"  \n"
+"\n"
 "  Deze cookie is nodig om de benodigde functies te laten werken. 30 dagen\n"
 "  Het gebruiken van strikt noodzakelijke cookies op onze website, is "
 "mogelijk zonder dat u daar toestemming voor hebt gegeven. Strikt "
@@ -900,10 +735,10 @@ msgid ""
 "toestemming voor moet geven, d.w.z. de functionele, prestatie- en marketing "
 "cookies. U kunt de cookies echter op ieder moment deactiveren in uw browser "
 "(zie beneden, punt “Deactiveren en verwijderen van alle cookies”).\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  FUNCTIONELE COOKIES\n"
-"  \n"
+"\n"
 "  Met de functionele cookies kan onze website informatie opslaan die al "
 "bekend is (zoals de geregistreerde gebruikersnaam of taalkeuze) en gebaseerd "
 "op deze informatie, u verbeterde en meer gepersonaliseerde functies "
@@ -911,10 +746,10 @@ msgid ""
 "  Op onze website worden geen functionele cookies gebruikt.\n"
 "  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
 "(opt-out) door je cookie-instellingen aan te passen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  PERFORMANCE COOKIES\n"
-"  \n"
+"\n"
 "  Prestatie-cookies verzamelen informatie over hoe onze websites worden "
 "gebruikt om hun aantrekkelijkheid, inhoud en functionaliteit te verbeteren. "
 "Deze cookies helpen ons om bijvoorbeeld te bepalen welke pagina’s op onze "
@@ -938,10 +773,10 @@ msgid ""
 "ieder moment contact met ons opnemen via het contactadres, dat in het "
 "impressum of de privacyverklaring gevonden kan worden.\n"
 "  De volgende prestatie-cookies worden op onze website gebruikt:\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  NAAM BESCHRIJVING / DOEL LOOPTIJD\n"
-"  \n"
+"\n"
 "  Deze cookie verzamelt anonieme informatie over hoe gebruikers deze site "
 "gebruiken voor analysedoeleinden. 2 jaar\n"
 "  Deze cookie beperkt het verzamelen van gegevens wanneer er te veel "
@@ -949,11 +784,11 @@ msgid ""
 "de resultaten worden geëxtrapoleerd. 10 minuten\n"
 "  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
 "(opt-out) door je cookie-instellingen aan te passen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  MARKETING COOKIES / COOKIES VAN DERDEN / OP TOESTEMMING GEBASEERDE "
 "COOKIES\n"
-"  \n"
+"\n"
 "  Marketing cookies / Cookies van derden / op toestemming gebaseerde cookies "
 "worden gebruikt om informatie te verzamelen over bezochte websites door de "
 "bezoeker om zo doelgericht te adverteren voor de gebruiker.\n"
@@ -961,10 +796,10 @@ msgid ""
 "toestemming gebaseerde cookies gebruikt.\n"
 "  Je kunt op ieder moment kiezen om de Functionele Cookies uit te zetten "
 "(opt-out) door je cookie-instellingen aan te passen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  DEACTIVEREN EN VERWIJDEREN VAN ALLE COOKIES\n"
-"  \n"
+"\n"
 "  Je kunt je browserinstellingen zo instellen dat cookies normaliter niet op "
 "uw apparaat kunnen worden opgeslagen en / of dat u telkens wordt gevraagd of "
 "u het ermee eens bent dat cookies worden ingeschakeld. U kunt ook, op ieder "
@@ -975,11 +810,10 @@ msgid ""
 "  "
 msgstr ""
 
-#: portfolios/templates/legal/terms_of_service.html:2
 msgid ""
 "\n"
 "  ALGEMENE VOORWAARDEN AUTOTRADESPOT.NL\n"
-"  \n"
+"\n"
 "  Deze Algemene Voorwaarden (de Voorwaarden) zijn van toepassing op ieder "
 "gebruik van de Website www.autotradespot.nl (de Website) en alle "
 "subdomeinen. De Voorwaarden zijn ook van toepassing op alle diensten die "
@@ -987,10 +821,10 @@ msgid ""
 "  Als je een vraag hebt over deze voorwaarden of om een andere reden contact "
 "met ons op wil nemen door een mail te sturen naar service@autotradespot.nl.\n"
 "  KvK-nummer: 99999999\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 1 – Algemeen\n"
-"  \n"
+"\n"
 "  De Voorwaarden zijn van toepassing op iedereen die de Website gebruikt.\n"
 "  Wij zullen je de Voorwaarden op verzoek kosteloos toezenden. De "
 "Voorwaarden zijn ook beschikbaar op onze website.\n"
@@ -1002,10 +836,10 @@ msgid ""
 "niets aan de geldigheid van de rest van de Voorwaarden. Het nietige of "
 "vernietigde deel wordt vervangen door een bepaling die zoveel mogelijk de "
 "inhoud van de nietige bepaling volgt.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 2 – Het Platform\n"
-"  \n"
+"\n"
 "  Het doel van de Website is om een platform te bieden waarbij consumenten "
 "hun lopende private lease contract ter overname kunnen aanbieden, en andere "
 "consumenten hierop kunnen reageren om deze over te nemen. (de “Dienst”)\n"
@@ -1014,10 +848,10 @@ msgid ""
 "gebruikers maakt.\n"
 "  Wanneer je een conflict krijgt met een andere gebruiker moeten jullie dit "
 "conflict zelf oplossen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 3 – Gebruiksregels van de Website\n"
-"  \n"
+"\n"
 "  Je mag de Website niet zo gebruiken dat je daarmee de Nederlandse of "
 "andere toepasselijke wet- of regelgeving schendt.\n"
 "  Je mag het volgende niet via de Website verspreiden:\n"
@@ -1037,20 +871,20 @@ msgid ""
 "dan waarvoor de Website is bedoeld.\n"
 "  Als je melding wilt maken van een gebruiker die de Website misbruikt kun "
 "je een bericht sturen naar service@eautotradespot.nl.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 4 – Beschikbaarheid van de Website\n"
-"  \n"
+"\n"
 "  Wij doen ons uiterste best om te zorgen dat de Website beschikbaar is.\n"
 "  Wij garanderen niet dat Website foutloos werkt of altijd beschikbaar is. "
 "Wij zijn dan ook niet aansprakelijk voor schade, geleden als de Website niet "
 "of niet veilig werkt.\n"
 "  Wij zijn ook niet aansprakelijk voor schade geleden door verkeerde "
 "informatie op de Website.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 5 – Gebruikersaccount\n"
-"  \n"
+"\n"
 "  Je moet minstens 18 jaar oud zijn om een account aan te mogen maken.\n"
 "  Je moet de inloggegevens van je account afschermen voor anderen en je "
 "wachtwoord geheim houden. Wij mogen ervan uitgaan dat alles wat er gebeurt "
@@ -1058,43 +892,43 @@ msgid ""
 "gebeurt.\n"
 "  Als je denkt of weet dat jouw account misbruikt wordt, moet je dat zo snel "
 "mogelijk melden bij ons. Wij zullen dan gepaste maatregelen nemen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 6 – Prijzen en betaling\n"
-"  \n"
+"\n"
 "  Voor het plaatsen van een advertentie moet je een prijs betalen. Deze "
 "prijs staat op de Website. Als je betaald hebt heb je geen recht op "
 "terugbetaling van het betaalde bedrag.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 7 – Uitsluiting\n"
-"  \n"
+"\n"
 "  Als wij vinden dat je de wet of deze voorwaarden overtreedt, kunnen wij je "
 "(deels) uitsluiten van de Dienst. Wij kunnen je ook (deels) uitsluiten van "
 "de Dienst als je niet op tijd of helemaal niet betaalt. We kunnen je "
 "bijvoorbeeld uitsluiten van de Dienst door:\n"
 "  jouw account te verwijderen; en\n"
 "  onderdelen van de Dienst voor je te blokkeren.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 8 – Geheimhouding\n"
-"  \n"
+"\n"
 "  Wij zijn verplicht al jouw vertrouwelijke informatie geheim te houden. "
 "Onder ‘vertrouwelijke informatie’ begrijpen wij alle informatie waarvan je "
 "hebt aangegeven dat deze vertrouwelijk is of waarvan het uit de aard van de "
 "informatie voortvloeit. Jouw persoonsgegevens zoals bedoeld in de Algemene "
 "Verordening Gegevensbescherming geven wij alleen vrij als wij daartoe "
 "wettelijk verplicht zijn.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 9 – Conflictoplossing\n"
-"  \n"
+"\n"
 "  Wij zijn niet verplicht om te helpen bij conflicten tussen contract "
 "aanbieder en contract overnemer.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 10 – Aansprakelijkheid\n"
-"  \n"
+"\n"
 "  Wij zijn niet aansprakelijk voor:\n"
 "  directe of indirecte schade die je lijdt door het gebruiken van onze "
 "Website, ongeacht of de schadeclaim gebaseerd is op een garantieregeling, "
@@ -1103,25 +937,25 @@ msgid ""
 "Website, ongeacht of die informatie van ons komt of van derde partijen;\n"
 "  schade die voortkomt uit fouten van derden of voortvloeit uit het niet "
 "beschikbaar zijn van de Website, om redenen die buiten onze macht liggen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 11 – Privacy Policy\n"
-"  \n"
+"\n"
 "  Wij beschermen jouw persoonsgegevens in overeenstemming met de Algemene "
 "Verordening Gegevensbescherming (AVG). Je kunt voor meer informatie onze "
 "Privacy Policy raadplegen.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 12 – Vrijwaring\n"
-"  \n"
+"\n"
 "  Door de Website te gebruiken, vrijwaar je ons voor aanspraken, vorderingen "
 "en (schade)vergoedingen van derden. Deze aansprakelijkheidsbeperking sluit "
 "niet onze aansprakelijkheid uit in het geval van kwade opzet of bewuste "
 "roekeloosheid.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 13 – Intellectueel eigendom\n"
-"  \n"
+"\n"
 "  Je geeft ons een licentie om content die je uploadt onbeperkt te "
 "gebruiken. Deze licentie is:\n"
 "  niet-exclusief;\n"
@@ -1134,29 +968,25 @@ msgid ""
 "ons in licentie te geven.\n"
 "  Je mag inhoud van de Website niet delen, verkopen of exploiteren, op welke "
 "manier dan ook.\n"
-"  \n"
-"  \n"
+"\n"
+"\n"
 "  Artikel 14 – Geschillen\n"
-"  \n"
+"\n"
 "  Als er een geschil ontstaat tussen jou en ons, is het Nederlands recht van "
 "toepassing. In dat geval is de rechtbank Amsterdam bevoegd om over het "
 "geschil te oordelen.\n"
 "  "
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:15
 msgid "viewed"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:16
 msgid "saved"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:47
 msgid "This listing does not seem to have any images."
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:50
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t\t\t\t\tYou can add images by modifying this listing.</br />\n"
@@ -1165,200 +995,168 @@ msgid ""
 "\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:85
-#: portfolios/templates/listings/base/listing.html:168
-#: portfolios/templates/listings/contact/contact_btn.html:7
 msgid "Contact provider"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:90
 msgid "Provider actions"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:114
 msgid "Deactivate"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:116
 msgid "Activate"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:124
 msgid "Listing details"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:137
-#: portfolios/templates/listings/create/createlistingdetails.html:11
 msgid "Options"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:151
 msgid "Are you sure?"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:158
-#: portfolios/templates/listings/base/listing.html:178
 msgid "Cancel"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:161
 msgid "Delete listing"
 msgstr ""
 
-#: portfolios/templates/listings/base/listing.html:177
 msgid "Send"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:17
 msgid "Licenceplate"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:25
 msgid "Type"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:33
 msgid "Make/Model"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:41
 msgid "Details"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:49
 msgid "Images"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:62
 msgid "clear"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlisting.html:65
 msgid "continue later"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlistingLP.html:7
 msgid "Licenceplate number"
 msgstr ""
 
-#: portfolios/templates/listings/create/createlistingLP.html:24
-#: portfolios/templates/listings/create/createlistingdetails.html:17
-#: portfolios/templates/listings/create/createlistingmake.html:13
-#: portfolios/templates/listings/create/createlistingtype.html:11
 msgid "continue"
 msgstr ""
 
-#: portfolios/templates/listings/create/uploadlistingimages.html:23
+msgid "skip"
+msgstr ""
+
 msgid "finalize"
 msgstr ""
 
-#: portfolios/templates/listings/search/filter.html:8
 msgid "Delete"
 msgstr ""
 
-#: portfolios/templates/listings/search/listing_section_searchresults.html:4
 #, python-format
 msgid "found %(c)s results"
 msgstr ""
 
-#: portfolios/templates/users/profile/user_profile.html:18
+msgid ""
+"\n"
+"                Ready to sell your car? Placing an listing on Our Platform "
+"is a breeze!\n"
+"                Simply sign in, provide the essential details about your "
+"car, add some\n"
+"                eye-catching photos, set a price, and you're good to go. Our "
+"intuitive\n"
+"                interface makes the process quick and effortless, ensuring "
+"your listing is up\n"
+"                and running in no time. Reach potential buyers swiftly and "
+"smoothly!\n"
+"                "
+msgstr ""
+
 msgid "Profile"
 msgstr ""
 
-#: portfolios/templates/users/profile/user_profile.html:27
 msgid "Preferences"
 msgstr ""
 
-#: portfolios/templates/users/profile/user_profile.html:36
 msgid "Listings"
 msgstr ""
 
-#: portfolios/templates/users/profile/user_profile.html:45
 msgid "Favourites"
 msgstr ""
 
-#: portfolios/templates/users/user_pages/favorites.html:7
 msgid "Looks like you have no favourites yet"
 msgstr ""
 
-#: portfolios/templates/users/user_pages/listings.html:7
 msgid "Looks like you have not created any listing yet"
 msgstr ""
 
-#: portfolios/templates/users/user_pages/listings.html:8
 msgid "Create a listing"
 msgstr ""
 
-#: portfolios/templates/users/user_pages/preferences.html:18
-#: portfolios/templates/users/user_pages/profile.html:10
 msgid "save changes"
 msgstr ""
 
-#: portfolios/templates/widgets/image_select.html:7
 msgid "Upload images"
 msgstr ""
 
-#: portfolios/users/admin.py:25
 msgid "Personal info"
 msgstr ""
 
-#: portfolios/users/admin.py:27
 msgid "Permissions"
 msgstr ""
 
-#: portfolios/users/admin.py:38
 msgid "Important dates"
 msgstr ""
 
-#: portfolios/users/apps.py:7
 msgid "Users"
 msgstr ""
 
-#: portfolios/users/forms.py:31 portfolios/users/forms.py:61
-#: portfolios/users/tests/test_forms.py:36
 msgid "This email has already been taken."
 msgstr ""
 
-#: portfolios/users/forms.py:69
 msgid "recieve marketing emails"
 msgstr ""
 
-#: portfolios/users/forms.py:70
 msgid "recieve listing updates"
 msgstr ""
 
-#: portfolios/users/forms.py:71
 msgid "recieve updates about favourites"
 msgstr ""
 
-#: portfolios/users/forms.py:72
 msgid "display contact information publicly"
 msgstr ""
 
-#: portfolios/users/models.py:20
 msgid "name"
 msgstr ""
 
-#: portfolios/users/models.py:23
 msgid "Phone number"
 msgstr ""
 
-#: portfolios/users/models.py:24
 msgid "email address"
 msgstr ""
 
-#: portfolios/users/models.py:25
 msgid "username, (displayed to other users)"
 msgstr ""
 
-#: portfolios/users/tests/test_views.py:67 portfolios/users/views.py:34
 msgid "Information successfully updated"
 msgstr ""
 
-#: portfolios/users/views.py:71
 msgid "Your preferences have been saved succesfully!"
 msgstr ""
 
-#: portfolios/users/views.py:83
 msgid "Your profile has been saved succesfully!"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Dutch"
 msgstr ""

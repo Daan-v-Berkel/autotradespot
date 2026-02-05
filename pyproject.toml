@@ -11,7 +11,7 @@ python_files = [
 
 # ==== Coverage ====
 [tool.coverage.run]
-include = ["portfolios/**"]
+include = ["autotradespot/**"]
 omit = ["*/migrations/*", "*/tests/*"]
 plugins = ["django_coverage_plugin"]
 
@@ -27,7 +27,7 @@ target-version = ['py311']
 profile = "black"
 line_length = 119
 known_first_party = [
-    "portfolios",
+    "autotradespot",
     "config",
 ]
 skip = ["venv/"]

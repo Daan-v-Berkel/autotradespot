@@ -12,9 +12,9 @@ services:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
 
-    image: portfolios_production_django
+    image: autotradespot_production_django
     volumes:
-      - production_django_media:/app/portfolios/media
+      - production_django_media:/app/autotradespot/media
     depends_on:
       - postgres
       - redis
@@ -27,7 +27,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: portfolios_production_postgres
+    image: autotradespot_production_postgres
     volumes:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
@@ -38,7 +38,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/traefik/Dockerfile
-    image: portfolios_production_traefik
+    image: autotradespot_production_traefik
     depends_on:
       - django
     volumes:
@@ -53,24 +53,24 @@ services:
 
   celeryworker:
     <<: *django
-    image: portfolios_production_celeryworker
+    image: autotradespot_production_celeryworker
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
-    image: portfolios_production_celerybeat
+    image: autotradespot_production_celerybeat
     command: /start-celerybeat
 
   flower:
     <<: *django
-    image: portfolios_production_flower
+    image: autotradespot_production_flower
     command: /start-flower
 
   nginx:
     build:
       context: .
       dockerfile: ./compose/production/nginx/Dockerfile
-    image: portfolios_local_nginx
+    image: autotradespot_local_nginx
     depends_on:
       - django
     volumes:

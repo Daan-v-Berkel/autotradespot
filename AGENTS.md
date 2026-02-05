@@ -16,10 +16,10 @@
 
 ## Code Organization
 - **Main Components**:
-  - `portfolios/`: Contains main application logic.
+  - `autotradespot/`: Contains main application logic.
   - `tests/`: Holds test files and configurations.
   - `config/`: Configuration settings for Django.
-- **Frontend**: React components are located under the `portfolios/` directory.
+- **Frontend**: React components are located under the `autotradespot/` directory.
 
 ## Naming Conventions & Style Patterns
 - Follow **PEP 8** for Python style guide.

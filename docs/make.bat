@@ -10,7 +10,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=_source
 set BUILDDIR=_build
-set APP=..\portfolios
+set APP=..\autotradespot
 
 if "%1" == "" goto help
 
