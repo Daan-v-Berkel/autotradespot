@@ -39,9 +39,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="pricingmodellease",
             name="lease_period",
-            field=models.DateField(
-                default=datetime.datetime(2024, 1, 23, 21, 7, 21, 291423)
-            ),
+            field=models.DateField(default=datetime.datetime(2024, 1, 23, 21, 7, 21, 291423)),
             preserve_default=False,
         ),
     ]

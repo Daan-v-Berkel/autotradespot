@@ -3,7 +3,7 @@
 {% block content %}
   {% load i18n %}
 
-  <main class="">
+  <main>
     <div class="w-full min-w-[80%] max-w-[95%] mx-auto my-4 rounded-lg shadow-lg p-4 bg-base-300">
       {% with images=listing.imagemodel_set.all %}
         <section class="w-full space-y-1">
@@ -23,126 +23,122 @@
                  class="carousel carousel-center rounded-box max-w-2xl w-full p-4 space-x-4 bg-base-100">
               {% for image in images %}
                 <div class="carousel-item w-[95%] relative">
-                  <button _="on click set foo to the previous
-                    <img/>
-                    js(foo) foo.scrollIntoView(false) end" class="btn btn-circle btn-sm glass absolute top-1/2 left-2 -translate-y-1/2">
-                    ❮
-                  </button>
-                  <img id="{{ image.name }}"
-                       src="{{ image.big_img.url }}"
-                       alt="{{ image.name }}"
-                       class="rounded-box aspect-[14/9] object-cover object-center" />
-                  <button _="on click set bar to the next
-                    <img/>
-                    js(bar) bar.scrollIntoView(false) end" class="btn btn-circle btn-sm glass absolute top-1/2 right-2 -translate-y-1/2">
-                    ❯
-                  </button>
-                </div>
-              {% empty %}
-                <span class="rounded-box">
-                  <figure class="object-cover h-84 w-90">
-                    {% include 'svg/fallback.html' %}
-                  </figure>
-                  <span class="relative bottom-1 left-1 text-base-content">
-                    {% trans "This listing does not seem to have any images." %}
-                    {% if request.user == listing.owner %}
-                    </br />
-                    {% blocktranslate %}
+                  <button _="on click set foo to the previous <img/> js(foo) foo.scrollIntoView(false) end"
+                          class="btn btn-circle btn-sm glass absolute top-1/2 left-2 -translate-y-1/2">❮</button>
+                <img id="{{ image.name }}"
+                     src="{{ image.big_img.url }}"
+                     alt="{{ image.name }}"
+                     class="rounded-box aspect-[14/9] object-cover object-center" />
+                <button _="on click set bar to the next <img/> js(bar) bar.scrollIntoView(false) end"
+                        class="btn btn-circle btn-sm glass absolute top-1/2 right-2 -translate-y-1/2">❯</button>
+            </div>
+          {% empty %}
+            <span class="rounded-box">
+              <figure class="object-cover h-84 w-90">
+                {% include 'svg/fallback.html' %}
+              </figure>
+              <span class="relative bottom-1 left-1 text-base-content">
+                {% trans "This listing does not seem to have any images." %}
+                {% if request.user == listing.owner %}
+                </br />
+                {% blocktranslate %}
 											You can add images by modifying this listing.</br />
 											Something wrong? please <a href="mailto:info@autotradespot.com" class="link link-hover link-info">Contact us</a>
 											{% endblocktranslate %}
-                  {% endif %}
-                </span>
-              </span>
-            {% endfor %}
+              {% endif %}
+            </span>
+          </span>
+        {% endfor %}
+      </div>
+      <section class="hidden md:block">
+        <div class="flex flex-row gap-2 overflow-x-auto">
+          {% for image in images %}
+            <img class="object-cover object-top aspect-square h-32 rounded-md hover:cursor-pointer duration-200 small-image"
+                 src="{{ image.thumbnail.url }}"
+                 alt="{{ image.name }}"
+                 _="on click js() document.getElementById('{{ image.name }}').scrollIntoView(false) end" />
+          {% endfor %}
+        </div>
+      </section>
+    </section>
+    <div class="flex flex-col gap-4 w-full md:w-2/5">
+      <section class="w-full text-base-content stats stats-vertical">
+        {% for detail in listing.cardetails.full_details %}
+          <div class="stat">
+            <div class="stat-title">{{ detail.0 }}</div>
+            <div class="stat-value text-3xl">{{ detail.1 }}</div>
           </div>
-          <section class="hidden md:block">
-            <div class="flex flex-row gap-2 overflow-x-auto">
-              {% for image in images %}
-                <img class="object-cover object-top aspect-square h-32 rounded-md hover:cursor-pointer duration-200 small-image"
-                     src="{{ image.thumbnail.url }}"
-                     alt="{{ image.name }}"
-                     _="on click js() document.getElementById('{{ image.name }}').scrollIntoView(false) end" />
-              {% endfor %}
-            </div>
-          </section>
-        </section>
-        <div class="flex flex-col gap-4 w-full md:w-2/5">
-          <section class="w-full text-base-content stats stats-vertical">
-            {% for detail in listing.cardetails.full_details %}
-              <div class="stat">
-                <div class="stat-title">{{ detail.0 }}</div>
-                <div class="stat-value text-3xl">{{ detail.1 }}</div>
-              </div>
-            {% endfor %}
-          </section>
-          <section id="contact" class="w-full">
-            <button id="contact_btn"
-                    class="btn btn-primary btn-block"
-                    hx-get="{% url 'listings:contactform' listing.pk %}"
-                    hx-target="#contact_form"
-                    hx-swap="outerHTML"
-                    onclick="contact_modal.showModal()">{% translate 'Contact provider' %}</button>
-          </section>
-        </div>
-      </div>
-      {% if request.user == listing.owner %}
-        <div class="divider divider-base-content">{% trans "Provider actions" %}</div>
-        <section class="flex flex-row justify-around">
-          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                  hx-put="{% url 'listings:modify-listing' listing.pk 'modify' %}">
-            <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
-          </button>
-          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
-            <span class="ti-share no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Share</span>
-          </button>
-          <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-                  onclick="del_listing_model.showModal()">
-            <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
-          </button>
-          <div class="form-control">
-            <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
-              <input type="checkbox"
-                     class="toggle toggle-accent peer/activate"
-                     {% if not listing.complete_for_posting %}disabled{% endif %}
-                     {% if listing.status == listing.Status.ACTIVE %}checked{% endif %}
-                     hx-put="{% url 'listings:modify-listing' listing.pk 'activate' %}"
-                     hx-swap="none" />
-              <span class="label-text">
-                {% if listing.status == listing.Status.ACTIVE %}
-                  {% trans "Deactivate" %}
-                {% else %}
-                  {% trans "Activate" %}
-                {% endif %}
-              </span>
-            </label>
-          </div>
-        </section>
-      {% endif %}
-    {% endwith %}
-    <div class="divider divider-base-content">{% trans "Listing details" %}</div>
-    <div class="w-full justify-around join join-vertical rounded-box">
-      <div class="collapse collapse-arrow bg-base-200 join-item">
-        <input type="checkbox" name="my-accordion-1" checked="checked" />
-        <div class="collapse-title text-xl font-medium text-base-content">{{ listing.title }}</div>
-        <div class="collapse-content">
-          <p class="text-base-content">
-            <span>{{ listing.description }}</span>
-          </p>
-        </div>
-      </div>
-      <div class="collapse collapse-arrow bg-base-200 join-item">
-        <input type="checkbox" name="my-accordion-1" checked="checked" />
-        <div class="collapse-title text-xl font-medium text-base-content">{% trans "Options" %}</div>
-        <div class="collapse-content">
-          <p class="text-base-content w-full flex flex-row justify-between flex-wrap">
-            {% for option in listing.cardetails.options.all %}<span class="w-full max-w-full md:max-w-[50%] py-2 border-b border-base-100">{{ option }}</span>{% endfor %}
-          </p>
-        </div>
-      </div>
+        {% endfor %}
+      </section>
+      <section id="contact" class="w-full">
+        <button id="contact_btn"
+                class="btn btn-primary btn-block"
+                hx-get="{% url 'listings:contactform' listing.pk %}"
+                hx-target="#contact_form"
+                hx-swap="outerHTML"
+                onclick="contact_modal.showModal()">{% translate 'Contact provider' %}</button>
+      </section>
     </div>
   </div>
+  {% if request.user == listing.owner %}
+    <div class="divider divider-base-content">{% trans "Provider actions" %}</div>
+    <section class="flex flex-row justify-around">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
+              hx-put="{% url 'listings:modify-listing' listing.pk 'modify' %}">
+        <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
+      </button>
+      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
+        <span class="ti-share no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Share</span>
+      </button>
+      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
+              onclick="del_listing_model.showModal()">
+        <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
+      </button>
+      <div class="form-control">
+        <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
+          <input type="checkbox"
+                 class="toggle toggle-accent peer/activate"
+                 {% if not listing.complete_for_posting %}disabled{% endif %}
+                 {% if listing.status == listing.Status.ACTIVE %}checked{% endif %}
+                 hx-put="{% url 'listings:modify-listing' listing.pk 'activate' %}"
+                 hx-swap="none" />
+          <span class="label-text">
+            {% if listing.status == listing.Status.ACTIVE %}
+              {% trans "Deactivate" %}
+            {% else %}
+              {% trans "Activate" %}
+            {% endif %}
+          </span>
+        </label>
+      </div>
+    </section>
+  {% endif %}
+{% endwith %}
+<div class="divider divider-base-content">{% trans "Listing details" %}</div>
+<div class="w-full justify-around join join-vertical rounded-box">
+  <div class="collapse collapse-arrow bg-base-200 join-item">
+    <input type="checkbox" name="my-accordion-1" checked="checked" />
+    <div class="collapse-title text-xl font-medium text-base-content">{{ listing.title }}</div>
+    <div class="collapse-content">
+      <p class="text-base-content">
+        <span>{{ listing.description }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="collapse collapse-arrow bg-base-200 join-item">
+    <input type="checkbox" name="my-accordion-1" checked="checked" />
+    <div class="collapse-title text-xl font-medium text-base-content">{% trans "Options" %}</div>
+    <div class="collapse-content">
+      <p class="text-base-content w-full flex flex-row justify-between flex-wrap">
+        {% for option in listing.cardetails.options.all %}
+          <span class="w-full max-w-full md:max-w-[50%] py-2 border-b border-base-100">{{ option }}</span>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+</div>
+</div>
 </main>
 {% endblock content %}
 {% block modal %}

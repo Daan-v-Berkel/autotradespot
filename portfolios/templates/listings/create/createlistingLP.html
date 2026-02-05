@@ -1,6 +1,7 @@
 <span id="formthing">
   {% load static %}
   {% load i18n %}
+
   <form class="flex flex-col space-y-4">
     <label class="form-control w-full max-w-xs">
       <div class="label">
@@ -22,6 +23,7 @@
               hx-swap="outerHTML"
               _="on click toggle .hidden on #loading then add .step-success to #lp_tab">
         {% trans "continue" %}
+      </button>
       <button class="btn btn-secondary"
               type="button"
               hx-get="{% url 'listings:createlistingtype' %}"

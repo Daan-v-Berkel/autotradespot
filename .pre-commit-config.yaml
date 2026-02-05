@@ -6,7 +6,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -22,37 +22,42 @@ repos:
 
 
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: '1.15.0'
+    rev: '1.29.1'
     hooks:
       - id: django-upgrade
         args: ['--target-version', '4.2']
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.0
+    rev: v3.21.2
     hooks:
       - id: pyupgrade
         args: [--py311-plus]
 
   - repo: https://github.com/psf/black
-    rev: 23.12.0
+    rev: 26.1.0
     hooks:
       - id: black
 
   - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2
+    rev: 7.0.0
     hooks:
       - id: isort
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
+    rev: 7.3.0
     hooks:
       - id: flake8
+        args: ['--extend-ignore=F401,F405']
 
   - repo: https://github.com/Riverside-Healthcare/djLint
-    rev: v1.34.0
+    rev: v1.36.4
     hooks:
       - id: djlint-reformat-django
+        exclude: '/templates/emails/'
+        ignore: ["H013"]
       - id: djlint-django
+        exclude: '/templates/emails/'
+        ignore: ["H013"]
 
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:

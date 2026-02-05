@@ -9,4 +9,3 @@ export default class Try extends React.Component {
         );
     }
 }
-

@@ -12,9 +12,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="cardetails",
             name="options",
-            field=models.ManyToManyField(
-                blank=True, null=True, related_name="options", to="listings.caroption"
-            ),
+            field=models.ManyToManyField(blank=True, null=True, related_name="options", to="listings.caroption"),
         ),
         migrations.AlterField(
             model_name="listing",

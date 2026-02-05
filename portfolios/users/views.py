@@ -1,14 +1,15 @@
 from typing import Any
+
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
+from django.shortcuts import render
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 
 from portfolios.listings import models as ListingModels
 from portfolios.users import forms, models
@@ -17,20 +18,23 @@ User = get_user_model()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
-		model = User 
-		template_name = 'users/profile/user_profile.html'
+    model = User
+    template_name = "users/profile/user_profile.html"
 
-		def get_object(self):
-			return self.request.user
+    def get_object(self):
+        return self.request.user
+
 
 user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
-    fields = ("name",
-              "email",
-							"username",)
+    fields = (
+        "name",
+        "email",
+        "username",
+    )
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
@@ -93,9 +97,7 @@ def UserFavourites(request):
 @login_required(login_url="account_login")
 def UserListings(request):
     listings = ListingModels.Listing.objects.filter(owner=request.user).order_by("status")
-    return render(
-        request, "users/user_pages/listings.html", context={"listings": listings, "page": "profile"}
-    )
+    return render(request, "users/user_pages/listings.html", context={"listings": listings, "page": "profile"})
 
 
 @login_required(login_url="account_login")

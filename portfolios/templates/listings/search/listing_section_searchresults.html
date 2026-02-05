@@ -1,12 +1,12 @@
 {% load i18n %}
-<section id="results" class="w-full">
 
-	<div class="divider">{% blocktrans with c=listings.count|default:"0" %}found {{c}} results{% endblocktrans %}</div>
-	<p class="flex my-6 flex-wrap justify-start gap-4 w-full">
-		<div class="flex flex-wrap justify-center gap-4 p-4 my-6">
-			{% for listing in listings %}
-			{% include 'widgets/listing_card.html' %}
-			{% endfor %}
-		</div>
-	</p>
+<section id="results" class="w-full">
+  <div class="divider">{% blocktrans with c=listings.count|default:"0" %}found {{c}} results{% endblocktrans %}</div>
+  <p class="flex my-6 flex-wrap justify-start gap-4 w-full">
+    <div class="flex flex-wrap justify-center gap-4 p-4 my-6">
+      {% for listing in listings %}
+        {% include 'widgets/listing_card.html' %}
+      {% endfor %}
+    </div>
+  </p>
 </section>

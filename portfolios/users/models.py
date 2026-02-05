@@ -1,12 +1,12 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.db.models.signals import post_save
+from phonenumber_field.modelfields import PhoneNumberField
 
 from portfolios.users.managers import UserManager
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
@@ -49,7 +49,8 @@ class UserCustomisation(models.Model):
     def __str__(self):
         return f"user customisation for {self.user.email}"
 
-## create preferences for each created user
+
+# create preferences for each created user
 @receiver(post_save, sender=User)
 def createUserPreferences(sender, instance, created, **kwargs):
     if created:

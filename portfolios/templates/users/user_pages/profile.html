@@ -6,18 +6,23 @@
     {% csrf_token %}
     {{ profile.as_div }}
     <span class="flex flex-row space-x-2">
-      <button type="submit" class="btn btn-primary" hx-post="{% url 'users:user_profile' %}" _="on click put 'saving...' into my innerHTML then toggle .hidden on the next
-        <img/> ">{% translate "save changes" %}</button>
-      <img id="loading"
-           class="hidden"
-           height="auto"
-           width="32"
-           src="{% static 'images/three-dots.svg' %}"
-           _="on loadr toggle .hidden" />
-    </span>
-    {% if saved %}
-      <span class="rounded-sm text-icon-green"
-            _="on load wait 2s then transition opacity to 0 then remove me">{{ saved }}</span>
-    {% endif %}
-  </form>
+      <button type="submit"
+              class="btn btn-primary"
+              hx-post="{% url 'users:user_profile' %}"
+              _="on click put 'saving...' into my innerHTML then toggle .hidden on the next <img/> ">
+      {% translate "save changes" %}
+    </button>
+    <img id="loading"
+         class="hidden"
+         height="auto"
+         width="32"
+         alt="loading"
+         src="{% static 'images/three-dots.svg' %}"
+         _="on loadr toggle .hidden" />
+  </span>
+  {% if saved %}
+    <span class="rounded-sm text-icon-green"
+          _="on load wait 2s then transition opacity to 0 then remove me">{{ saved }}</span>
+  {% endif %}
+</form>
 </div>

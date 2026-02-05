@@ -10,32 +10,32 @@ export default function LicencePlateForm(props) {
         },
         loading: false,
       });
-    
+
       const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevState) => ({ ...prevState, [name]: value }));
       };
-    
+
       const validateForm = () => {
         const errors = {};
 
         if (!formData.licenceplate) {
           errors.licenceplate = "licenceplate is required";
         }
-    
+
         setFormData((prevState) => ({ ...prevState, errors:errors }));
         console.log(`errors: ${errors}`)
         return Object.keys(errors).length === 0 ;
       };
-    
+
       const handleSubmit = (event) => {
         event.preventDefault();
-    
+
         setFormData({
           ...formData,
           loading: true,
         });
-        
+
         if (!validateForm()) {
             console.log(formData)
             setFormData({
@@ -44,7 +44,7 @@ export default function LicencePlateForm(props) {
             });
           return;
         }
-    
+
         // Simulate form submission delay
         setTimeout(() => {
           console.log(formData);
@@ -79,7 +79,7 @@ export default function LicencePlateForm(props) {
                   type="submit"
                   disabled={formData.loading}
                   onClick={handleSubmit}>
-            {formData.loading? 
+            {formData.loading?
             <span className="flex flex-row">loading... <LoadIcon /></span> :
              "continue"}
           </button>

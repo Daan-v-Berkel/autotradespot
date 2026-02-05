@@ -5,8 +5,8 @@ from django.contrib.auth import decorators, get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from portfolios.users.forms import UserAdminChangeForm, UserAdminCreationForm
-from .models import *
 
+from .models import UserCustomisation
 
 User = get_user_model()
 
@@ -49,5 +49,6 @@ class UserAdmin(auth_admin.UserAdmin):
             },
         ),
     )
+
 
 admin.site.register(UserCustomisation)

@@ -20,7 +20,7 @@ export default function ListingTypeForm(props) {
         {"value": "N", "label": "negotiable"},
         {"value": "O", "label": "open for bidding"}
     ]
-    
+
     const [formData, setFormData] = useState({
         type: typeChoices[0].value,
         priceType: "",

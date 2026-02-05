@@ -1,52 +1,66 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% load i18n %}
-<div class="flex flex-col gap-2 items-center"
-				hx-post="{% url "listings:searchfilters" %}"
-				hx-trigger="change, load"
-				hx-from=".select, .tab, .input"
-				hx-swap="innerHTML"
-				hx-target="#results"
-				hx-queue="all"
-				hx-include=".select, .tab, .input"
-				hx-indicator=".htmx-indicator">
+  {% load i18n %}
 
-				{% load static %}
-	<div role="tablist" class="tabs tabs-bordered font-bold w-full">
-		<input type="radio" value="S" name="listing_type" role="tab" checked class="tab text-2xl" aria-label="{% trans "Sale" %}">
-		<div class="tab-content">
-			<section id="sale_filters" role="tab-panel"
-				class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
-				{% comment %} SALE {% endcomment %}
-				{{ salepricefilter.as_div }}
-				{{ mileagesalefilter.as_div }}
-			</section>
-		</div>
-		<input type="radio" value="L" name="listing_type" role="tab" class="tab text-2xl" aria-label="{% trans "Lease" %}">
-		<div class="tab-content">
-			<section id="lease_filters" role="tab-panel"
-			class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
-			{% comment %} LEASE {% endcomment %}
-			{{ leasetypefilter.as_div }}
-			{{ leasepricefilter.as_div }}
-			{{ mileageleasefilter.as_div }}
-			{{ leaseperiodfilter.as_div }}
-		</section>
-	</div>
-</div>
-<section
-class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center">
-{% comment %} GENERAL {% endcomment %}
-		{{ makefilter.as_div }}
-		{{ modelfilter.as_div }}
-		</section>
-			<span class="htmx-indicator hidden">
-				<img src="{% static 'images/spinning-circles.svg' %}"
-						 width="16"
-						 height="16" />
-				Searching...
-			</span>
-      {% include './listing_section_searchresults.html' %}
+  <div class="flex flex-col gap-2 items-center"
+       hx-post="{% url "listings:searchfilters" %}"
+       hx-trigger="change, load"
+       hx-from=".select, .tab, .input"
+       hx-swap="innerHTML"
+       hx-target="#results"
+       hx-queue="all"
+       hx-include=".select, .tab, .input"
+       hx-indicator=".htmx-indicator">
+    {% load static %}
+
+    <div role="tablist" class="tabs tabs-bordered font-bold w-full">
+      <input type="radio"
+             value="S"
+             name="listing_type"
+             role="tab"
+             checked
+             class="tab text-2xl"
+             aria-label="{% trans "Sale" %}" />
+      <div class="tab-content">
+        <section id="sale_filters"
+                 role="tab-panel"
+                 class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
+          {% comment %} SALE {% endcomment %}
+          {{ salepricefilter.as_div }}
+          {{ mileagesalefilter.as_div }}
+        </section>
+      </div>
+      <input type="radio"
+             value="L"
+             name="listing_type"
+             role="tab"
+             class="tab text-2xl"
+             aria-label="{% trans "Lease" %}" />
+      <div class="tab-content">
+        <section id="lease_filters"
+                 role="tab-panel"
+                 class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center border-t-[4px] -mt-[4px] border-base-content border-opacity-45 font-normal">
+          {% comment %} LEASE {% endcomment %}
+          {{ leasetypefilter.as_div }}
+          {{ leasepricefilter.as_div }}
+          {{ mileageleasefilter.as_div }}
+          {{ leaseperiodfilter.as_div }}
+        </section>
+      </div>
+    </div>
+    <section class="flex flex-col gap-4 md:flex-row p-4 w-full justify-center">
+      {% comment %} GENERAL {% endcomment %}
+      {{ makefilter.as_div }}
+      {{ modelfilter.as_div }}
+    </section>
+    <span class="htmx-indicator hidden">
+      <img src="{% static 'images/spinning-circles.svg' %}"
+           alt="loading"
+           width="16"
+           height="16" />
+      Searching...
+    </span>
+    {% include './listing_section_searchresults.html' %}
   </div>
 {% endblock content %}

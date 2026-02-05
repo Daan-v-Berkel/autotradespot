@@ -1,11 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm
-from django.urls import reverse_lazy
+
+# from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-from portfolios.lease_finder_app.models import *
-from portfolios.listings.tasks import send_contact_email_task
+# from portfolios.lease_finder_app.models import *
+# from portfolios.listings.tasks import send_contact_email_task
 
 
 class StyledModelForm(ModelForm):
@@ -17,7 +18,9 @@ class StyledModelForm(ModelForm):
         for field in self.fields.values():
             if isinstance(field, (forms.CheckboxSelectMultiple)):
                 field.widget.attrs.update({"class": "checkbox checkbox-accent"})
-            elif isinstance(field, (forms.TypedChoiceField, forms.ModelChoiceField, forms.ChoiceField)) or isinstance(field.widget, forms.Select):
+            elif isinstance(field, (forms.TypedChoiceField, forms.ModelChoiceField, forms.ChoiceField)) or isinstance(
+                field.widget, forms.Select
+            ):
                 field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
             elif isinstance(field.widget, (forms.Textarea)):
                 field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})
@@ -34,7 +37,9 @@ class StyledForm(forms.Form):
         for field in self.fields.values():
             if isinstance(field.widget, (forms.CheckboxSelectMultiple)):
                 field.widget.attrs.update({"class": "checkbox checkbox-accent"})
-            elif isinstance(field, (forms.TypedChoiceField, forms.ChoiceField, forms.ModelChoiceField)) or isinstance(field.widget, forms.Select):
+            elif isinstance(field, (forms.TypedChoiceField, forms.ChoiceField, forms.ModelChoiceField)) or isinstance(
+                field.widget, forms.Select
+            ):
                 field.widget.attrs.update({"class": "select select-bordered select-sm w-full max-w-xs"})
             elif isinstance(field.widget, (forms.Textarea)):
                 field.widget.attrs.update({"class": "textarea textarea-bordered w-full max-w-xs"})

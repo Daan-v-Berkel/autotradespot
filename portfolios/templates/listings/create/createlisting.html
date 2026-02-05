@@ -60,9 +60,10 @@
                 hx-swap="none">
           <span class="ti-eraser"></span> {% translate 'clear' %}
         </button>
-        <button class="btn btn-outline btn-secondary" hx-put="{% url 'listings:createlistingnew' 'draft' %}" hx-target="
-          <body/> ">{% translate 'continue later' %}</button>
-      </div>
+        <button class="btn btn-outline btn-secondary"
+                hx-put="{% url 'listings:createlistingnew' 'draft' %}"
+                hx-target=" <body/> ">{% translate 'continue later' %}</button>
     </div>
   </div>
+</div>
 {% endblock content %}

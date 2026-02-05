@@ -3,11 +3,11 @@ import LoadIcon from "./LoadIcon";
 
 
 export default function ListingMakeForm(props) {
-    
+
     const CARDATA = JSON.parse(document.getElementById('car_context').textContent);
     const CAR_MAKES = CARDATA.car_makes;
     const [CAR_MODELS, setCAR_MODELS] = useState(CARDATA.car_models);
-    
+
     const [formData, setFormData] = useState({
         make: {},
         model: {},

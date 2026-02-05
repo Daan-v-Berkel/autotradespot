@@ -1,8 +1,9 @@
 {% load i18n %}
+
 <footer class="bg-base-200 text-base-content text-center lg:text-left mt-auto">
   <div class="mx-6 py-10 text-center md:text-left">
     <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-      <div class="">
+      <div>
         <h6 class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
           <svg xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 24 24"
@@ -15,7 +16,7 @@
         <p>{% trans "Revamp Your Ride: Buy, Sell, Lease." %}</p>
       </div>
       <!-- Products section -->
-      <div class="">
+      <div>
         <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">{% trans "Legal" %}</h6>
         <p class="mb-4">
           <button class="text-base-content" onclick="privacy_modal.showModal()">{% trans "Terms of Service" %}</button>
@@ -25,7 +26,7 @@
         </p>
       </div>
       <!-- Useful links section -->
-      <div class="">
+      <div>
         <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">{% trans "Useful links" %}</h6>
         <p class="mb-4">
           <a href="{% url 'autotradespot:howitworks' %}" class="text-base-content">{% trans "How it works" %}</a>
@@ -63,7 +64,7 @@
   <!--Copyright section-->
   <div class="bg-base-300 p-4 text-center text-base-content">
     <span>© 2024 Copyright:</span>
-    <a class="link link-base-content" href="www.vanberkelstudio.com">van Berkel Studio</a>
+    <a class="link link-base-content" href="https://www.vanberkelstudio.com">van Berkel Studio</a>
   </div>
 </footer>
 {% block modal %}

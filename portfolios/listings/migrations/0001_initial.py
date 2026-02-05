@@ -21,9 +21,7 @@ class Migration(migrations.Migration):
                 ("makeId", models.IntegerField(primary_key=True, serialize=False)),
                 (
                     "name",
-                    models.CharField(
-                        max_length=120, unique=True, verbose_name="Manufacturer"
-                    ),
+                    models.CharField(max_length=120, unique=True, verbose_name="Manufacturer"),
                 ),
             ],
             options={
@@ -141,9 +139,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "image",
-                    models.ImageField(
-                        upload_to=portfolios.listings.models.upload_for_user
-                    ),
+                    models.ImageField(upload_to=portfolios.listings.models.upload_for_user),
                 ),
                 (
                     "listing",
@@ -222,9 +218,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "options",
-                    models.ManyToManyField(
-                        blank=True, related_name="options", to="listings.caroption"
-                    ),
+                    models.ManyToManyField(blank=True, related_name="options", to="listings.caroption"),
                 ),
                 (
                     "owning_listing",

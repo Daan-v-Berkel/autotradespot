@@ -1,4 +1,5 @@
 import datetime
+
 from django import forms
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -55,7 +56,9 @@ class OptionsSelectMultiple(forms.CheckboxSelectMultiple):
 
 
 class CarOptionsForm(StyledForm):
-    options = forms.ModelMultipleChoiceField(widget=OptionsSelectMultiple(attrs={}), queryset=models.CarOption.objects.all())
+    options = forms.ModelMultipleChoiceField(
+        widget=OptionsSelectMultiple(attrs={}), queryset=models.CarOption.objects.all()
+    )
 
 
 class PricingLeaseForm(StyledModelForm):
@@ -69,7 +72,9 @@ class PricingLeaseForm(StyledModelForm):
     lease_period = forms.DateField(
         input_formats=("%d-%m-%Y",),
         label=_("contract end date"),
-        widget=forms.DateInput(attrs={"name": "lease_period", "placeholder": datetime.datetime.now().strftime("%d-%m-%Y")}),
+        widget=forms.DateInput(
+            attrs={"name": "lease_period", "placeholder": datetime.datetime.now().strftime("%d-%m-%Y")}
+        ),
     )
     price = forms.FloatField(label=_("Price/M"))
 
