@@ -42,15 +42,21 @@ module.exports = {
               postcssOptions: {
                 safelist: [/data-theme$/],
                 plugins: [
-                  'postcss-preset-env',
-                  'autoprefixer',
-                  'pixrem',
-                  tailwindcss,
+                  require('postcss-preset-env')(),
+                  require('autoprefixer')(),
+                  require('pixrem')(),
+                  require('tailwindcss'),
                 ],
               },
             },
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+							api: 'modern',
+              implementation: require('sass'),
+            },
+          },
         ],
       },
     ],
