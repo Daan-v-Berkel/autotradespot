@@ -1,28 +1,42 @@
 # AutoTradeSpot
 
-A webapp where users can post a listing of their car for sale.
-written with Django, HTMX, React, TailwindCss, and Docker.
+AutoTradeSpot is a web application for listing cars for sale/lease. It combines a Django backend with HTMX/HyperScript-enhanced pages and React/Tailwind-based frontend components. The project is container-friendly via Docker Compose and can also be run locally for development.
 
-# Features
+## Table of Contents
+- Features
+- Tech stack
+- Quickstart (Docker)
+- Quickstart (Local / non-Docker)
+- Tests
+- Contributing
 
-## Users
--	User accounts
--	Email confirmation, for password resets etc.
-- User profiles
-- User preferences, favorites, and past interactions.
+## Features
 
-## Listings
--	List your car with extensive details for its options and extras.
-- Favorite Listings, get updates as changes are made
-- contact listing owners directly
+- Users: accounts, email confirmation, profiles, preferences, favorites and history.
+- Listings: rich car data, images, favorites and owner contact.
+- Admin: manual review workflow, hold/approve/decline listings, admin password reset/email actions.
+- UI: light/dark mode, progressive enhancements via HTMX.
 
-## Admin
-- Flag if listings have to be reviewed manually.
-- Put listings on hold, approve and decline, with messaging to the owner.
-- send password reset links from the admin panel.
+## Tech stack
 
-## Other
-- dark/lightmode
+- Backend: Django
+- Frontend: HTMX + React + Tailwind CSS
+- Dev tooling: Webpack, npm
+- Infrastructure: Docker, docker-compose (see `local.yml`)
 
-## WIP
-- dutch translations
+## Quickstart — Docker (recommended for local parity)
+
+Prerequisites: Docker & Docker Compose.
+
+Bring up the full local stack (Postgres, Django, etc.):
+
+```bash
+docker compose -f local.yml up -d
+```
+
+Apply migrations and create a dev superuser inside the `django` container:
+
+```bash
+docker compose -f local.yml exec django python manage.py migrate
+docker compose -f local.yml exec django python manage.py createsuperuser
+```
