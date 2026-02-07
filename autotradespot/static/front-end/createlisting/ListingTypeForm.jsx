@@ -56,7 +56,6 @@ export default function ListingTypeForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`formData: ${JSON.stringify(formData)}`)
 
         setFormData({
             ...formData,
@@ -73,7 +72,6 @@ export default function ListingTypeForm(props) {
 
         // Simulate form submission delay
         setTimeout(() => {
-            console.log(formData);
             setFormData({
                 ...formData,
                 loading: false,

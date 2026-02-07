@@ -1,3 +1,5 @@
+import logging
+import re
 import time
 
 import requests
@@ -21,6 +23,163 @@ from autotradespot.listings.tasks import send_review_mail_task
 from config.settings import base as settings
 
 User = get_user_model()
+
+logger = logging.getLogger(__name__)
+
+# License plate validation regex for Dutch license plates
+# Accepts formats: XX-XXX-XX, XXXXXX (with or without dashes)
+DUTCH_LICENSE_PLATE_PATTERN = re.compile(
+    r"^[A-Z0-9]{6}$|^[A-Z]{2}-?[0-9]{3}-?[A-Z]{2}$|^[0-9]{2}-?[A-Z]{2}-?[0-9]{2}$", re.IGNORECASE
+)
+
+# API configuration constants
+API_TIMEOUT = 5  # seconds
+API_ENDPOINTS = [
+    "http://opendata.rdw.nl/resource/m9d7-ebf2.json",  # Voertuiginformatie
+    "https://opendata.rdw.nl/resource/8ys7-d773.json",  # Gekentekende voertuigen
+]
+
+
+def validate_license_plate(license_plate: str) -> tuple[bool, str]:
+    """
+    Validate Dutch license plate format.
+
+    Args:
+        license_plate: The license plate to validate
+
+    Returns:
+        A tuple of (is_valid: bool, error_message: str)
+    """
+    if not license_plate:
+        return False, _("License plate cannot be empty")
+
+    # Remove spaces and dashes for validation
+    cleaned_plate = license_plate.replace("-", "").replace(" ", "").upper()
+
+    if len(cleaned_plate) != 6:
+        return False, _("License plate must be 6 characters long")
+
+    if not re.match(r"^[A-Z0-9]{6}$", cleaned_plate):
+        return False, _("License plate must contain only letters and numbers")
+
+    if not DUTCH_LICENSE_PLATE_PATTERN.match(cleaned_plate):
+        return False, _("Invalid Dutch license plate format")
+
+    return True, ""
+
+
+def fetch_car_data_from_api(license_plate: str) -> tuple[bool, dict | None, str]:
+    """
+    Fetch car data from RDW API endpoints.
+
+    Args:
+        license_plate: The validated license plate
+
+    Returns:
+        A tuple of (success: bool, data: dict or None, error_message: str)
+    """
+    if not settings.CARDATA_API_APP_TOKEN:
+        error_msg = _(
+            "The license plate lookup service is temporarily unavailable. "
+            "Please try again later or enter the car details manually."
+        )
+        logger.warning("CARDATA_API_APP_TOKEN not configured")
+        return False, None, error_msg
+
+    headers = {"X-App-Token": settings.CARDATA_API_APP_TOKEN}
+
+    try:
+        # Fetch from first API endpoint
+        try:
+            response1 = requests.get(
+                f"{API_ENDPOINTS[0]}?kenteken={license_plate.upper()}",
+                headers=headers,
+                timeout=API_TIMEOUT,
+            )
+            response1.raise_for_status()
+        except requests.exceptions.Timeout:
+            error_msg = _(
+                "The license plate lookup service is taking too long. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API timeout for license plate {license_plate} (endpoint 1)")
+            return False, None, error_msg
+        except requests.exceptions.ConnectionError:
+            error_msg = _(
+                "Could not connect to the license plate lookup service. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API connection error for license plate {license_plate} (endpoint 1)")
+            return False, None, error_msg
+        except requests.exceptions.HTTPError as e:
+            error_msg = _(
+                "The license plate lookup service returned an error. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API HTTP error for license plate {license_plate} (endpoint 1): {e}")
+            return False, None, error_msg
+
+        # Fetch from second API endpoint
+        try:
+            response2 = requests.get(
+                f"{API_ENDPOINTS[1]}?kenteken={license_plate.upper()}",
+                headers=headers,
+                timeout=API_TIMEOUT,
+            )
+            response2.raise_for_status()
+        except requests.exceptions.Timeout:
+            error_msg = _(
+                "The license plate lookup service is taking too long. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API timeout for license plate {license_plate} (endpoint 2)")
+            return False, None, error_msg
+        except requests.exceptions.ConnectionError:
+            error_msg = _(
+                "Could not connect to the license plate lookup service. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API connection error for license plate {license_plate} (endpoint 2)")
+            return False, None, error_msg
+        except requests.exceptions.HTTPError as e:
+            error_msg = _(
+                "The license plate lookup service returned an error. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"API HTTP error for license plate {license_plate} (endpoint 2): {e}")
+            return False, None, error_msg
+
+        # Parse responses
+        try:
+            data1 = response1.json()
+            data2 = response2.json()
+        except ValueError as e:
+            error_msg = _(
+                "The license plate lookup service returned invalid data. "
+                "Please try again later or enter the car details manually."
+            )
+            logger.error(f"JSON decode error for license plate {license_plate}: {e}")
+            return False, None, error_msg
+
+        # Check if we have data from both endpoints
+        if not (data1 and data2):
+            error_msg = _(
+                "No data found for license plate '{license_plate}'. " "Please make sure the license plate is correct."
+            ).format(license_plate=license_plate)
+            logger.info(f"No data found for license plate {license_plate}")
+            return False, None, error_msg
+
+        # Combine the data from both endpoints
+        combined_data = data1[0] | data2[0]
+        return True, combined_data, ""
+
+    except Exception as e:
+        error_msg = _(
+            "An unexpected error occurred while looking up the license plate. "
+            "Please try again later or enter the car details manually."
+        )
+        logger.exception(f"Unexpected error while fetching car data for {license_plate}: {e}")
+        return False, None, error_msg
 
 
 class HTTPResponseHXRedirect(HttpResponseRedirect):
@@ -80,35 +239,47 @@ def ListingCreateNew(request, save_method=None):
 
 
 def ListingLicenceplate(request):
+    """
+    Handle license plate lookup and car data retrieval.
+
+    GET: Display the license plate form
+    POST: Validate license plate format, fetch car data from API, and store in session
+    """
     if request.method == "POST":
-        licenceplate = request.POST["licenceplate"].upper()
-        response1 = requests.get(
-            f"http://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken={licenceplate}",
-            headers={"X-App-Token": settings.CARDATA_API_APP_TOKEN},
-        )
+        license_plate_input = request.POST.get("licenceplate", "").strip()
 
-        response2 = requests.get(
-            f"https://opendata.rdw.nl/resource/8ys7-d773.json?kenteken={licenceplate}",
-            headers={"X-App-Token": settings.CARDATA_API_APP_TOKEN},
-        )
-
-        if not (response1 and response2) or not (any(response1.json()) and any(response2.json())):
+        # Step 1: Validate license plate format (Issue #13)
+        is_valid, validation_error = validate_license_plate(license_plate_input)
+        if not is_valid:
             context = {
-                "licence": licenceplate,
-                "licence_error": _(f"No data has been found for licenceplate '{licenceplate}'.\
-<br /> please make sure this licenceplate you have given is correct"),
+                "licence": license_plate_input,
+                "licence_error": validation_error,
             }
             return render(request, "listings/create/createlistingLP.html", context)
 
-        data_combined = response1.json()[0] | response2.json()[0]
-        relevant_data = {"licence": licenceplate}
-        # only store relevant data in session
+        # Clean the license plate for API call
+        clean_license_plate = license_plate_input.replace("-", "").replace(" ", "").upper()
+
+        # Step 2: Fetch data from API with comprehensive error handling (Issue #14)
+        success, combined_data, error_msg = fetch_car_data_from_api(clean_license_plate)
+        if not success:
+            context = {
+                "licence": license_plate_input,
+                "licence_error": error_msg,
+            }
+            return render(request, "listings/create/createlistingLP.html", context)
+
+        # Step 3: Extract and store relevant data in session
+        relevant_data = {"licence": clean_license_plate}
         for name, api_name in settings.RELEVANT_CARDATA_FIELDS.items():
-            relevant_data[name] = data_combined.get(api_name)
+            relevant_data[name] = combined_data.get(api_name)
 
         request.session["LP_data"] = relevant_data
+        logger.info(f"Successfully fetched car data for license plate {clean_license_plate}")
         return redirect("listings:createlistingtype")
+
     else:
+        # GET request: display the form with any previously entered license plate
         context = {"licence": request.session.get("LP_data", {"licence": ""})["licence"]}
         return render(request, "listings/create/createlistingLP.html", context)
 
@@ -121,7 +292,7 @@ def ListingType(request):
             priceform = forms.PricingSaleForm(request.POST)
         elif type == "L":
             priceform = forms.PricingLeaseForm(request.POST)
-        print(f"form_errors: {priceform.errors}")
+        logger.debug("form_errors: %s", priceform.errors)
         if form.is_valid() and priceform.is_valid():
             listing, created = models.Listing.objects.update_or_create(
                 pk=request.session.get("listing_in_progress"), defaults=form.cleaned_data | {"owner": request.user}
@@ -204,7 +375,7 @@ def ListingDetails(request):
                 defaults=details_form.cleaned_data
                 | {"owning_listing": current_listing, "make": make, "model": model, "variant": variant},
             )
-            print(f"detail_options:{options}")
+            logger.debug("detail_options: %s", options)
             details.options.set(options)
             return redirect("listings:uploadlistingimages")
         else:
@@ -214,7 +385,7 @@ def ListingDetails(request):
                 context={"form4": details_form, "caroptions_form": caroptions_form},
             )
 
-    print(f'lp_data in cardetails: {request.session.get("LP_data")}')
+    logger.debug("lp_data in cardetails: %s", request.session.get("LP_data"))
     form4 = forms.CardetailForm(initial=request.session.get("LP_data") or {})
     caroptions_form = forms.CarOptionsForm()
     if "listing_in_progress" in request.session:
@@ -254,10 +425,9 @@ def ListingImages(request, image_pk=None):
     )
 
 
-def GetSelect(request):
-    # TODO: rename
+def GetPricingForm(request):
     type = request.GET.get("type")
-    print(f"pricingtype: {type}")
+    logger.debug("pricingtype: %s", type)
     if type == "S":
         form1 = forms.PricingSaleForm()
     elif type == "L":
@@ -348,9 +518,9 @@ def searchListing(request):
 
 @require_POST
 def FilterListings(request):
-    print(request.POST.dict())
+    logger.debug("post dict: %s", request.POST.dict())
     qs = models.Listing.objects.search(searchdict=request.POST.dict())
-    print(qs)
+    logger.debug("queryset: %s", qs)
 
     return render(request, "listings/search/listing_section_searchresults.html", context={"listings": qs})
 

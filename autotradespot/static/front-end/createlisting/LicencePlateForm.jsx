@@ -24,7 +24,6 @@ export default function LicencePlateForm(props) {
         }
 
         setFormData((prevState) => ({ ...prevState, errors:errors }));
-        console.log(`errors: ${errors}`)
         return Object.keys(errors).length === 0 ;
       };
 
@@ -37,7 +36,6 @@ export default function LicencePlateForm(props) {
         });
 
         if (!validateForm()) {
-            console.log(formData)
             setFormData({
               ...formData,
               loading: false,
@@ -47,7 +45,6 @@ export default function LicencePlateForm(props) {
 
         // Simulate form submission delay
         setTimeout(() => {
-          console.log(formData);
           setFormData({
             ...formData,
             loading: false,
@@ -56,7 +53,6 @@ export default function LicencePlateForm(props) {
       };
 
       const handleSkip = () => {
-        console.log("Skipping...")
         props.handleFormPartChange(1)
       }
 

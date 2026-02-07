@@ -148,7 +148,22 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS Configuration
+# https://github.com/adamchainz/django-cors-headers
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS",
+    default=(
+        [
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "http://localhost:8000",
+            "http://127.0.0.1:8000",
+        ]
+        if env.bool("DJANGO_DEBUG", False)
+        else []
+    ),
+)
+CORS_ALLOW_CREDENTIALS = True
 
 # STATIC
 # ------------------------------------------------------------------------------
@@ -341,7 +356,9 @@ WEBPACK_LOADER = {
 BASE_ATS_DIR = BASE_DIR / "autotradespot"
 FILE_UPLOAD_TEMP_DIR = BASE_ATS_DIR / "tmp"
 
-CARDATA_API_APP_TOKEN = "myjMKXK077RBPzTj5MnA0F2oM"
+# External API Configuration
+# https://opendata.rdw.nl/
+CARDATA_API_APP_TOKEN = env("CARDATA_API_APP_TOKEN", default="")
 RELEVANT_CARDATA_FIELDS = {
     "licenceplate_number": "kenteken",
     "vehicletype": "voertuigsoort",

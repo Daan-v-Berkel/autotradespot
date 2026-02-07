@@ -42,7 +42,7 @@ export default function ListingMakeForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`formData: ${JSON.stringify(formData)}`)
+        // debug logs removed for production
 
         setFormData({
             ...formData,
@@ -59,7 +59,7 @@ export default function ListingMakeForm(props) {
 
         // Simulate form submission delay
         setTimeout(() => {
-            console.log(formData);
+            // debug logs removed for production
             setFormData({
                 ...formData,
                 loading: false,

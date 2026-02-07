@@ -12,7 +12,6 @@ themeChange();
   }
 
 function checkStep(evt) {
-  console.log(evt);
   var steps = document.getElementsByClassName('step');
   for (var i = 0; i < steps.length; i++) {
     steps[i].className.replace('step-success', 'step-primary');
@@ -21,7 +20,6 @@ function checkStep(evt) {
 }
 
 function openTab(evt) {
-  console.log(evt);
   var tablinks = document.getElementsByClassName('tablink');
   for (var i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(
