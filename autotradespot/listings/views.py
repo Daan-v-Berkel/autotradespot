@@ -275,11 +275,8 @@ def ListingLicenceplate(request):
             relevant_data[name] = combined_data.get(api_name)
 
         request.session["LP_data"] = relevant_data
-        logger.info(f"Successfully fetched car data for license plate {clean_license_plate}")
         return redirect("listings:createlistingtype")
-
     else:
-        # GET request: display the form with any previously entered license plate
         context = {"licence": request.session.get("LP_data", {"licence": ""})["licence"]}
         return render(request, "listings/create/createlistingLP.html", context)
 

@@ -83,8 +83,6 @@
 
 ## 🟡 MEDIUM PRIORITY / POST-LAUNCH IMPROVEMENTS
 
-## 🟡 MEDIUM PRIORITY / POST-LAUNCH IMPROVEMENTS
-
 ### 9. **HSTS Configuration** - MEDIUM - TODO after launch
 - **File:** [config/settings/production.py](config/settings/production.py#L49-L50)
 - **Issue:** SECURE_HSTS_SECONDS temporarily set to 60 (recommended 518400)
