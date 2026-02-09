@@ -60,7 +60,7 @@ export default function ImagesStep() {
           (async () => {
             try {
               console.log("Uploading images to API...", loaded.map((l) => l.name));
-              const resp = await uploadImages(loaded);
+              const resp = await uploadImages(loaded, formData.listing_pk);
               console.log("uploadImages response:", resp);
             } catch (err) {
               console.error("Failed to upload images:", err);

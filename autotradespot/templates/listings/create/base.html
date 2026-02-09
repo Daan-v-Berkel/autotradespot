@@ -2,6 +2,7 @@
 
 {% load i18n %}
 
+{% csrf_token %}
 {% block content %}
   <div id="create-listing-base"></div>
   {{ modelContext|json_script:'car_context' }}

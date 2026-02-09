@@ -1,51 +1,83 @@
-const API_BASE = "/api/listings";
+const API_BASE = "/api/";
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return decodeURIComponent(match[2]);
+  return null;
+}
+
+const defaultFetchOpts = { credentials: 'same-origin' };
 
 export async function saveDraft(data) {
-  const res = await fetch(`${API_BASE}/draft/`, {
+  const csrfToken = getCookie('csrftoken');
+
+  const res = await fetch(`${API_BASE}listings/draft/`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrfToken || ""
+    },
     body: JSON.stringify(data),
+    ...defaultFetchOpts,
   });
-  if (!res.ok) throw new Error("Failed to save draft");
+
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error("[saveDraft] Error response:", errText);
+    throw new Error(`Failed to save draft: ${res.status} ${res.statusText}`);
+  }
   return res.json();
 }
 
 export async function resumeDraft() {
-  const res = await fetch(`${API_BASE}/draft/`, { method: "GET" });
-  if (!res.ok) throw new Error("Failed to fetch draft");
+  const csrfToken = getCookie('csrftoken');
+
+  const res = await fetch(`${API_BASE}listings/draft/`, {
+    method: "GET",
+    headers: { "X-CSRFToken": csrfToken || "" },
+    ...defaultFetchOpts
+  });
+
+  if (!res.ok && res.status !== 204) {
+    const errText = await res.text();
+    console.error("[resumeDraft] Error response:", errText);
+    throw new Error(`Failed to fetch draft: ${res.status}`);
+  }
+  if (res.status === 204) return {};
   return res.json();
 }
 
 export async function fetchListingTypes() {
-  const res = await fetch(`${API_BASE}/types/`);
+  const res = await fetch(`${API_BASE}listings/types/`);
   if (!res.ok) throw new Error("Failed to fetch listing types");
   return res.json();
 }
 
 export async function fetchCarMakes() {
-  const res = await fetch(`${API_BASE}/car-makes/`);
+  const res = await fetch(`${API_BASE}car/makes/`, { ...defaultFetchOpts });
   if (!res.ok) throw new Error("Failed to fetch car makes");
   return res.json();
 }
 
 export async function fetchCarModels(makeId) {
-  const res = await fetch(`${API_BASE}/car-models/?make=${encodeURIComponent(makeId)}`);
+  const res = await fetch(`${API_BASE}car/models/?make=${encodeURIComponent(makeId)}`, { ...defaultFetchOpts });
   if (!res.ok) throw new Error("Failed to fetch car models");
   return res.json();
 }
 
-export async function uploadImages(images) {
+export async function uploadImages(images, listing_pk = null) {
   // images is an array of objects with { id, file, preview, name }
-  // Create FormData for multipart file upload
   const formData = new FormData();
   for (const image of images) {
-    formData.append("images", image.file, image.name);
+    formData.append("image", image.file, image.name);
   }
+  if (listing_pk) formData.append("listing_pk", listing_pk);
 
-  const res = await fetch(`${API_BASE}/images/upload/`, {
+  const res = await fetch(`${API_BASE}listings/images/upload/`, {
     method: "POST",
     body: formData,
-    // Note: do NOT set Content-Type header; browser will set it with boundary
+    headers: { "X-CSRFToken": getCookie('csrftoken') },
+    ...defaultFetchOpts,
   });
   if (!res.ok) throw new Error("Failed to upload images");
   return res.json();

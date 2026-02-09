@@ -30,11 +30,12 @@ export default function FormSelect({
         onChange={onChange}
         onBlur={onBlur}
         disabled={disabled}
+				key={"select" + name}
         className={`select select-bordered select-sm w-full ${
           error ? "select-error" : ""
         } ${className}`}
       >
-        <option value="">{placeholder}</option>
+        <option value="" disabled>{placeholder}</option>
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}

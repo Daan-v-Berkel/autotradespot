@@ -16,6 +16,7 @@ from django.http import BadHeaderError, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
 from autotradespot.listings import filters, forms, models
@@ -525,6 +526,7 @@ def FilterListings(request):
 # NEW LISTING CREATION ##
 @login_required(login_url="account_login")
 @verified_email_required
+@ensure_csrf_cookie
 def CreateListing(request):
     car_context = {
         "car_makes": [

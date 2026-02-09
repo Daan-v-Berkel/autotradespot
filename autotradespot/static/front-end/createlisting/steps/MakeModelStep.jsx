@@ -25,8 +25,8 @@ export default function MakeModelStep() {
       .then((data) => {
         if (!mounted) return;
         // Handle array of { id, name } objects
-        const makesList = Array.isArray(data)
-          ? data.map((m) => ({ value: m.id || m.pk, label: m.name }))
+        const makesList = Array.isArray(data["makes"])
+          ? data["makes"].map((m) => ({ value: m.id || m.pk, label: m.name }))
           : [];
         setMakes(makesList);
       })
@@ -55,8 +55,8 @@ export default function MakeModelStep() {
     fetchCarModels(selectedMake)
       .then((data) => {
         if (!mounted) return;
-        const modelsList = Array.isArray(data)
-          ? data.map((m) => ({ value: m.id || m.pk, label: m.name }))
+        const modelsList = Array.isArray(data["models"])
+          ? data["models"].map((m) => ({ value: m.id || m.pk, label: m.name }))
           : [];
         setModels(modelsList);
         setSelectedModel("");

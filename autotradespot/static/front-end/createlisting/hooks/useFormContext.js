@@ -1,10 +1,12 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import useAutoSave from "./useAutoSave";
+import * as listingAPI from "../services/listingAPI";
 
 const FormContext = createContext(null);
 
 export function FormProvider({ children }) {
   const [formData, setFormData] = useState({
+    listing_pk: null,
     licensePlate: "",
     listingType: "S",
     title: "",
@@ -23,7 +25,26 @@ export function FormProvider({ children }) {
   const [errors, setErrors] = useState({});
 
   // Auto-save on form data or step changes
-  // useAutoSave(formData, currentStep);
+  useAutoSave(formData, currentStep);
+
+  // Try to resume an existing draft when provider mounts
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await listingAPI.resumeDraft();
+        if (!mounted) return;
+        if (res && res.listing_pk) {
+          setFormData((prev) => ({ ...prev, ...res, listing_pk: res.listing_pk }));
+        }
+      } catch (e) {
+        // ignore — no draft or unauthenticated
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const updateField = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -52,7 +73,18 @@ export function FormProvider({ children }) {
   const saveDraft = async () => {
     setIsLoading(true);
     try {
-      // TODO: call listingAPI.saveDraft(formData)
+      const payload = {
+        listing_pk: formData.listing_pk,
+        title: formData.title,
+        description: formData.description,
+        type: formData.listingType,
+        price: formData.pricing,
+        car_details: formData.carDetails,
+      };
+      const res = await listingAPI.saveDraft(payload);
+      if (res && res.listing_pk) {
+        setFormData((prev) => ({ ...prev, listing_pk: res.listing_pk }));
+      }
     } finally {
       setIsLoading(false);
     }
