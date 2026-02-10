@@ -47,6 +47,24 @@ export async function resumeDraft() {
   return res.json();
 }
 
+export async function removeDraft(pk) {
+  const csrfToken = getCookie('csrftoken');
+
+  const res = await fetch(`${API_BASE}listings/modify/${pk}/`, {
+    method: "DELETE",
+    headers: { "X-CSRFToken": csrfToken || "" },
+    ...defaultFetchOpts
+  });
+
+  if (!res.ok && res.status !== 204) {
+    const errText = await res.text();
+    console.error("[removeDraft] Error response:", errText);
+    throw new Error(`Failed to remove draft: ${res.status}`);
+  }
+  if (res.status === 204) return {};
+  return res.json();
+}
+
 export async function fetchListingTypes() {
   const res = await fetch(`${API_BASE}listings/types/`);
   if (!res.ok) throw new Error("Failed to fetch listing types");

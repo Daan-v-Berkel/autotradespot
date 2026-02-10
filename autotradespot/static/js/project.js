@@ -4,12 +4,30 @@ import { themeChange } from 'theme-change';
 
 themeChange();
 
-/* Project specific Javascript goes here. */
+window.onload = function() {
+	// var t = localStorage.getItem("theme");
+	// document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
 
-  if (localStorage.length > 0) {
-    var checked = localStorage.getItem("theme");
-    document.getElementById("theme-controller").checked = checked;
+	const THEME_KEY = "theme";
+  const checkbox = document.getElementById("theme-controller");
+  if (!checkbox) return;
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    checkbox.checked = (theme === "dark"); // keep swap UI in sync
   }
+
+  // 1) Load saved theme (default: light)
+  const saved = localStorage.getItem(THEME_KEY);
+  setTheme(saved === "dark" ? "dark" : "light");
+
+  // 2) Save + apply when toggled
+  checkbox.addEventListener("change", () => {
+    const theme = checkbox.checked ? "dark" : "light";
+    setTheme(theme);
+    localStorage.setItem(THEME_KEY, theme);
+  });
+}
 
 function checkStep(evt) {
   var steps = document.getElementsByClassName('step');

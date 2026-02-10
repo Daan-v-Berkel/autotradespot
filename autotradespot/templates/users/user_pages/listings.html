@@ -6,7 +6,8 @@
   {% empty %}
     <span class="flex flex-col gap-2">
       <div>{% trans "Looks like you have not created any listing yet" %}</div>
-      <a class="btn btn-primary" href="{% url 'listings:createlistingnew' %}">{% trans "Create a listing" %}</a>
+      <a class="btn btn-primary"
+         href="{% url 'listings:createlistingreact' %}">{% trans "Create a listing" %}</a>
     </span>
   {% endfor %}
 </div>

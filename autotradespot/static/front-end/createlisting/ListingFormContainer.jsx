@@ -17,21 +17,14 @@ function StepRenderer() {
 }
 
 function FormContent() {
-  const { prevStep, currentStep } = useFormContext();
+  const { prevStep, currentStep, nextStep } = useFormContext();
 
   return (
     <div className="join-item flex flex-col justify-between w-full bg-base-200 p-4 rounded-box border-2 border-l-0 border-base-300">
       <div id="tabcontent">
         <StepRenderer />
       </div>
-      <div className="flex flex-row justify-between items-end mt-6">
-        <div>
-          {currentStep > 0 && (
-            <button className="btn btn-outline" onClick={prevStep}>
-              Back
-            </button>
-          )}
-        </div>
+      <div className="flex flex-row justify-between items-end mt-6 gap-2">
         <FormActions />
       </div>
     </div>

@@ -2,6 +2,7 @@
 Base settings to build other settings files upon.
 """
 
+from logging import debug
 from pathlib import Path
 
 import environ
@@ -270,12 +271,24 @@ LOGGING = {
             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
         },
     },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
     "handlers": {
         "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
-        }
+        },
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "./debug.log",
+        },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }

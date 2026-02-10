@@ -7,8 +7,25 @@
     <div class="w-full min-w-[80%] max-w-[95%] mx-auto my-4 rounded-lg shadow-lg p-4 bg-base-300">
       {% with images=listing.imagemodel_set.all %}
         <section class="w-full space-y-1">
-          <span class="flex justify-between">
-            <p class="text-3xl text-base-content">{{ listing.cardetails.full_make_name }}</p>
+          <span class="flex justify-between items-start">
+            <div class="flex items-center space-x-3">
+              <p class="text-3xl text-base-content">{{ listing.cardetails.full_make_name }}</p>
+              {% if request.user.is_staff or request.user == listing.owner %}
+                {% if listing.status == listing.Status.ACTIVE %}
+                  <span class="badge badge-success badge-lg">{{ listing.get_status_display }}</span>
+                {% elif listing.status == listing.Status.RESERVED %}
+                  <span class="badge badge-warning badge-lg">{{ listing.get_status_display }}</span>
+                {% elif listing.status == listing.Status.SOLD %}
+                  <span class="badge badge-info badge-lg">{{ listing.get_status_display }}</span>
+                {% elif listing.status == listing.Status.UNDER_REVIEW %}
+                  <span class="badge badge-info badge-lg">{{ listing.get_status_display }}</span>
+                {% elif listing.status == listing.Status.DRAFT %}
+                  <span class="badge badge-secondary badge-lg">{{ listing.get_status_display }}</span>
+                {% else %}
+                  <span class="badge badge-error badge-lg">{{ listing.get_status_display }}</span>
+                {% endif %}
+              {% endif %}
+            </div>
             {% include 'widgets/favourite_but.html' %}
           </span>
           <div class="flex space-x-4">
@@ -84,24 +101,30 @@
     <div class="divider divider-base-content">{% trans "Provider actions" %}</div>
     <section class="flex flex-row justify-around">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-              hx-put="{% url 'listings:modify-listing' listing.pk 'modify' %}">
+      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group {% if listing.status == listing.Status.REMOVED %}opacity-50 pointer-events-none{% endif %}"
+              {% if listing.status != listing.Status.REMOVED %}hx-get="{% url 'ats_api:modify_listing' listing.pk %}"{% endif %}>
         <span class="ti-pencil no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Modify</span>
       </button>
-      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group">
+      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group {% if listing.status == listing.Status.REMOVED %}opacity-50 pointer-events-none{% endif %}">
         <span class="ti-share no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Share</span>
       </button>
-      <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
-              onclick="del_listing_model.showModal()">
-        <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
-      </button>
+      {% if listing.status == listing.Status.REMOVED %}
+        <button class="btn btn-success py-2 px-4 flex flex-col items-center"
+                hx-put="{% url 'ats_api:modify_listing' listing.pk %}"
+                hx-swap="none">Undo delete</button>
+      {% else %}
+        <button class="hover:decoration-accent py-2 px-4 flex flex-col items-center group"
+                onclick="del_listing_model.showModal()">
+          <span class="ti-trash no-underline text-xl group-hover:text-accent"></span><span class="underline underline-offset-2 group-hover:decoration-accent">Delete</span>
+        </button>
+      {% endif %}
       <div class="form-control">
         <label class="label cursor-pointer flex items-center flex-col peer-disabled/activate:cursor-not-allowed underline underline-offset-2 hover:decoration-accent peer-disabled/activate:text-gray-400 peer-disabled/activate:hover:decoration-gray-400">
           <input type="checkbox"
                  class="toggle toggle-accent peer/activate"
-                 {% if not listing.complete_for_posting %}disabled{% endif %}
+                 {% if not listing.complete_for_posting or listing.status == listing.Status.REMOVED %}disabled{% endif %}
                  {% if listing.status == listing.Status.ACTIVE %}checked{% endif %}
-                 hx-put="{% url 'listings:modify-listing' listing.pk 'activate' %}"
+                 hx-put="{% url 'ats_api:modify_listing' listing.pk %}"
                  hx-swap="none" />
           <span class="label-text">
             {% if listing.status == listing.Status.ACTIVE %}
@@ -145,16 +168,14 @@
   <dialog id="del_listing_model" class="modal modal-bottom sm:modal-middle">
     <div class="modal-box">
       <h3 class="font-bold text-lg">{% trans "Are you sure?" %}</h3>
-      <p class="py-4">
-        {% trans "You are about to delete this listing, are you sure you wish to
-        proceed?" %}
-      </p>
+      <p class="py-4">{% trans "You are about to delete this listing, are you sure you wish to proceed?" %}</p>
       <div class="modal-action">
         <form method="dialog">
           <button class="btn btn-primary">{% trans "Cancel" %}</button>
           <button class="btn btn-error"
-                  hx-post="{% url 'listings:modify-listing' listing.pk 'delete' %}"
-                  hx-target="body">{% trans "Delete listing" %}</button>
+                  hx-delete="{% url 'ats_api:modify_listing' listing.pk %}"
+                  hx-target="body"
+                  hx-swap="none">{% trans "Delete listing" %}</button>
         </form>
       </div>
     </div>

@@ -18,10 +18,10 @@ def hello_world(request):
     return Response({"message": "Hello, world!"})
 
 
-@api_view(["GET", "POST"])
+@api_view(["GET", "POST", "PUT", "DELETE"])
 @authentication_classes([SessionAuthentication])
 @csrf_protect
-def draft(request):
+def draft(request, pk=None):
     logger.debug(f"[draft] Method: {request.method}")
     logger.debug(f"[draft] User: {request.user} (authenticated: {request.user.is_authenticated})")
     logger.debug(f"[draft] Session key: {request.session.session_key}")
@@ -34,6 +34,8 @@ def draft(request):
     if request.method == "GET":
         # Try to return an in-progress listing from session or the latest draft for this user
         listing_pk = request.session.get("listing_in_progress")
+        if not listing_pk:
+            listing_pk = request.GET.get("listing_pk")
         listing = None
         if listing_pk:
             listing = listing_models.Listing.objects.filter(pk=listing_pk, owner=request.user).first()
@@ -78,6 +80,24 @@ def draft(request):
             pass
 
         return Response(payload, status=status.HTTP_200_OK)
+
+    elif request.method == "PUT":
+        listing = listing_models.Listing.objects.filter(pk=pk, owner=request.user).first()
+        if listing:
+            # If listing was removed, allow owner to undo deletion (restore to active)
+            if listing.status == listing_models.Listing.Status.REMOVED:
+                listing.set_active()
+                return Response({"detail": "Listing restored"}, status=status.HTTP_200_OK)
+            listing.set_under_review()
+        # TODO: proper response page redirect after setting under review
+        return Response({"detail": "Listing set to under review"}, status=status.HTTP_200_OK)
+
+    elif request.method == "DELETE":
+        listing = listing_models.Listing.objects.filter(pk=pk, owner=request.user).first()
+        if listing:
+            listing.set_deleted()  # only set status to deleted
+        # TODO: proper response page redirect after deletion
+        return Response({"detail": "Listing deleted"}, status=status.HTTP_200_OK)
 
     # POST -> save/update draft
     data = request.data

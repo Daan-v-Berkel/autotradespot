@@ -7,7 +7,7 @@ import { fetchListingTypes } from "../services/listingAPI";
 import { validateFields } from "../services/validation";
 
 export default function TypeStep() {
-  const { formData, updateField, nextStep, updateErrors, errors } = useFormContext();
+  const { formData, updateField, nextStep, prevStep, updateErrors, errors } = useFormContext();
   const [choices, setChoices] = useState([]);
   const [type, setType] = useState(formData.listingType || "S");
   const [title, setTitle] = useState(formData.title || "");
@@ -145,7 +145,10 @@ export default function TypeStep() {
       />
 
       <div className="flex flex-row space-x-2 pt-4">
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-sm btn-primary" type="button" onClick={prevStep}>
+          Back
+        </button>
+        <button className="btn btn-sm btn-primary" type="submit">
           Continue
         </button>
       </div>

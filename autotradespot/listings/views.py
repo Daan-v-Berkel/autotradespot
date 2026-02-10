@@ -435,27 +435,27 @@ def GetPricingForm(request):
     return render(request, "listings/partials/pricingform.html", context={"form1": form1})
 
 
-def ModifyListing(request, pk, action="modify"):
-    listing = models.Listing.objects.get(pk=pk)
+# def ModifyListing(request, pk, action="modify"):
+#     listing = models.Listing.objects.get(pk=pk)
 
-    if request.method == "POST" and action == "delete":
-        listing.set_deleted()
-        return HTTPResponseHXRedirect(reverse_lazy("users:detail"))
+#     if request.method == "POST" and action == "delete":
+#         listing.set_deleted()
+#         return HTTPResponseHXRedirect(reverse_lazy("users:detail"))
 
-    elif request.method == "PUT":
-        if action == "activate":
-            listing.set_under_review()
-            page = render(
-                request,
-                "listings/base/listing.html",
-                context={"listing": listing, "favourites_cnt": len(listing.favourites_list.all())},
-            )
-            page.headers["HX-Refresh"] = "true"
-            return page
+#     elif request.method == "PUT":
+#         if action == "activate":
+#             listing.set_under_review()
+#             page = render(
+#                 request,
+#                 "listings/base/listing.html",
+#                 context={"listing": listing, "favourites_cnt": len(listing.favourites_list.all())},
+#             )
+#             page.headers["HX-Refresh"] = "true"
+#             return page
 
-        elif action == "modify":
-            request.session["listing_in_progress"] = listing.pk
-            return HTTPResponseHXRedirect(reverse_lazy("listings:createlistingnew"))
+#         elif action == "modify":
+#             request.session["listing_in_progress"] = listing.pk
+#             return HTTPResponseHXRedirect(reverse_lazy("listings:createlistingnew"))
 
 
 def contactView(request, pk=None):
@@ -528,22 +528,4 @@ def FilterListings(request):
 @verified_email_required
 @ensure_csrf_cookie
 def CreateListing(request):
-    car_context = {
-        "car_makes": [
-            {
-                "id": c[0],
-                "name": c[1],
-            }
-            for c in models.CarMake.objects.all().values_list("makeId", "name")
-        ],
-        "car_models": [
-            {
-                "id": c[0],
-                "name": c[1],
-                "makeId": c[2],
-            }
-            for c in models.CarModel.objects.all().values_list("modelId", "name", "make__makeId")
-        ],
-    }
-
-    return render(request, "listings/create/base.html", context={"modelContext": car_context})
+    return render(request, "listings/create/base.html")

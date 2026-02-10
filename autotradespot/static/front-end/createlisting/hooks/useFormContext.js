@@ -91,7 +91,8 @@ export function FormProvider({ children }) {
   };
 
   const clearForm = () => {
-    setFormData({
+    setFormData((prev) => ({
+			...prev,
       licensePlate: "",
       listingType: "S",
       title: "",
@@ -103,10 +104,21 @@ export function FormProvider({ children }) {
       carDetails: {},
       carOptions: [],
       images: [],
-    });
+    }));
     setErrors({});
     setCurrentStep(0);
   };
+
+	const removeDraft = async () => {
+		if (!formData.listing_pk) return;
+		setIsLoading(true);
+		try {
+			await listingAPI.removeDraft(formData.listing_pk);
+			clearForm();
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
   return (
     <FormContext.Provider
@@ -121,6 +133,7 @@ export function FormProvider({ children }) {
         goToStep,
         saveDraft,
         clearForm,
+				removeDraft,
         isLoading,
         errors,
       }}
