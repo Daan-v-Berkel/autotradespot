@@ -172,8 +172,8 @@ export default function ImagesStep() {
       )}
 
       <div className="flex flex-row space-x-2 pt-4">
-        <button type="button" className="btn btn-outline" onClick={prevStep}>Back</button>
-        <button className="btn btn-primary" type="submit">{images.length > 0 ? "Continue to Review" : "Continue"}</button>
+        <button type="button" className="btn btn-outline btn-sm" onClick={prevStep}>Back</button>
+        <button className="btn btn-primary btn-sm" type="submit">{images.length > 0 ? "Continue to Review" : "Continue"}</button>
       </div>
     </form>
   );

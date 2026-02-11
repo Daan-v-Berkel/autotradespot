@@ -162,7 +162,31 @@ def draft(request, pk=None):
                 "make": make or listing_models.CarMake.objects.filter(pk=0).first(),
                 "model": model or listing_models.CarModel.objects.filter(pk=0).first(),
             }
-            listing_models.CarDetails.objects.update_or_create(owning_listing=listing, defaults=car_defaults)
+            cd, cd_created = listing_models.CarDetails.objects.update_or_create(
+                owning_listing=listing, defaults=car_defaults
+            )
+
+            # Handle car options if provided (accept list of names or ids)
+            options = car.get("car_options") or car.get("car_options_list") or []
+            if isinstance(options, list) and options:
+                try:
+                    opt_objs = []
+                    for opt in options:
+                        if not opt:
+                            continue
+                        # accept either id or name
+                        if isinstance(opt, int):
+                            o = listing_models.CarOption.objects.filter(pk=opt).first()
+                            if o:
+                                opt_objs.append(o)
+                                continue
+                        o, _ = listing_models.CarOption.objects.get_or_create(name=str(opt))
+                        opt_objs.append(o)
+                    if opt_objs:
+                        cd.options.set(opt_objs)
+                except Exception:
+                    # don't fail whole request for options issues
+                    logger.exception("Failed to set car options for listing %s", listing.pk)
         except Exception:
             pass
 
@@ -171,6 +195,26 @@ def draft(request, pk=None):
         request.session["listing_in_progress"] = listing.pk
     except Exception:
         pass
+
+    # If frontend provided a license plate in the draft payload, store it in session LP_data
+    try:
+        license_plate = data.get("license_plate") or data.get("licence")
+        if license_plate:
+            # preserve any existing LP_data fields and augment
+            lp = request.session.get("LP_data", {})
+            lp.update({"licence": license_plate})
+            # Also store make/model ids if provided in car_details
+            if data.get("car_details"):
+                cd = data.get("car_details")
+                if cd.get("make_id"):
+                    lp["makeId"] = cd.get("make_id")
+                if cd.get("model_id"):
+                    lp["modelId"] = cd.get("model_id")
+                if cd.get("variant"):
+                    lp["variant"] = cd.get("variant")
+            request.session["LP_data"] = lp
+    except Exception:
+        logger.exception("Failed to persist licence plate data to session for listing %s", listing.pk)
 
     return Response({"listing_pk": listing.pk, "created": created}, status=status.HTTP_200_OK)
 

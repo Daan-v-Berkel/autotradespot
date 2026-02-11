@@ -5,7 +5,7 @@ import ErrorAlert from "../components/ErrorAlert";
 import { validateField } from "../services/validation";
 
 export default function LicensePlateStep() {
-  const { formData, updateField, nextStep, updateErrors } = useFormContext();
+  const { formData, updateField, nextStep, prevStep, updateErrors } = useFormContext();
   const [value, setValue] = useState(formData.licensePlate || "");
   const [fieldError, setFieldError] = useState("");
 

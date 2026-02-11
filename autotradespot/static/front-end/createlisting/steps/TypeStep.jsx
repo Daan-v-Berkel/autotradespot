@@ -145,10 +145,10 @@ export default function TypeStep() {
       />
 
       <div className="flex flex-row space-x-2 pt-4">
-        <button className="btn btn-sm btn-primary" type="button" onClick={prevStep}>
+        <button className="btn btn-outline btn-sm" type="button" onClick={prevStep}>
           Back
         </button>
-        <button className="btn btn-sm btn-primary" type="submit">
+        <button className="btn btn-primary btn-sm" type="submit">
           Continue
         </button>
       </div>

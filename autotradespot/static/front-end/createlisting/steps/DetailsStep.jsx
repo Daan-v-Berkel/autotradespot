@@ -141,10 +141,10 @@ export default function DetailsStep() {
       />
 
       <div className="flex flex-row space-x-2 pt-4">
-        <button type="button" className="btn btn-outline" onClick={prevStep}>
+        <button type="button" className="btn btn-outline btn-sm" onClick={prevStep}>
           Back
         </button>
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-primary btn-sm" type="submit">
           Continue
         </button>
       </div>

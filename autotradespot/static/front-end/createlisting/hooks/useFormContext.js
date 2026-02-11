@@ -73,14 +73,50 @@ export function FormProvider({ children }) {
   const saveDraft = async () => {
     setIsLoading(true);
     try {
+      // Normalize front-end formData into the API payload shape
+      const pricePayload = (function() {
+        const p = formData.pricing || {};
+        if (!p) return {};
+        // front-end uses { priceType, price } keys for sale; backend expects {pricetype, price}
+        const common = {
+          pricetype: p.priceType || p.pricetype || "F",
+          price: p.price || p.price === 0 ? p.price : undefined,
+        };
+        // lease-specific keys
+        if (formData.listingType === "L") {
+          return {
+            ...common,
+            annual_kms: p.annual_kms || p.annualKms || p.annualKms || undefined,
+            lease_company: p.lease_company || p.leaseCompany || undefined,
+            lease_period: p.lease_period || p.leasePeriod || undefined,
+          };
+        }
+        return common;
+      })();
+
+      const carDetailsPayload = (function() {
+        const cd = formData.carDetails || {};
+        return {
+          make_id: formData.make || cd.make_id || cd.make || null,
+          model_id: formData.model || cd.model_id || cd.model || null,
+          mileage: cd.mileage || cd.mileage === 0 ? cd.mileage : undefined,
+          manufacture_year: cd.manufacture_year || cd.manufactureYear || undefined,
+        };
+      })();
+
       const payload = {
         listing_pk: formData.listing_pk,
         title: formData.title,
         description: formData.description,
         type: formData.listingType,
-        price: formData.pricing,
-        car_details: formData.carDetails,
+        price: pricePayload,
+        car_details: carDetailsPayload,
+        // additional optional metadata
+        car_options: formData.carOptions || [],
+        images: (formData.images || []).map((img) => ({ name: img.name || img.filename || img.id })),
+        license_plate: formData.licensePlate || null,
       };
+
       const res = await listingAPI.saveDraft(payload);
       if (res && res.listing_pk) {
         setFormData((prev) => ({ ...prev, listing_pk: res.listing_pk }));
