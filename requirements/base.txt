@@ -13,7 +13,7 @@ uvicorn[standard]==0.24.0.post1  # https://github.com/encode/uvicorn
 # ------------------------------------------------------------------------------
 django==5.2.11  # pyup: < 5.0  # https://www.djangoproject.com/
 django-environ==0.11.2  # https://github.com/joke2k/django-environ
-django-model-utils==4.3.1  # https://github.com/jazzband/django-model-utils
+django-model-utils==5.0.0  # https://github.com/jazzband/django-model-utils
 django-allauth==65.14.3  # https://github.com/pennersr/django-allauth
 django-crispy-forms==2.5  # https://github.com/django-crispy-forms/django-crispy-forms
 crispy-tailwind==1.0.3  # https://github.com/django-crispy-forms/crispy-tailwind
